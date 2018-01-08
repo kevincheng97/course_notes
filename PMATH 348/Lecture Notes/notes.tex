@@ -1,0 +1,309 @@
+\documentclass[11pt]{article}
+\usepackage{notes}
+\usepackage{faktor}
+
+\newcommand{\thiscoursecode}{PMATH 352}
+\newcommand{\thiscoursename}{Fields and Galois Theory}
+\newcommand{\thisprof}{Prof. Yu-Ru Liu}
+\newcommand{\me}{Kevin Cheng}
+\newcommand{\thisterm}{Winter 2018}
+
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\quotient}[2]{\faktor{#1}{#2}}
+
+\hypersetup
+{pdfauthor={\me},
+pdftitle={\thiscoursecode \thisterm Lecutre Notes},
+pdfsubject={\thiscoursename}
+pdflang={English}}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{centering}
+{\scshape\LARGE University of Waterloo \par}
+\globe
+{\huge\bf PMATH 348}\\
+{\scshape\Large Fields and Galois Theory}\\
+\vspace{.3cm}
+{\scshape Prof. Yu-Ru Liu~\textbullet~Winter 2018\par}
+\end{centering}
+\sectionline
+\tableofcontents
+\sectionline
+\thispagestyle{empty}
+\end{titlepage}
+
+\section{Introduction}
+\subsection{Polynomial Equations}
+Consider the quadratic equation. Let $ax^2 + bx + c = 0$ with the leading
+coefficient $a \neq 0$, then we have that,
+\begin{equation*}
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\end{equation*}
+We notice immediately that there are a couple of operations that are involved in
+this equation.
+\begin{definition}
+An expression involving only addition, subtraction, multiplication, division and
+radicals is called a \underline{radical}. These operations are denoted by $+, -, \times,
+\div$ and $\sqrt[n]{\cdot}$
+\end{definition}
+The natural question that is raised is the extension to higher dimensions.
+\subsection{Cubic Equations}
+All cubic equations can be reduced to the following equation,
+\begin{align*}
+x^3 + px = q
+\end{align*}
+for some $p, q \in \C$. A solution to the above equation is of the form
+\begin{equation*}
+x = \sqrt[3]{\frac{q}{2} + \sqrt{\frac{p^3}{27} + \frac{q^2}{4}}} +
+\sqrt[3]{\frac{q}{2} - \sqrt{\frac{p^3}{27} + \frac{q^2}{4}}}\tag{Cardano's
+Formula}
+\end{equation*}
+\subsection{Quartic Equations}
+A radical solution can be obtained by reducing a quartic to a cubic equation.
+\subsection{Quintic Equations}
+\begin{itemize}
+\item General radical solutions were attempted by Euler, B\'ezout and Lagrange without
+success
+\item In 1799, Ruffini gave a 516 page proof about the insolvability of quintic
+equations. His Proof was ``almost right''
+\item In 1824, Abel filled the gap in Ruffini's proof.
+\end{itemize}
+We can now ask ourselves, given a quintic equation, is it solvable by radicals?
+This question seems to be too hard, so we ask, suppose that a radical solution
+exists. How does its associated quintic equation look like?\\
+
+\underline{Two main steps in Galois Theory}
+\begin{enumerate}
+\item Link a root of a quintic equation, say $\alpha$ to $\Q(\alpha)$, the
+smallest field containing $\Q$ and $\alpha$. $\Q(\alpha)$ is a field. So it has
+more structures to be played with than $\alpha$; however, our knowledge of
+$\Q(\alpha)$ is still too little to answer the question. For example, we do not
+know how many intermediate fields, $E$ between $\Q$ and $\Q(\alpha)$.
+What we mean is how many fields $E$ satisfy
+\begin{equation*}
+\Q \subseteq E \subseteq \Q(\alpha).
+\end{equation*}
+\item Link the field $\Q(\alpha)$ to a group. More precisely, we associate
+$\Q(\alpha)/\Q$ to the group
+\begin{equation*}
+\Aut_\Q (\Q(\alpha)) = \bigg\{\Psi : \Q(\alpha) \to \Q(\alpha)\>\text{an
+isomorphism and } \Psi|_\Q = 1_\Q\bigg\}
+\end{equation*}
+It can be shown that if $\alpha$ is ``good'', say algebraic, $\Aut_\Q
+(\Q(\alpha))$ is finite. If $\alpha$ is ``very good'', say constructable, the order
+of $\Aut_\Q (\Q(\alpha))$ is in certain forms. Moreover, there is a one-to-one
+correspondence between the intermediate fields between $\Q(\alpha)$ and
+$\Q$ and the subgroups of $\Aut_\Q (\Q(\alpha))$. \\
+\end{enumerate}
+
+It follows that given some ``good'' $\alpha$, we have that the
+intermediate fields of $\Q(\alpha)$ and $\Q$ are indeed finitely many. This
+introduces \underline{Galois Theory}; the interplay between fields and groups.
+
+\section{Field Extensions}
+\subsection{Degree of Extensions}
+\begin{definition}
+If $E$ is a field containing another field $F$, we say $E$ is a
+\underline{field extension} of $F$, denoted by $\quotient EF$.
+\end{definition}
+If $\quotient{E}{F}$ if a field extension, we can view $E$ as a vector space over $F$.
+\begin{enumerate}
+\item \underline{Addition}: For $e_1, e_2 \in E$, $e_1 + e_2 \coloneqq e_1 +
+e_2$ (addition in $E$)
+\item \underline{Scalar Multiplication}: For $c \in F, e \in E$, $c \cdot e
+\coloneqq ce$ (multiplication in $E$)
+\end{enumerate}
+\begin{definition}
+The dimension of $E$ over $F$ (viewed as a vector space) called the
+\underline{degree} of $E$ over $F$, denoted by $[E:F]$. If $[E:F] < \infty$, we
+say $\quotient EF$ is a \underline{finite extension}. Otherwise, $\quotient{E}{F}$ is an
+\underline{infinite extension}
+\end{definition}
+\begin{example}
+$[\C : \R] = 2$ is a  finite extension since $\C \cong \R + \R i$, with $i^2 =
+-1$.
+\end{example}
+\begin{example}
+Let $F$ be a field. Then $[F(x) : F]$ is $\infty$ since ${1, x, x^2, \dots}$ are
+linearly independent over $F$.
+\end{example}
+\begin{remark}
+$F[x] = \{f(x) = a_0 + a_1x + \dots + a_nx^n : a_i \in F, n \in \N \cup
+\{0\}\}$
+\end{remark}
+\begin{remark}
+$F(x) = \{\frac{f(x)}{g(x)} : f(x), g(x) \in F[x]\}$
+\end{remark}
+\begin{theorem}
+The $E/K$ and $K/F$ are finite field extensions, then $\quotient{E}{F}$ is a finite field
+extension and
+\begin{equation*}
+[E:F] = [E:K][K:F]
+\end{equation*}
+In particular, $K$ is an intermediate field of an field extension $\quotient{E}{F}$, then
+$[K:F]\>\big|\> [E:F]$. 
+\end{theorem}
+\begin{proof}
+Suppose $[E:K]=m$ and $[K:F] = n$. Let $\{a_i,\dots,a_m\}$ be a basis of
+$E/K$ and $\{b_1, \dots, b_n\}$ be a basis of $K/F$. It suffices to show
+$\{a_ib_j:1 \leq i \leq m, 1 \leq j \leq n\}$ is a basis of $[\quotient{E}{F}]$.\\
+
+\begin{claim}
+Every element of $E$ is a linear combination of $\{a_ib_j\}$ over $F$.
+\end{claim}
+
+For $e \in E$, we have
+\begin{equation*}
+e = \sum^m_{i=1} k_ia_i 
+\end{equation*}
+with $k_i \in K$. Also, for each $k_i \in K$, we have
+\begin{equation*}
+k_i = \sum^n_{j=1} c_{ij}b_j 
+\end{equation*}
+with $c_{ij} \in F$. Thus,
+\begin{equation*}
+e = \sum^m_{i=1} \sum^n_{j=1} c_{ij}b_ja_i.
+\end{equation*}
+
+\begin{claim}
+The set $\{a_ib_j:1\leq i\leq m,1\leq j\leq n\}$ is linearly independent
+over $F$.
+\end{claim}
+Suppose that $$\sum_{i=1}^m\sum_{j=1}^nc_{ij}b_ja_i=0$$ with $c_{ij}\in F$. Since
+$\sum_{j=1}^nc_{ij}b_j\in K$ and $\{a_1,\dots,a_m\}$ are independent over $K$.
+We have $$\sum_{j=1}^nc_{ij}b_j=0.$$
+Since $\{b_1,\dots,b_n\}$ are independent over $F$, we have $c_{ij}=0$.\\
+
+Combining both claims, we see that $\{a_ib_j,1\leq i\leq m,1\leq j\leq n\}$ is a
+basis of $\quotient{E}{F}$ and we have $[E:F]=[E:K][K:F]$.
+\end{proof}
+
+\subsection{Algebraic and Transcendental Extensions}
+\begin{definition}
+Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. We say $\alpha$ is
+\underline{algebraic over $F$} if there exists $f(x) \in F[x]\setminus \{0\}$
+with $f(\alpha) = 0$. Otherwise, $\alpha$ is \underline{transcendental over
+$F$}.
+\end{definition}
+\begin{example}
+$\frac{c}{d} \in \Q$, $\sqrt 2$ $\sqrt[2]{7} + 2i$ are algebraic over $\Q$
+(see Assignment 1) but $e$ (Hermite, 1873) and $\pi$ (Lindemann, 1882) are
+transcendental over $\Q$.
+\end{example}
+Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. Let $F[\alpha]$ denote the
+smallest subfield of $E$ containing $F$ and $\alpha$. For $\alpha, \beta \in E$,
+we define $F[\alpha, \beta]$ and $F(\alpha, \beta)$ similarly.
+\begin{definition}
+If $F = F(\alpha)$ for some $\alpha \in E$, we say $E$ is a \underline{simple
+extension} of $F$.
+\end{definition}
+\begin{definition}
+Let $R_1$ and $R_2$ be two rings which contain a field $F$. A ring homomorphism
+$\Psi: R_1 \to R_2$ is said to be a \underline{$F$-homomorphism} if $\Psi|_F =
+1_F$.
+\end{definition}
+\begin{theorem}
+Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. If $\alpha$ is transcendental
+over $F$, then
+\begin{equation*}
+F[\alpha] \cong F[x] \quad \text{and} \quad F(\alpha) \cong F(x)
+\end{equation*}
+In particular, $F[\alpha] \neq F(\alpha)$.
+\end{theorem}
+\begin{remark}
+In fact, if $\alpha$ is algebraic, indeed $F[\alpha] = F(\alpha)$.
+\end{remark}
+\begin{proof}
+Let $\Psi:F(x) \to F(\alpha)$ be the unique $F$-homomorphism defined by $\Psi(x)
+= \alpha$. Thus, for $f(x), g(x) \in F[x], g(x) \neq 0$, 
+$$\Psi\bigg(\frac{f(x)}{g(x)}\bigg) = \frac{f(\alpha)}{g(\alpha)} \in
+F(\alpha).$$ 
+Notice that this is indeed a well-defined map as $g(x) \neq 0$ implies
+$g(\alpha) \neq 0$ since $\alpha$ is transcendental. Since $F(x)$ is a field and
+$\ker(\Psi)$ is an ideal of $F(x)$, we have $\ker(\Psi) = F(x)$ or trivial. This
+$\Psi = 0$ or $\Psi$ is injective. Since $\Psi(x) = \alpha \neq 0$, $\Psi$ must
+be injective. Also, since $F(x)$ is a field, $\Ima\Psi$ contains a field
+generated by $F$ and $\alpha$, in other words, $F(\alpha) \subseteq \Ima\Psi$.
+Thus, $\Ima\Psi = F(\alpha)$ and $\Psi$ is surjective. It follows that
+$\Psi$ is an isomorphism and we have
+\begin{equation*}
+F[\alpha] \cong F[x] \quad \text{and} \quad F(\alpha) \cong F(x)
+\end{equation*}
+\end{proof}
+\begin{theorem}
+Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. If $\alpha$ is algebraic over
+$F$, there exists a unique monic irreducible polynomial $p(x) \in F[x]$ such
+that there exists a $F$-homomorphism
+\begin{equation*}
+\Psi:\quotient{F[x]}{\cyclic{p(x)}} \to F[\alpha] \quad \text{with } \Psi(x) = \alpha
+\end{equation*}
+from which we conclude $F[\alpha] \cong F(\alpha)$.
+\end{theorem}
+\begin{proof}
+Consider the unique $F$-homomorphism $\Psi: F[x] \to F[\alpha]$ defined by
+$\Psi(x) = \alpha$. Thus, for $f(x) \in F[x]$, we have $\Psi(f) = f(\alpha)$.
+Since $F[x]$ is a ring, $\Ima\Psi$ contains a ring generated by $F$ and
+$\alpha$, in other words, $F[\alpha] \subseteq \Ima\Psi$. Thus, $\Ima\Psi =
+f[\alpha]$.\\
+Let
+\begin{equation*}
+I = \Ker\Psi = \{f(x) \in F[x] : f(\alpha) = 0 \}.
+\end{equation*}
+Since $\alpha$ is algebraic, $I \neq \{0\}$. We have $\quotient{F[x]}{I} \cong
+\Ima\Psi = F[\alpha] \subseteq F(\alpha)$, a subring of a field $F(\alpha)$. Thus,
+$\quotient{F[x]}{I}$ is an integral domain so $I$ is a prime ideal. It follows that
+$I = \cyclic{p(x)}$, where $p(x)$ is irreducible. If we assume $p(x)$ is
+monic, then it is unique. It follows that
+\begin{equation*}
+\quotient{F[x]}{\cyclic{p(x)}}\cong F[\alpha].
+\end{equation*}
+Since $p(x)$ is irreducible, $\quotient{F[x]}{\cyclic{p(x)}}$ is a field. So
+$F[\alpha]$ is a field. It follows that $F[\alpha] = F(\alpha)$.
+\end{proof}
+\begin{definition}
+If $\alpha$ is algebraic over a field $F$, the unique monic polynomial
+irreducible polynomial $p(x)$ in Theorem 3 is called the \underline{minimal
+polynomial of $\alpha$ over $F$}.
+\end{definition}
+\begin{remark}
+From the proof of Theorem 3, if $f(x) \in F[x]$ with $f(\alpha) = 0$, then
+$p(x) \big| f(x)$.
+\end{remark}
+\begin{theorem}
+Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$.
+\begin{enumerate}
+\item $\alpha$ is transcendental over $F$ if and only if $[F(\alpha):F]$ is
+$\infty$.
+\item $\alpha$ is algebraic over $F$ if and only if $[F(\alpha):F] < \infty$.
+\end{enumerate}
+Moreover, if $p(x)$ is the minimal polynomial of $\alpha$ over $F$, we have
+$[F[\alpha]:F] = \deg(p)$ and $\{1, \alpha, \alpha^2, \dots,
+\alpha^{\deg (p) - 1}\}$ is a basis of $\quotient{F(\alpha)}{F}$.
+\end{theorem}
+\begin{proof}
+It suffices to prove the forward direction for each statement as the inverse
+direction implies the other statement.\\
+(1) {\bf Forwards}: From Theorem 2, if $\alpha$ is transcendental over $F$, then
+$F(x) \cong F(\alpha)$. In $F(x)$, the elements $\{1, x, x^2, \dots\}$ are
+linearly independent over $F$. Thus, $[F(\alpha):F]$ is $\infty$.\\
+(2) {\bf Forwards}: From Theorem 3, if $\alpha$ is algebraic over $F$,
+$\quotient{F[x]}{\cyclic{p(x)}} \cong F(x)$ with the map $x \mapsto \alpha$. Note
+that,
+\begin{equation*}
+\quotient{F[x]}{\cyclic{p(x)}} \cong \{r(x) \in F[x]: \deg(r) < \deg(p)\}
+\tag{$\deg(0) = -\infty$}
+\end{equation*}
+Thus, $\{1, x, x^2, \dots, x^{\deg(p) - 1}\}$ forms a basis for
+$\quotient{F[x]}{\cyclic{p(x)}}$. It follows that $[F(\alpha): F] =
+\deg(p)$ and $\{1, \alpha, \alpha^2, \dots,
+\alpha^{\deg (p) - 1}\}$ is a basis of $\quotient{F(\alpha)}{F}$.
+\end{proof}
+\begin{theorem}
+Let $\quotient{E}{F}$ be a field extension. If $[E:F] < \infty$, then there exists $\alpha_1, \dots, \alpha_n \in E$ such that
+\begin{equation*}
+F \subsetneq F(\alpha_1) \subsetneq \dots \subsetneq F(\alpha_1, \dots, \alpha_n) = E.
+\end{equation*}
+\end{theorem}
+\end{document}

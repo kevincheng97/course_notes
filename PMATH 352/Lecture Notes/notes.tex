@@ -1,0 +1,325 @@
+\documentclass[11pt]{article}
+\usepackage{notes}
+
+\newcommand{\thiscoursecode}{PMATH 348}
+\newcommand{\thiscoursename}{Complex Analysis}
+\newcommand{\thisprof}{Prof. Akshaa Vatwani}
+\newcommand{\me}{Kevin Cheng}
+\newcommand{\thisterm}{Winter 2018}
+
+\hypersetup
+{pdfauthor={\me},
+pdftitle={\thiscoursecode \thisterm Lecutre Notes},
+pdfsubject={\thiscoursename}
+pdflang={English}}
+
+\begin{document}
+\begin{titlepage}
+\begin{centering}
+{\scshape\LARGE University of Waterloo \par}
+\globe
+{\huge\bf \thiscoursecode}\\
+{\scshape\Large \thiscoursename}\\
+\vspace{.3cm}
+{\scshape \thisprof~\textbullet~\thisterm \par}
+\end{centering}
+\sectionline
+\tableofcontents
+\sectionline
+\thispagestyle{empty}
+\end{titlepage}
+
+\section{Complex Numbers}
+\begin{definition}
+A \underline{complex number} is a vector in $\R^2$. The \underline{complex plane} denoted by $\C$ is the
+set of complex numbers. 
+\begin{equation*}
+\C = \R^2 = \bigg\{\begin{pmatrix}x\\y\end{pmatrix}: x, y \in \R \bigg\}
+\end{equation*}
+In $\C$, we usually write,
+\begin{align*} 
+0 &= \begin{pmatrix}0\\0\end{pmatrix}\\
+1 &= \begin{pmatrix}1\\0\end{pmatrix}\\
+i &= \begin{pmatrix}0\\1\end{pmatrix}\\
+x &= \begin{pmatrix}x\\0\end{pmatrix}\\
+iy &= \begin{pmatrix}0\\y\end{pmatrix}
+\end{align*}
+with $x, y \in \R$. If $z = x + iy, x, y \in \R$, then $x$ is called the real
+part of $z$ and $y$ the imaginary part of $z$ and write
+\begin{equation*}
+\Re(z) = x \qquad \Im(z) = y
+\end{equation*}
+\end{definition}
+\begin{definition}
+We define the \underline{sum of two complex numbers} to be the vector sum.
+\begin{align*}
+(a+ib)+(c + id) &=
+\begin{pmatrix}a \\ b\end{pmatrix} + 
+\begin{pmatrix}c \\ d\end{pmatrix}\\
+&= 
+\begin{pmatrix}a + c \\ b + d\end{pmatrix} 
+\end{align*}
+We define the \underline{product of two complex numbers} by setting $i^2 = -1$ and by
+requiring the product to be commutative, associative and distributive over the
+sum.
+So,
+\begin{align*}
+(a + bi)(c + di) &=
+ac + iad + ibc + i^2bd\\
+&= (ac - bd) + (ad + bc)
+\end{align*}
+\end{definition}
+\begin{prop}[Mulitplicative Inverses]
+Every complex number has a unique multiplicative inverse denoted by
+$z^{-1}$.
+\end{prop}
+\begin{proof}
+Let $z = a + i, a,b \in \R$ with $a^2 + b^2 = 0$. We want to solve for $x$ and
+$y$ such that $(a + ib)(x + iy) = 1$. In other words,
+\begin{align*}
+&\> (ax - by) + i(ay + bx) = 1\\
+\Rightarrow &\>
+\begin{pmatrix}
+ax - by \\ bx + ay
+\end{pmatrix}
+= (1,0)\\
+\Rightarrow &\>
+\begin{pmatrix}
+a & -b\\
+b & a
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+= (1,0)\\
+\Rightarrow &\>
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+=
+\begin{pmatrix}
+a & -b\\
+b & a
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}\\
+\Rightarrow &\>
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+=
+\frac{1}{a^2 + b^2}
+\begin{pmatrix}
+a & b\\
+-b & a
+\end{pmatrix}
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}\\
+\Rightarrow &\>
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{a}{a^2 + b^2} \\ \frac{b}{a^2 + b^2}
+\end{pmatrix}
+\end{align*}
+This is unique as the inverse matrix is unique.
+\end{proof}
+\begin{remark}
+The set of complex numbers is a \underline{field} under the operations of
+addition and multiplication as operations are associative, commutative
+and distributive and every element has a unique inverse as before.
+\end{remark}
+\begin{definition}
+If $z = x + iy, x, y, \in \R$, then the \underline{conjugate of $z$} is
+$\bar{z} = x - iy$.
+\end{definition}
+\begin{definition}
+We define the \underline{modulus} (or length or magnitude) of $z = x + iy, x, y \in \R$ to
+be
+\begin{equation*}
+|z| = \sqrt{x^2 + y^2} \in \R
+\end{equation*}
+\end{definition}
+\begin{remark}
+For any $z, w \in \C$,
+\begin{align*}
+\bar{\bar{z}} &= z\\
+z + \bar{z} &= 2\Re(z)\\
+z - \bar{z} &= 2\Im(z)\\
+z\cdot\bar{z} &= |z|^2\\
+|z| &= |\bar{z}|\\
+\bar{z+w} &= \bar z + \bar w\\
+\bar{zw} &= \bar z\cdot\bar w\\
+|zw| &= |z||w|
+\end{align*}
+\end{remark}
+\begin{prop}
+The following inequalities hold for any $z \in \C$.
+\begin{enumerate}
+\item $|\Re(z)| \leq |z|$
+\item $|\Im(z)| \leq |z|$
+\item $|z + w| \leq |z| + |w|$
+\item $|z + w| \geq \bigg| |z| - |w|\bigg|$
+\end{enumerate}
+\begin{proof}
+(1) and (2) follows as
+\begin{equation*}
+|z|^2 = \Re(z)^2 + \Im(z)^2. 
+\end{equation*}
+(3). Notice,
+\begin{align*}
+|x + iy|^2 &= (x + iy)\bar{(x + iy)}\\
+&= (x + iy)(\bar{x} + \bar{iy})\\
+&= x\bar x + y \bar y + x \bar y + y \bar x\\
+&= |x|^2 + |y|^2 + x \bar y + y \bar x\\
+&= |x|^2 + |y|^2 + 2\Re(x\bar y)\\
+&\leq |x|^2 + |y|^2 + 2|x\bar y|\\
+&= |x|^2 + |y|^2 + 2|x| \cdot |\bar y|\\
+&= |x + y|^2
+\end{align*}
+Taking the square root of both sides gives the result.\\
+
+(4). From (3), we have that
+\begin{align*}
+|z| = |z - w + w| &\leq |z - w| + |w|\\ 
+|w| = |w - z + z| &\leq |w - z| + |z|
+\end{align*}
+Then, isolating $|z - w|$ implies the result. More specifically since we have the simulateous inequality,
+\begin{equation*}
+\begin{cases}
+|z| - |w| \leq |z - w| \\
+|w| - |z| \leq |z - w|
+\end{cases}
+\Rightarrow
+|z - w| \geq \bigg| |z| - |w| \bigg|
+\end{equation*}
+as desired.
+\end{proof}
+\end{prop}
+\begin{prop}
+Every non-zero complex number has exactly 2 square roots.
+\end{prop}
+\begin{proof}
+Let $z = x + iy \in \C$ with $x^2 + y^2 \neq 0, x, y, \in \R$. We want to solve
+$w^2 = z$ for $w \in \C$. Say $w$ takes the form $w = u + iv, u, v \in \R$. Then
+\begin{align*}
+& \> w^2 = z\\
+\Rightarrow & \> (u+iv)^2 = x + iy\\
+\Rightarrow & \> (u^2 - v^2) + i2uv = x + iy
+\end{align*}
+So we have that $x = u^2 - v^2$ and $y = 2uv^2$. We can solve for $u$ and $v$.
+Take the square of both sides of the second equation to get $4u^2v^2 = y^2$.
+Now, we multiply the first equation by $4u^2$ to get
+\begin{align*}
+& \> 4u^4 - 4u^2v^2 = 4xu^2\\
+\Rightarrow & \> 4u^4 - 4xu^2 - y^2 = 0
+\end{align*}
+This is a quadratic equation over $u^2$ so,
+\begin{equation*}
+u^2 = \frac{4x \pm \sqrt{16x^2 + 16y^2}}{8} = \frac{x \pm \sqrt{x^2 + y^2}}{2}
+\end{equation*}
+Suppose that $y \neq 0$. Then we must take the positive solution above to get
+\begin{equation*}
+u^2 = \frac{x + \sqrt{x^2 + y^2}}{2}
+\end{equation*}
+Under the assumption that $x^2 + y^2 > 0$, this solution exists. Notice we
+cannot take the negative solution as it yields a negative $u^2$ which is
+impossible. We can use a similar procedure to find that
+\begin{equation*}
+v^2 = \frac{-x + \sqrt{x^2 + y^2}}{2}
+\end{equation*}
+Rooting $u$ and $v$ gives 2 solutions for each. However, if $y$ is positive,
+since $2uv = y$, $u$ and $v$ must take the same sign. Similarly, if $y$ is
+negative, they must take different signs. In each of these cases, there are 2
+solutions for $u$ and $v$. So,
+\begin{equation*}
+w = 
+\begin{cases}
+\pm \Bigg[ \bigg(\sqrt{\frac{x + \sqrt{x^2 + y^2}}{2}}\bigg) +
+i\bigg(\sqrt{\frac{-x + \sqrt{x^2 + y^2}}{2}}\bigg)\Bigg] &, \> y > 0\\
+\pm \Bigg[ \bigg(\sqrt{\frac{x + \sqrt{x^2 + y^2}}{2}}\bigg) -
+i\bigg(\sqrt{\frac{-x + \sqrt{x^2 + y^2}}{2}}\bigg)\Bigg] &, \> y < 0\\
+\pm \sqrt x &, \> x > 0,\> y = 0\\
+\pm i\sqrt -x &, \> x < 0,\> y = 0
+\end{cases}
+\end{equation*}
+\end{proof}
+\begin{remark}
+Let $z \in \C$. The notation $\sqrt z$ may represent either one of the square
+roots of $z$ or both of the square roots.
+\end{remark}
+\begin{remark}
+The square root doesn't distribute. Consider $z = w = -1 \in \C$.
+$\sqrt{zw} \neq \sqrt z \sqrt w$.
+\end{remark}
+\begin{remark}
+The Quadratic Formula holds true for complex polynomials. In other words, if $a,
+b, c \in \C, a \neq 0$,
+\begin{equation*}
+az^2 + bz + c = 0 \Rightarrow z = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\end{equation*}
+\end{remark}
+\begin{definition}
+If $z \in \C \setminus \{0\}$, we define the \underline{angle} (or
+\underline{argument}) of $z$ to be the angle $\theta(z)$ from the positive
+$x$-axis counterclockwise to $z$. In other words, $\theta(z)$ is the angle such
+that
+\begin{equation*}
+z = |z|\big(\cos\theta(z) + i\sin\theta(z)\big).
+\end{equation*}
+\end{definition}
+\begin{remark}
+For $\theta \in \R$ (or for $\theta \in \R/2\pi$), we have that
+\begin{equation*}
+e^{i\theta} = \cos(\theta) + i\sin(\theta)
+\end{equation*}
+\end{remark}
+\begin{remark}
+If $z \neq 0$, we have $x = \Re(z)$, $y = \Im(z)$, $r = |z|$ and
+\begin{align*}
+x &= r\cos\theta\\
+y &= r\sin\theta\\
+\tan\theta &= \frac{y}{x},\>\text{if } x \neq 0\\
+z = re{i\theta}, \bar z = re^{-i\theta}, z^{-1} = \frac{1}{r}e^{-i\theta} 
+\end{align*}
+\end{remark}
+\begin{remark}
+We now have 2 representations of a complex number $z\in\C$. We say that
+$z = x + iy$ is the \underline{cartesian coordinates} of $z$ and $z =
+re^{i\theta}$, where $r = |z|$, is the \underline{polar form} of $z$.
+\end{remark}
+Consider $z = re^{i\alpha}$ and $w = se^{i\beta}$. We have,
+\begin{align*}
+zw &= rs(\cos\alpha + i\sin\alpha)(\sin\beta + i\cos\beta)\\
+&= rs\big((\cos\alpha\cos\beta-\sin\alpha \sin\beta) +
+i(\sin\alpha\cos\beta+\cos\alpha\sin\beta)\big)\\
+&= rs\big(\cos(\alpha + \beta) + i\sin(\alpha + \beta)\big)\\
+&= e^{i(\alpha + \beta)}
+\end{align*}
+which defines a formula for multiplication in polar coordinates. Notice that the
+following identity known as De Moivre's Law follows.
+\begin{equation*}
+(re^{i\theta})^n = r^ne^{in\theta}
+\end{equation*}
+for all $r,\theta \in \R$, $n \in \Z$. We can use this identity to find the
+$n^\text{th}$ roots of $z$. In other words, we solve $w^n = z$. We have,
+\begin{align*}
+&\> w^n = z\\
+\Rightarrow & \> (se^{i\alpha})^n = re^{i\theta}\\
+\Rightarrow & \> s^ne^{in\alpha} = re^{i\theta}
+\end{align*}
+so $s^n = r$ and $n\alpha = \theta + 2\pi k$ for $k \in \Z$. In other words, we
+have
+\begin{equation*}
+(re^{i\theta}) = \sqrt[n]r e^{i(\theta + 2\pi k )/n}, \quad k = 0,\dots,n-1
+\end{equation*}
+\begin{remark}
+When working with complex numbers, for $0 \neq z \in \C$, and for $0 < n \in
+\Z$, $\sqrt[n]z$ or $z^{1/n}$ denotes either one of the $n$ roots, or the set of
+all $n^{\text{th}}$ roots.
+\end{remark}
+\end{document}
