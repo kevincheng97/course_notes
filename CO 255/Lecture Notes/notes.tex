@@ -1,105 +1,18 @@
 \documentclass[11pt]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{geometry}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{enumerate}
-\usepackage{amsthm}
-\usepackage{amsfonts}
-\usepackage{mathrsfs}
-\usepackage{verbatim}
-\usepackage{tikz}
-\usepackage{geometry}
-\usepackage{hyperref}
-\usepackage{tocloft}
-\usepackage{mathtools}
-\usepackage[object=vectorian]{pgfornament}
-\usetikzlibrary{calc,fadings,decorations.pathreplacing}
-\geometry{letterpaper, portrait, margin=1in}
-\allowdisplaybreaks
+\usepackage{notes}
 
-%% Helper macros for tikz image
+\newcommand{\thiscoursecode}{CO 255}
+\newcommand{\thiscoursename}{Introduction to Optimization (Advanced)}
+\newcommand{\thisprof}{Prof. Yu-Ru Liu}
+\newcommand{\me}{Kevin Cheng}
+\newcommand{\thisterm}{Winter 2018}
 
-\newcommand\pgfmathsinandcos[3]{%
-  \pgfmathsetmacro#1{sin(#3)}%
-  \pgfmathsetmacro#2{cos(#3)}%
-}
-\newcommand\LongitudePlane[3][current plane]{%
-  \pgfmathsinandcos\sinEl\cosEl{#2} % elevation
-  \pgfmathsinandcos\sint\cost{#3} % azimuth
-  \tikzset{#1/.style={cm={\cost,\sint*\sinEl,0,\cosEl,(0,0)}}}
-}
-\newcommand\LatitudePlane[3][current plane]{%
-  \pgfmathsinandcos\sinEl\cosEl{#2} % elevation
-  \pgfmathsinandcos\sint\cost{#3} % latitude
-  \pgfmathsetmacro\yshift{\cosEl*\sint}
-  \tikzset{#1/.style={cm={\cost,0,0,\cost*\sinEl,(0,\yshift)}}} %
-}
-\newcommand\DrawLongitudeCircle[2][1]{
-  \LongitudePlane{\angEl}{#2}
-  \tikzset{current plane/.prefix style={scale=#1}}
-   % angle of "visibility"
-  \pgfmathsetmacro\angVis{atan(sin(#2)*cos(\angEl)/sin(\angEl))} %
-  \draw[current plane] (\angVis:1) arc (\angVis:\angVis+180:1);
-  \draw[current plane,dashed] (\angVis-180:1) arc (\angVis-180:\angVis:1);
-}
-\newcommand\DrawLatitudeCircle[2][1]{
-  \LatitudePlane{\angEl}{#2}
-  \tikzset{current plane/.prefix style={scale=#1}}
-  \pgfmathsetmacro\sinVis{sin(#2)/cos(#2)*sin(\angEl)/cos(\angEl)}
-  % angle of "visibility"
-  \pgfmathsetmacro\angVis{asin(min(1,max(\sinVis,-1)))}
-  \draw[current plane] (\angVis:1) arc (\angVis:-\angVis-180:1);
-  \draw[current plane,dashed] (180-\angVis:1) arc (180-\angVis:\angVis:1);
-}
-\newcommand{\sectionline}
-{\noindent
-  \begin{center}
-  {\resizebox{0.5\linewidth}{1ex}
-  {{{\begin{tikzpicture}
-  \node (C) at (0,0){};
-  \node (D) at (9,0){};
-  \path (C) to [ornament=85] (D);
-  \end{tikzpicture}}}}}
-  \end{center}
-}
-\newtheorem{theorem}{Theorem}[subsection]
-
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[subsection]
-
-\theoremstyle{definition}
-\newtheorem*{definition*}{Definition}
-
-\theoremstyle{definition}
-\newtheorem{example}{Example}[subsection]
-
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
-
-\renewcommand{\bf}{\bfseries}
-\renewcommand{\sc}{\scshape}
-\renewcommand{\it}{\itshape}
-
-\renewcommand{\bar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 \newcommand{\vectorproj}[2][]{\textit{proj}_{#1}#2}
 
-\renewcommand\cftsecfont{\bf\sc}
-\renewcommand\cftsecpagefont{\normalfont}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-\renewcommand\cftsecdotsep{\cftdot}
-\renewcommand\cftsubsecdotsep{\cftdot}
-
-\newcommand{\Ker}{\text{Ker}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\Z}{\mathbb{Z}}
-
 \hypersetup
-{pdfauthor={Kevin Cheng},
-pdftitle={CO 255 W18 Course Notes},
-pdfsubject={Optimization}
+{pdfauthor={\me},
+pdftitle={\thiscoursecode \thisterm Lecutre Notes},
+pdfsubject={\thiscoursename}
 pdflang={English}}
 
 \begin{document}
@@ -107,20 +20,11 @@ pdflang={English}}
 \begin{titlepage}
 \begin{centering}
 {\scshape\LARGE University of Waterloo \par}
-\begin{figure}[!h]
-\centering
-\begin{tikzpicture} % Title page sphere
-\def\R{1} % sphere radius
-\def\angEl{35} % elevation angle
-\filldraw[ball color=white] (0,0) circle (\R);
-\foreach \t in {-80,-60,...,80} {\DrawLatitudeCircle[\R]{\t}}
-\foreach \t in {-5,-35,...,-175} {\DrawLongitudeCircle[\R]{\t}}
-\end{tikzpicture}
-\end{figure}
-{\huge\bf CO 255}\\
-{\scshape\Large Introduction to Optimization (Advanced)}\\
+\globe
+{\huge\bf \thiscoursecode}\\
+{\scshape\Large \thiscoursename}\\
 \vspace{.3cm}
-{\scshape Prof. Ricardo Fukasawa~\textbullet~Winter 2018 \par}
+{\scshape Prof. \thisprof~\textbullet~\thisterm\par}
 \end{centering}
 \sectionline
 \tableofcontents
