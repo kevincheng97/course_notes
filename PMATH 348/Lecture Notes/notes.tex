@@ -307,4 +307,99 @@ Let $\quotient{E}{F}$ be a field extension. If $[E:F] < \infty$, then there exis
 F \subsetneq F(\alpha_1) \subsetneq \dots \subsetneq F(\alpha_1, \dots, \alpha_n) = E.
 \end{equation*}
 \end{theorem}
+\begin{proof}
+We proceed with induction on $[E:F]$. If $[E:F] = 1$, $E=F$. Suppose that $[E:F]
+> 1$ and the statement holds for any field extension $\quotient{\tilde
+E}{\tilde F}$ with $[\tilde E : \tilde F] < [E:F]$. Let $\alpha_1 \in \quotient{E}{F}$.
+By Theorem 1,
+\begin{equation*}
+[E:F] = [E:F(\alpha_1)][F(\alpha_1) : F].
+\end{equation*}
+Since $[F(\alpha):F] > 1$, we have $[E:F] > [E:F(\alpha_1)]$. By induction
+hypothesis, there exists $\alpha_2, \dots, \alpha_n$ such that
+\begin{equation*}
+F(\alpha_1) \subsetneq \dots \subsetneq F(\alpha_1, \dots, \alpha_n) = E.
+\end{equation*}
+Thus, we have
+\begin{equation*}
+F \subsetneq F(\alpha_1) \subsetneq \dots \subsetneq F(\alpha_1, \dots, \alpha_n) = E.
+\end{equation*}
+as desired.
+\end{proof}
+\begin{definition}
+A field extension $\quotient{E}{F}$ is \underline{algebraic} if every $\alpha
+\in E$ is algebraic over $F$. Otherwise, it is \underline{transcendental}.
+\end{definition}
+\begin{theorem}
+Let $\quotient{E}{F}$ be a field extension. If $[E:F] < \infty$, then
+$\quotient{E}{F}$ is algebraic.
+\end{theorem}
+\begin{proof}
+Suppose $[E:F] = n$. For $\alpha \in E$, the elements $\{1, \alpha, \dots,
+\alpha^n\}$ are not linearly independent over $F$. Thus, there exists $c_i \in
+F$ for all $i = 0, \dots , n$, not all 0, such that
+\begin{equation*}
+\sum^n_{i = 0} c_i\alpha^i = 0
+\end{equation*}
+Thus, $\alpha$ is a root of the polynomial $\sum^n_{i = 0} c_i\alpha^i \in
+F[x]$ so it is algebraic over $F$.
+\end{proof}
+\begin{theorem}
+Let $\quotient{E}{F}$ be a field extension. Define,
+\begin{equation*}
+L \coloneqq \{\alpha \in E: [F(\alpha) : F] < \infty\}.
+\end{equation*}
+Then $L$ is an intermediate field of $\quotient{E}{F}$.
+\end{theorem}
+\begin{proof}
+If $\alpha, \beta \in L$ with $\beta \neq 0$, we need to show that $\alpha \pm
+\beta, \alpha\beta, \frac{\alpha}{\beta} \in L$. By definition of $L$, we have
+$[F(\alpha)] < \infty$ and $[F(\beta) : F] < \infty$. Consider the field
+$F(\alpha, \beta)$. Since the minimal polynomial of $\alpha$ over $F(\beta)$
+divides the minimal polynomial of $\alpha $ over $F$ (the minimal polynomial
+$\alpha$ over $F$, say $p(x) \in F[x]$, is also a polynomial over $F(\beta)$.
+In otherwords, $p(x) \in F(\beta)[x]$ such that $p(\alpha) = 0$), we have
+\begin{equation*}
+[F(\alpha, \beta):F(\beta)] \leq [F(\alpha):F].
+\end{equation*}
+Combining this with Theorem 1, we have
+\begin{align*}
+[F(\alpha.\beta):F] &= [F(\alpha,\beta):F(\beta)][F(\beta):F]\\
+&\leq [F(\alpha):F][F(\beta):F]
+\end{align*}
+Since $\alpha + \beta \in F(\alpha, \beta)$, it follows that
+\begin{equation*}
+[F(\alpha + \beta):F(\beta)] \leq [F(\alpha, \beta):F] < \infty,
+\end{equation*}
+so $a+b\in L$. We can follow a similar line to show $\alpha - \beta,
+\alpha\beta, \frac{\alpha}{\beta} \in L$. So $L$ is a field.
+\end{proof}
+\begin{definition}
+Let $\quotient{E}{F}$ be a field extension. The set,
+\begin{equation*}
+L \coloneqq \{\alpha \in E: [F(\alpha) : F] < \infty\}
+\end{equation*}
+is called the \underline{algebraic closure of $F$ in $E$}.
+\end{definition}
+\begin{definition}
+A field $F$ is \underline{algebraically closed} if for any algebraic extension
+$\quotient{E}{F}$, we have $E = F$.
+\end{definition}
+\begin{example}
+By the Fundamental Theorem of algebra, $\C$ is algebrraically closed.
+\end{example}
+
+\subsection{Eisenstein's Criterion}
+\begin{definition}
+Let $f(x) = a_nx^n + \dots + a_1x + a_0 \in \Z[x]$. We say $f(x)$ is
+\underline{primitive} if $a_n > 0$ and the coefficients $a_0, \dots, a_n$ have
+no common integer factors except for $\pm 1$. 
+\end{definition}
+\begin{lemma}
+Every non-zero polynomial $f(x) \in \Q[x]$ can be written uniquely as a product
+$F(x) = cf_0(x)$ where $c \in \Q$ and $f_0(x)$ is a primitive polynomial on
+$\Z[x]$. Moreover, $f(x) \in \Z[x]$ if and only if $c \in \Z$. If so, then
+$|c|$ is the greatest common divisor of the coefficients of $f(x)$ and the sign
+of $c$ is the sign of the leading coefficient of $f(x)$.
+\end{lemma}
 \end{document}
