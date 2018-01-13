@@ -444,14 +444,14 @@ The polynomial $2x^7 + 3x^4 + 6x^2 + 12$ is irreducible in $\Q[x]$ by applying
 Eisenstein's Criterion with $p=3$.
 \end{example}
 \begin{example}
-Consider the \underline{cyclotomic polynomial} defined by
+Consider the \underline{$n^{\text{th}}$ cyclotomic polynomial} defined by
 \begin{equation*}
 \Phi_n(x) = \sum_{\substack{1 \leq k \leq n\\\gcd(k,n) = 1}}
 \bigg(x-e^{2i\pi\frac{k}{n}} \bigg).
 \end{equation*}
 If $n = p$ where $p$ is a prime number, then $\xi_p = e^{\frac{2i\pi}{p}} =
 \cos{\frac{2\pi}{p}} + i\sin{\frac{2\pi}{p}}$ is a root of the
-$p^{\text{th}}$ cyclotomic polynomial. Notice here, since $p$ is coprime with
+$p^{\text{th}}$ cyclotomic polynomial. Notice here, since $p$ is co-prime with
 all $1 \leq k \leq p$, we have
 \begin{equation*}
 \Phi_p(x) = x^{p-i} + x^{p-2} + \dots + x + 1 = \frac{x^p -1}{x-1}
@@ -459,12 +459,15 @@ all $1 \leq k \leq p$, we have
 Eisenstein's Criterion does not imply the irreducibility of $\Phi_p(x)$
 immediately; however, consider
 \begin{equation*}
-\Phi_p(x+1) = \frac{(x+1)^p -1}{x} = x^p + \binom{p}{1}x^{p-1} \in \Z[x]
+\Phi_p(x+1) = \frac{(x+1)^p -1}{x} = x^{p-1} + \binom{p}{1}x^{p-2} + \dots +
+\binom{p}{p-2}x + \binom{p}{p-1}\in \Z[x]
 \end{equation*}
 with the Binomial Theorem. Since $p$ is prime, $p \nmid 1$, $p \mid
 \binom{p}{i}, \forall i \in \{1,\dots,p-1\}$ and $p^2 \nmid \binom{p}{p-1}$.
 Here, Eisenstein's Criterion gives that $\Phi_p(x+1)$ is irreducible in
-$\Q[x]$, so $\Phi_p(x)$ is irreducible as well. Since $\Phi_p(x)$ is
-primitive, $\Phi_p(x)$ is also irreducible in $\Z[x]$.
+$\Q[x]$, but if $\Phi_p(x) = g(x)f(x)$, then $\Phi_p(x+1) = g(x+1)h(x+1)$ gives
+a factorization for $\Phi_p(x+1)$, so $\Phi_p(x)$ must be irreducible in
+$\Q[x]$ as well. Furthermore, since $\Phi_p(x)$ is primitive, $\Phi_p(x)$ is
+also irreducible in $\Z[x]$.
 \end{example}
 \end{document}
