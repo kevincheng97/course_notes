@@ -7,6 +7,8 @@
 \newcommand{\me}{Kevin Cheng}
 \newcommand{\thisterm}{Winter 2018}
 
+\newcommand{\Arg}{\text{Arg}}
+
 \hypersetup
 {pdfauthor={\me},
 pdftitle={\thiscoursecode \thisterm Lecutre Notes},
@@ -323,5 +325,97 @@ have
 When working with complex numbers, for $0 \neq z \in \C$, and for $0 < n \in
 \Z$, $\sqrt[n]z$ or $z^{1/n}$ denotes either one of the $n$ roots, or the set of
 all $n^{\text{th}}$ roots.
+\end{remark}
+\begin{example}
+Consider the $n-1$ diagonals of a regular $n$-gon inscribed in a circle of
+radius 1 obtained by connecting one vector with all the others. Show that the
+product of these diagonals is $n$.
+\end{example}
+Notice that $z_2,\dots,z_n$ are the $n^{\text{th}}$ roots of unity other than 1.
+Let $z$ be the variable and consider the polynomial
+\begin{equation*}
+P(z) \coloneqq 1 + z + \dots + z^{n-1}.
+\end{equation*}
+Since the roots of $P(z)$ are $n^{\text{th}}$ roots of unity other than 1, we
+can factorize
+\begin{align*}
+P(z) &= 1 + z + \dots + z^{n-1}\\
+&= (z - z_2)\dots(z-z_n)
+\end{align*}
+and setting $z = 1$, the result follows. In particular, we have
+\begin{equation*}
+|1 - z_2|\dots|1 - z_n| = n.
+\end{equation*}
+
+\section{Complex Functions}
+\subsection{Limits}
+\begin{definition}
+A sequence of complex numbers $z_1, z_2 \dots$ converges to $z \in C$ if
+\begin{equation*}
+\lim_{n \to \infty} |z_n - z| = 0.
+\end{equation*}
+Equivalently, given any $\epsilon > 0$, $\exists N_\epsilon \in \N$ sufficiently
+large such that $|z_n - z| < \epsilon$ whenever $n>N$.
+\end{definition}
+\begin{remark}
+If $\{z_n\}_n$ converges to $z$, we write
+\begin{equation*}
+\lim_{n \to \infty} z_n = z
+\end{equation*}
+or $z_n \to z$ as $n \to \infty$.
+\end{remark}
+\begin{example}
+For $|z| > 1$, show that $\{\frac{1}{z^n}\}^{\infty}_{n=1}$ converges.
+\end{example}
+Notice,
+\begin{equation*}
+\lim_{n \to \infty} \bigg|\frac{1}{z^n} - 0\bigg|
+= \lim_{n \to \infty} \bigg|\frac{1}{z^n}\bigg|
+= 0
+\end{equation*}
+as $|z| > 1$.
+\begin{example}
+Show that $\{i^n\}^\infty_{n-1}$ does not converge.
+\end{example}
+\begin{definition}
+Let $f:\Omega \subseteq \C \to \C$. We say
+\begin{equation*}
+\lim_{z \to z_0} f(z) = L
+\end{equation*}
+if for every sequence $\{z_n\}_n \subseteq \Omega$ we have that $z_n \to z
+\Rightarrow f(z_n) \to L$.
+\end{definition}
+\begin{remark}
+Here, $z_0$ need not to be in $\Omega$.
+\end{remark}
+\begin{example}
+Let $f(z) = \frac{\bar z}{z}, z \in \C \setminus \{0\}$. Find $\lim_z \to 0
+f(z)$.
+\end{example}
+If $z = x \in \R \setminus \{0\}$, then $f(z) = \frac{x}{x} = 1$. So
+$\lim_{x \to 0} f(x) = 1$. If $z = iy, y \in \R \setminus \{0\}$, then $f(z) =
+\frac{-iy}{iy} = -1$. So $\lim_{y \to 0} f(iy) = -1$. Hence, the limit does not
+exist.
+\begin{example}
+Show that $z_n \to z$ if and only if $\Re z_n \to \Re z$ and $\Im z_n \to z$.
+\end{example}
+
+\subsection{Function Continuity}
+\begin{definition}
+Let $f:\Omega \subseteq \C \to \C $. We say $f$ is \underline{continuous at
+$z_0 \in \Omega$} if for every sequence $\{z_n\} \subseteq \Omega$, we have $z_0 \to z
+\Rightarrow f(z_0) \to f(z)$. Equivalently, given any $\epsilon > 0, \exists
+\delta > 0$ such that $|f(z) - f(z_0)| < \epsilon$ whenever $|z - z_0| <
+\delta$.
+\end{definition}
+\begin{remark}
+$f$ is continuous on $\Omega$ if it is continuous at ever point of $\Omega$. 
+\end{remark}
+\begin{remark}
+We may split $f$ into its real and imaginary parts
+\begin{equation*}
+f(z) = f(x,y) = u(x,y) + iv(x,y)
+\end{equation*}
+where $u,v : \R^2 \to \R$.
 \end{remark}
 \end{document}
