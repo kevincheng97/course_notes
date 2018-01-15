@@ -8,6 +8,7 @@
 \newcommand{\thisterm}{Winter 2018}
 
 \newcommand{\Arg}{\text{Arg}}
+\newcommand*{\pd}[3][]{\ensuremath{\frac{\partial^{#1} #2}{\partial #3^{#1}}}}
 
 \hypersetup
 {pdfauthor={\me},
@@ -388,7 +389,7 @@ if for every sequence $\{z_n\}_n \subseteq \Omega$ we have that $z_n \to z
 \begin{remark}
 Here, $z_0$ need not to be in $\Omega$.
 \end{remark}
-\begin{example}
+\begin{example} \label{lim}
 Let $f(z) = \frac{\bar z}{z}, z \in \C \setminus \{0\}$. Find $\lim_z \to 0
 f(z)$.
 \end{example}
@@ -418,4 +419,85 @@ f(z) = f(x,y) = u(x,y) + iv(x,y)
 \end{equation*}
 where $u,v : \R^2 \to \R$.
 \end{remark}
+
+\subsection{Holomorphic Functions}
+\begin{definition}
+An open disk of radius $r$ at $z_0$ with $r>0$ is the \underline{neighborhood}
+around $z_0$ denoted by $D(z_0, r)$ with
+\begin{equation*}
+D(z_0, r) \coloneqq \{z\in\C:|z-z_0|<r\}
+\end{equation*}
+\end{definition}
+\begin{definition}
+Let $f(z)$ be defined in a neighborhood of $z_0$. We say $f$ is
+\underline{complex differentiable} (or holomorphic) at $z_0$ if
+\begin{equation*}
+\lim_{h\to 0} \frac{f(z_0+h) - f(z_0)}{h}
+\end{equation*}
+exists. If it does, we denote the limit by $f'(z_0)$.
+\end{definition}
+\begin{remark}
+Here, $h\in\C$ can approach zero from any direction in $\C$.
+\end{remark}
+\begin{example}
+Where is $f(z) = \frac{1}{z}, z \neq 0$ holomorphic?
+\end{example}
+Notice,
+\begin{equation*}
+\lim_{h\to 0} \frac{\frac{1}{z_0+h} - \frac{1}{z_0}}{h}
+= \lim_{h\to 0} \frac{-h}{(z_0+h)(z_0)}
+= -\frac{1}{z_0^2}
+\end{equation*}
+So, $f$ is holomorphic at any $z \in \C \setminus \{0\}$, and $f'(z) =
+-\frac{1}{z_0^2}$.
+\begin{example}
+$f(z) = \bar z$ is not holomorphic at any $z \in \C$.
+\end{example}
+Notice,
+\begin{equation*}
+\lim_{h\to 0} \frac{\bar{z_0 + h} - \bar{z_0}}{h}
+= \lim_{h \to 0} \frac{\bar h}{h}
+\end{equation*}
+which does not exist from \cref{lim}. However, the function can be though of a
+map from $\R^2 \to \R^2$ defined as $(x,y) \mapsto (x,-y)$ which is
+differentiable as all partial derivatives exist. This distinguishes real
+analysis from complex analysis.
+\sectionline
+We can now generalize when a function is complex differentiable. If the complex
+function $f(z) = u + iv$. If the complex derivative $f'(z)$ is to exist, then it
+must be that the limit exists approaching from both the real and imaginary
+axis. Thus, we have,
+\begin{equation*}
+f'(z)  = \lim_{t\to 0} \frac{f(z+t) - f(z)}{t} = \lim_{t\to 0} \frac{f(z+it) -
+f(z)}{it}
+\end{equation*}
+where $t$ is a real number. In terms of $u$ and $v$, taking the derivative along
+the real line gives,
+\begin{align*}
+&\>\lim_{t\to 0} \frac{f(z+t) - f(z)}{t}\\
+=&\> \lim_{t\to 0} \frac{u(x+t,y) + iv(x+t,y) - u(x,y) - iv(x,y)}{t}\\
+=&\> \lim_{t\to 0} \frac{u(x+t,y) - u(x,y)}{t} + i\lim_{t\to 0} \frac{v(x+t,y) - 
+v(x,y)}{t}\\
+=&\> \pd{u}{x} + i \pd{v}{x}.
+\end{align*}
+Taking the derivative along the vertical line gives,
+\begin{align*}
+&\>\lim_{t\to 0} \frac{f(z+it) - f(z)}{it}\\
+=&\> -i\lim_{t\to 0} \frac{u(x,y+t) + iv(x,y+t) - u(x,y) - iv(x,y)}{t}\\
+=&\> -i\lim_{t\to 0} \frac{u(x,y+t) - u(x,y)}{t} + \lim_{t\to 0} \frac{v(x,y+t) - 
+v(x,y)}{t}\\
+=&\> -i\pd{u}{y} + \pd{v}{y}.
+\end{align*}
+Equating real and imaginary parts, we arrive at the following theorem.
+\begin{theorem}[Cauchy-Riemann Equations]
+If a function $f(z) = u + iv$ is holomorphic in a neighborhood around $z_0$,
+then all partial derivatives of $u and v$ exist and satisfy
+\begin{equation*}
+\pd{u}{x} = \pd{v}{y} \quad \text{and} \quad \pd{v}{x} = - \pd{u}{y}
+\end{equation*}
+with
+\begin{equation*}
+f'(z_0) = \pd{u}{x} + i \pd{v}{x} = \pd{v}{y} - i\pd{u}{y}.
+\end{equation*}
+\end{theorem}
 \end{document}
