@@ -1,0 +1,135 @@
+\documentclass[answers]{exam}
+\usepackage{notes}
+\usepackage{faktor}
+
+\headrule
+\lhead[PMATH 348 - Winter 2018]{Assignment 1}
+\chead[Kevin Cheng - 20621058]{}
+\rhead{\today}
+
+\newcommand{\quotient}[2]{\faktor{#1}{#2}}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+\begin{document}
+\begin{enumerate}
+\item Determine if the following polynomials are irreducible in $\Q[x]$.
+\begin{enumerate}
+\item $f(x) = 4x^5 + 28x^4 + 7x^3 - 28x^2 + 14$
+\begin{solution}
+We can apply Eisenstein's Criterion directly with $p=7$ to show that
+$f(x)$ is irreducible in $\Q[x]$.
+\end{solution}
+\item $g(x) = x^p + p^2mx + (p-1)$ where $p \in \Z$ is a prime and $m\in \Z$.
+\begin{solution}
+Consider $g(x+1)$. Notice,
+\begin{align*}
+g(x+1) &= (x+1)^p + p^2m(x+1) + (p-1)\\
+&= x^p + \binom{p}{1}x^{p-1} + \dots + \binom{p}{p-1}x + p^2mx + p^2m + p\\
+&= x^p + \binom{p}{1}x^{p-1} + \dots + \binom{p}{p-1}x + p^2mx + p(pm + 1).
+\end{align*} 
+We can see immediately that each non-leading coefficient divides $p$. It remains
+to show that $p^2 \mid p(pm + 1)$, which is equivalent to $p \mid pm +1$. This
+follows as
+\begin{equation*}
+pm + 1 \equiv 1 \Mod{p}.
+\end{equation*}
+Hence, Eisenstein's Criterion with $p$ gives $g(x+1)$ is irreducible in
+$\Q[x]$, so $g(x)$ is irreducible in $\Q[x]$.
+\end{solution}
+
+\item $h(x) = x^4 + 4x^3 + 4x^2 + 4x + 5$
+\begin{solution}
+We can simplify $h$ with the Binomial Theorem. Notice,
+\begin{align*}
+h(x) &= x^4 + 4x^3 + 4x^2 + 4x + 5\\
+&= (x+1)^4 - 2x + 4.
+\end{align*}
+Now, consider $h(x-1)$, we have
+\begin{align*}
+h(x-1) &= x^4 - 2(x-1)^2 + 4\\
+&= x^4 - 2(x^2 - 2x + 1) + 4\\ 
+&= x^4 - 2x^2 + 4x + 2
+\end{align*}
+and here, $h(x-1)$ satisfies Eisenstein's Criterion with $p = 2$. It follows
+that $h(x)$ is irreducible in $\Q[x]$.
+\end{solution}
+\end{enumerate}
+
+\item Let $F \subseteq K \subseteq E$ be fields. If $\quotient{E}{K}$ and
+$\quotient{K}{F}$ are algebraic, prove that $\quotient{E}{F}$ is also algebraic.
+\begin{solution}
+\begin{proof}
+This result follows immediately as
+\begin{equation*}
+[E:F] = [E:K][K:F]
+\end{equation*}
+and $\quotient{E}{K}$ and $\quotient{K}{F}$ are finite extensions, so
+$\quotient{E}{F}$ is also a finite extension.
+\end{proof}
+\end{solution}
+
+\item Let $F$ be a field. Let $\alpha, \beta$ be algebraic over $F$ with the
+minimal polynomial $f(x)$ and $g(x)$ respectively. Prove that $f(x)$ is
+irreducible over $F(\beta)[x]$ if and only if $g(x)$ is irreducible over
+$F(\alpha)[x]$.
+
+\begin{solution}
+Since both directions follow a symmetric proof, it suffices to show one
+direction, so suppose $f(x)$ is irreducible over $F(\beta)[x]$.
+We have that $[F(\alpha,\beta) : F(\beta)] = \deg(f)$. Also, since $g(x)$ is the
+minimal polynomial of $\beta$ over $F[x]$, we have that $[F(\beta) : F] =
+\deg(g)$. It follows that $[F(\alpha, \beta):F] = $
+\end{solution}
+
+\item
+\begin{enumerate}
+\item Prove that $\alpha = \sqrt[3] 7 + 2i$ is algebraic over $\Q$.
+\begin{solution}
+
+\end{solution}
+
+\item Prove that both $\sqrt[3] 7$ and $2i$ are elements of $\Q(\alpha)$.
+\begin{solution}
+
+\end{solution}
+
+\item Compute $[\Q(\alpha): \Q]$.
+\begin{solution}
+
+\end{solution}
+
+\item Write down the minimal polynomial in $\Q[x]$ for $\alpha$.
+\begin{solution}
+
+\end{solution}
+\end{enumerate}
+
+\item Let $\quotient{E}{F}$ be a field extension and $K,L$ be intermediate
+fields. Let $KL$ denote the smallest subfield of $E$ containing both $K$ and
+$L$. Suppose $\quotient{L}{F}$ is finite.
+\begin{enumerate}
+\item  Prove that all elements of $KL$ are of the form
+$\displaystyle\sum\limits^r_{i=1} k_il_i$, where $k_i \in K, l_i \in L$ and $r
+\in \N$.
+\begin{solution}
+
+\end{solution}
+
+\item Prove that $[KL:K] \leq [L:F]$.
+\begin{solution}
+
+\end{solution}
+
+\item Give and example of fields $F \subseteq K, L \subseteq E$ which satisfy
+$[KL:K] < [L:F]$.
+\begin{solution}
+
+\end{solution}
+\end{enumerate}
+
+\item Prove that $e$ is transcendental.
+\begin{solution}
+Consider the function $<++>$<++>
+\end{solution}
+\end{enumerate}
+\end{document}
