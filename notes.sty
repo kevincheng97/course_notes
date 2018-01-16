@@ -11,8 +11,11 @@
 \usepackage{tikz}
 \usepackage{geometry}
 \usepackage{hyperref}
+\usepackage[noabbrev,capitalize,nameinlink]{cleveref}
 \usepackage{tocloft}
 \usepackage{mathtools}
+\usepackage{indentfirst}
+\usepackage[super]{nth}
 \usepackage[object=vectorian]{pgfornament}
 \usetikzlibrary{calc,fadings,decorations.pathreplacing}
 \geometry{letterpaper, portrait, margin=1in}
@@ -76,8 +79,10 @@
 }
 
 \newtheorem{theorem}{Theorem}
-\newtheorem{prop}{Proposition}
+\newtheorem{prop}[theorem]{Proposition}
 \newtheorem*{claim}{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[subsection]
@@ -97,14 +102,14 @@
 \renewcommand\cftsubsecdotsep{\cftdot}
 
 \renewcommand{\bar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\renewcommand{\tilde}[1]{\widetilde{#1}}
 
-\newcommand{\Ker}{\text{Ker}}
-\newcommand{\Ima}{\text{Im}}
-\newcommand{\Aut}{\text{Aut}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Aut}{Aut}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
 
-
+\DeclareRobustCommand\iff{\;\Longleftrightarrow\;}
