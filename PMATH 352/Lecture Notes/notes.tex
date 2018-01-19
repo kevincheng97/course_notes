@@ -462,6 +462,10 @@ which does not exist from \cref{lim}. However, the function can be though of a
 map from $\R^2 \to \R^2$ defined as $(x,y) \mapsto (x,-y)$ which is
 differentiable as all partial derivatives exist. This distinguishes real
 analysis from complex analysis.
+\begin{remark}
+If $f$ and $g$ are holomorphic, so are $f+g$, $fg$ and $\frac{f}{g}$ (when
+$g\neq 0$). The proof is identical to the statements of real functions.
+\end{remark}
 \sectionline
 We can now generalize when a function is complex differentiable. If the complex
 function $f(z) = u + iv$. If the complex derivative $f'(z)$ is to exist, then it
@@ -489,15 +493,127 @@ v(x,y)}{t}\\
 =&\> -i\pd{u}{y} + \pd{v}{y}.
 \end{align*}
 Equating real and imaginary parts, we arrive at the following theorem.
-\begin{theorem}[Cauchy-Riemann Equations]
-If a function $f(z) = u + iv$ is holomorphic in a neighborhood around $z_0$,
-then all partial derivatives of $u and v$ exist and satisfy
+\begin{theorem}[Cauchy-Riemann Equations] \label{theorem1}
+If a function $f(z) = u + iv$ is holomorphic in a neighborhood around $z_0 = x_0
++ iy_0$, then the partial derivatives of $u$ and $v$ exist at $(x_0,y_0)$ and satisfy
 \begin{equation*}
-\pd{u}{x} = \pd{v}{y} \quad \text{and} \quad \pd{v}{x} = - \pd{u}{y}
+\pd{u}{x} = \pd{v}{y} \quad \text{and} \quad \pd{v}{x} = - \pd{u}{y}\quad\text{at }
+(x_0,y_0)
 \end{equation*}
 with
 \begin{equation*}
 f'(z_0) = \pd{u}{x} + i \pd{v}{x} = \pd{v}{y} - i\pd{u}{y}.
 \end{equation*}
 \end{theorem}
+\begin{example}
+Show that
+\begin{equation*}
+f(z) =
+\begin{cases}
+\frac{\bar z^2}{z} & \text{, if } z \neq 0\\
+0 & \text{, if } z = 0
+\end{cases}
+\end{equation*}
+is not holomorphic at $z = 0$ and that the Cauchy-Reimann Equations hold at
+$z = 0$.
+\end{example}
+Notice,
+\begin{equation*}
+\lim_{h \to 0} \frac{f(0+h) - f(0)}{h}
+= \lim_{h \to 0} \frac{\bar h^2}{h^2}
+= \lim_{h \to 0} \bigg(\frac{\bar x-iy}{x+iy}\bigg)^2
+\end{equation*}
+Let $h = x + imx$, $m \neq 0, x \to 0$. We get
+\begin{equation*}
+\lim_{x \to 0} \bigg( \frac{x - imx}{x + imx}\bigg)^2
+\bigg( \frac{1 - im}{1 + im}\bigg)^2
+\end{equation*}
+which is dependent of $m$ and thus the limit does not exist. Now, notice we have
+\begin{equation*}
+\frac{\bar z^2}{z} = \frac{(x - iy)^2}{x+iy} = \frac{(x-iy)^3}{x^2+y^2}
+= \frac{x^3 - 3xy^2}{x^2+y^2} + i \frac{-3x^2y + y^3}{x^2+y^2}
+\end{equation*}
+So we have
+\begin{equation*}
+u(x,y) =
+\begin{cases}
+\frac{x^3 - 3xy^2}{x^2+y^2} & \text{, if } (x,y) \neq (0,0)\\
+0 & \text{, if } (x,y) = (0,0)
+\end{cases}
+\end{equation*}
+and
+\begin{equation*}
+v(x,y) = 
+\begin{cases}
+\frac{-3x^2y + y^3}{x^2+y^2} & \text{, if } (x,y) \neq (0,0)\\
+0 & \text{, if } (x,y) = (0,0)
+\end{cases}.
+\end{equation*}
+Now, we can verify that the Cauchy-Riemann Equations hold. Indeed,
+\begin{align*}
+\pd{u}{x}\bigg(\frac{x^3 - 3xy^2}{x^2+y^2}\bigg)
+&= \frac{\big(\pd{}{x}(x^3 - 3xy^2)\big)(x^2 + y^2) - (x^3 -
+3xy^2)\big(\pd{}{x}(x^2+y^2)\big)}{(x^2 + y^2)^2}\\
+&= \frac{(3x^2 - 3y^2)(x^2 + y^2) - (x^3 - 3xy^2)(2x)}{(x^2 + y^2)^2}\\
+&= \frac{x^4 + 6x^2y^2 - 3y^4}{(x^2 + y^2)^2}\\
+\pd{v}{y}\bigg(\frac{y^3 - 3x^2y}{x^2+y^2} \bigg)
+&= \frac{\big(\pd{}{y}(y^3 - 3x^2y)\big)(x^2 + y^2) - (y^3 -
+3x^2y)\big(\pd{}{y}(x^2+y^2)\big)}{(x^2 + y^2)^2}\\
+&= \frac{(3y^2 - 3x^2)(x^2 + y^2) - (y^3 - 3x^2y)(y^2)}{(x^2 + y^2)^2}\\
+&= \frac{x^4 + 6x^2y^2 - 3y^4}{(x^2 + y^2)^2}
+\end{align*}
+and
+\begin{align*}
+\pd{u}{y}\bigg(\frac{x^3 - 3xy^2}{x^2+y^2}\bigg)
+&= \frac{\big(\pd{}{y}(x^3 - 3xy^2)\big)(x^2 + y^2) - (x^3 -
+3xy^2)\big(\pd{}{y}(x^2+y^2)\big)}{(x^2 + y^2)^2}\\
+&= \frac{(-6xy)(x^2 + y^2) - (x^3 - 3xy^2)(2y)}{(x^2 + y^2)^2}\\
+&= -\frac{8x^3y}{x^2 + y^2}\\
+\pd{v}{x}\bigg(\frac{y^3 - 3x^2y}{x^2+y^2} \bigg)
+&= \frac{\big(\pd{}{x}(y^3 - 3x^2y)\big)(x^2 + y^2) - (y^3 -
+3x^2y)\big(\pd{}{x}(x^2+y^2)\big)}{(x^2 + y^2)^2}\\
+&= \frac{(-6xy)(x^2 + y^2) - (y^3 - 3x^2y)(2y)}{(x^2 + y^2)^2}\\
+&= -\frac{8x^3y}{x^2 + y^2}
+\end{align*}
+
+Thus, we can consider the converse statement of \cref{theorem1}.
+\begin{theorem}
+Let $f=u+iv : \Omega \subseteq \C \to \C$, $z_0 = x_0 + iy_0 \in \Omega$. If
+\begin{enumerate}
+\item the partials of $u,v$ exist in a neighborhood of $(x_0,y_0)$
+\item the partials of $u,v$ are continuous at $(x_0,y_0)$
+\item $\pd{u}{x} = \pd{v}{y}$ and $\pd{v}{x} = - \pd{u}{y}$ at $(x_0,y_0)$
+\end{enumerate}
+then, $f$ is holomorphic at $z_0$.
+\label{theorem2}
+\end{theorem}
+TODO: find proof online.
+
+\begin{example}
+Consider the \underline{power series}, an expression of the form
+\begin{equation*}
+\sum^\infty_{n=0} c_nz^n
+\end{equation*}
+where $c_n \in \C$. This expression \underline{converges} if the sequence of
+partials sums, $\{s_N\}$ defined by
+\begin{equation*}
+s_N \coloneqq \sum^N_{n=0} c_nz^n 
+\end{equation*}
+converges as $N \to \infty$. This is quite a strong condition, so we consider
+the following definition.
+\end{example}
+\begin{definition}
+A power series expression \underline{converges absolutely} if
+\begin{equation*}
+\sum^{\infty}_{n=0} |c_n||z|^n
+\end{equation*}
+converges.
+\end{definition}
+\begin{remark}
+Absolute convergence implies converges. Notice,
+\begin{equation*}
+\bigg| \sum_{n=0}^N c_n z^n \bigg| = \sum^N_{n=0} |c_n||z|^n
+\end{equation*}
+for each $N \in \N$.
+\end{remark}
 \end{document}
