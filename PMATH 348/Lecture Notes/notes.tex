@@ -704,7 +704,7 @@ If $F$ is a field, then its prime field is isomorphic to either $\Q$ or $\Z_p
 \begin{proof}
 Consider the ring map $\chi:\Z \to F$ defined by
 \begin{equation*}
-\chi(x) = n\cdot 1 = \underbrace{1 + \dots + 1}_{n\,\text{times}}
+\chi(n) = n\cdot 1 = \underbrace{1 + \dots + 1}_{n\,\text{times}}
 \end{equation*}
 Let $I = \ker(\chi)$, the kernel of $\chi$. Since $\quotient{\Z}{I} \cong
 \im(\chi)$, a subring of $F$, it is an integral domain. Thus, $I$ is a prime
@@ -731,7 +731,7 @@ Using this property, the following proposition follows.
 \begin{prop}
 Let $F$ be a field with $\ch(F) = p$ and let $n\in\N$. Then, the map $\phi:F \to
 F$ given by $u \mapsto u^{p^n}$ is an injective $\Z_p$-homomorphism of fields.
-If $F$ is finite, then $phi$ is a $\Z_p$-isomorphism of $F$.
+If $F$ is finite, then $\phi$ is a $\Z_p$-isomorphism of $F$.
 \end{prop}
 
 \subsection{Formal Derivatives and Repeated Roots}
@@ -787,7 +787,7 @@ F[x]$. Then,
 \begin{equation*}
 f(x) = g(x^p) = b_0 + b_1x^p + \dots + b_mx^{mp}.
 \end{equation*}
-Thus, $g'(x) = pb_1x^{p-1} + 2pb_2x^{2p-1} + \dots + mpb_m^{pm-1}$. Since
+Thus, $f'(x) = pb_1x^{p-1} + 2pb_2x^{2p-1} + \dots + mpb_m^{pm-1}$. Since
 $ch(F) = p$, we have $f'(x) = 0$.
 \end{enumerate}
 \end{proof}

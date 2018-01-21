@@ -641,18 +641,31 @@ If $L = \limsup_{n\to\infty}a_n$, then for any $\epsilon > 0, \exists N > 0$
 such that $\forall n \leq N, a_n < L + \epsilon$
 \label{limsup}
 \end{prop}
-\begin{proof}
-Suppose $|z| < R$. Let $\displaystyle L \coloneqq \frac{1}{R} = \limsup_{n \to
-\infty} |c_n|^\frac{1}{n}$ Clearly, $L \leq 0$. So, there exists some $\epsilon
-> o$ just that $r \coloneqq |z|(L + \epsilon) < 1$ and $0 < r < 1$. By the
-\cref{limsup}, $\exists N \in \N$ such that $\forall n > N$,
-$|c_n|^{\frac{1}{n}} < L+\epsilon$. Now,
+\begin{proof}[Proof of \cref{theorem3}]
+Let $\displaystyle L \coloneqq \frac{1}{R} = \limsup_{n \to
+\infty} |c_n|^\frac{1}{n}$ Clearly, $L \leq 0$.
+\begin{enumerate}
+\item
+Suppose $|z| < R$. So, there exists some $\epsilon > 0$ such that $r \coloneqq
+|z|(L + \epsilon) < 1$ and $0 < r < 1$. By \cref{limsup}, $\exists N \in \N$
+such that $\forall n > N$, $|c_n|^{\frac{1}{n}} < L+\epsilon$. Now,
 \begin{equation*}
 \sum^\infty_{n = N}|c_n||z|^n = \sum^\infty_{n=N}\left(|c_n|^{\frac{1}{n}}|z|
 \right)^n < \sum^\infty_{n=N}r^n
 \end{equation*}
 converges as $0<r<1$. By the comparison test, $\sum^\infty_{n = N}|c_n||z|^n$ is
 monotonic and bounded and thus converges by Bolzano-Weierstrass.
+\item
+This follows from the proof above. Specifically, this time, notice that there
+exists some $\epsilon > 0$ such that $r \coloneqq |z|(L - \epsilon) > 1$. Again,
+by \cref{limsup}, there exists some $N \in \N$ such that for all $n > N$,
+$|c_n|^{\frac{1}{n}} > L - \epsilon$ so that
+\begin{equation*}
+\sum^\infty_{n = N}|c_n||z|^n = \sum^\infty_{n=N}\left(|c_n|^{\frac{1}{n}}|z|
+\right)^n > \sum^\infty_{n=N}r^n
+\end{equation*}
+follows and so the series diverges.
+\end{enumerate}
 \end{proof}
 \begin{theorem}
 Suppose $\displaystyle f(z) = \sum^\infty_{n=0}c_nz^n$ has radius of
