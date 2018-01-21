@@ -616,4 +616,107 @@ Absolute convergence implies converges. Notice,
 \end{equation*}
 for each $N \in \N$.
 \end{remark}
+\begin{theorem}
+For any power series $\displaystyle\sum^\infty_{n=0} c_nz^n, \exists 0 \leq R \leq
+\infty$, such that
+\begin{enumerate}
+\item If $|z| < R$, the series converges absolutely
+\item If $|z| > R$, the series diverges.
+\end{enumerate}
+Moreover, $R$ is given by Hadamard's formula: $\displaystyle\frac{1}{R} = \limsup_{n \to
+\infty} |c_n|^\frac{1}{n}$
+\label{theorem3}
+\end{theorem}
+\begin{remark}
+$R$ is called the radius of convergence of the series and $\{z \in \C:|z| < R\}$
+is called the disk of convergence of the series.
+\end{remark}
+\begin{remark}
+Recall, $$\limsup_{n\to\infty} a_n \coloneqq \lim_{n\to\infty}\bigg(
+\sup_{m\leq n} a_m\bigg)$$
+and is the ``highest peak reached by $a_n$'s as $n \to \infty$''.
+\end{remark}
+\begin{prop}[Property of $\limsup$]
+If $L = \limsup_{n\to\infty}a_n$, then for any $\epsilon > 0, \exists N > 0$
+such that $\forall n \leq N, a_n < L + \epsilon$
+\label{limsup}
+\end{prop}
+\begin{proof}
+Suppose $|z| < R$. Let $\displaystyle L \coloneqq \frac{1}{R} = \limsup_{n \to
+\infty} |c_n|^\frac{1}{n}$ Clearly, $L \leq 0$. So, there exists some $\epsilon
+> o$ just that $r \coloneqq |z|(L + \epsilon) < 1$ and $0 < r < 1$. By the
+\cref{limsup}, $\exists N \in \N$ such that $\forall n > N$,
+$|c_n|^{\frac{1}{n}} < L+\epsilon$. Now,
+\begin{equation*}
+\sum^\infty_{n = N}|c_n||z|^n = \sum^\infty_{n=N}\left(|c_n|^{\frac{1}{n}}|z|
+\right)^n < \sum^\infty_{n=N}r^n
+\end{equation*}
+converges as $0<r<1$. By the comparison test, $\sum^\infty_{n = N}|c_n||z|^n$ is
+monotonic and bounded and thus converges by Bolzano-Weierstrass.
+\end{proof}
+\begin{theorem}
+Suppose $\displaystyle f(z) = \sum^\infty_{n=0}c_nz^n$ has radius of
+convergence $R$. Then $f'(z)$ exists and equals
+\begin{equation*}
+\sum^{\infty}_{n=1} nc_nz^{n-1}
+\end{equation*}
+throughout $|z| < R$. Moreover, $f'$ has the same radius of convergence as $f$.
+\label{theorem4}
+\end{theorem}
+\begin{proof}
+$f'$ has some radius of convergence because
+\begin{equation*}
+\limsup_{n\to\infty}|nc_n|^{\frac{1}{n}}
+= \limsup_{n\to\infty}n^{\frac{1}{n}}|c_n|^{\frac{1}{n}}
+= \limsup_{n\to\infty}|c_n|^{\frac{1}{n}}
+\end{equation*}
+since $\displaystyle\lim_{n\to\infty}n^{\frac{1}{n}} = 1$. Let $|z_0| \leq r <
+R$, $\displaystyle g(z_0) \coloneqq \sum^\infty_{n=1} nc_nz_0^{n-1}$. We want to
+show
+\begin{equation*}
+\lim_{k\to 0} \frac{f(z_0+h) - f(z_0)}{h} = g
+\end{equation*}
+or equivalently, for any $\epsilon > 0$, there exists $\delta > 0$ such that
+\begin{equation*}
+|h| < \delta \Rightarrow \left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right| <
+\epsilon.
+\end{equation*}
+For any fixed $\epsilon > 0$, we write
+\begin{equation*}
+f(z) = \underbrace{\sum^N_{n=0}c_nz^n}_{\coloneqq S_N(z)} +
+\underbrace{\sum^\infty_{n=N+1}c_nz^n}_{\coloneqq E_N(z)} 
+\end{equation*}
+We have $S_N' = \sum^N_{n=1}nc_nz^{n-1}$ and
+\begin{align*}
+&\>\left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right|\\
+=&\> \left|\frac{S_N(z_0+h) - S_N(z_0)}{h} + \frac{E_N(z_0+h) - E_N(z_0)}{h} -
+g(z_0) + S_N'(z_0) -S_N'(z_0)\right|\\
+=&\> \left|\frac{S_N(z_0+h) - S_N(z_0)}{h} - S_N'(z_0) \right|
++ \left|\frac{E_N(z_0+h) - E_N(z_0)}{h}\right| + \left|S_N'(z_0) -
+g(z_0)\right|.
+\end{align*}
+We have
+\begin{equation*}
+\left|\frac{E_N(z_0+h) - E_N(z_0)}{h}\right|
+= \left|\frac{1}{h} \sum^\infty_{n=N+1}c_n \big((z_0+h)^h -z_0^n\big)\right|
+\end{equation*}
+As $a^n -b^n = (a-b)(a^{n-1} + a^{n-2}b + \dots+ab^{n-2} + b^{n-1})$ in any
+ring, we have
+\begin{equation*}
+\left|\frac{1}{h} \sum^\infty_{n=N+1}c_n \big((z_0+h)^h -z_0^n\big)\right|
+= \left|\sum^{\infty}_{n=N+1}c_n\big((z_0+h)^{n-1} + (z_0+h)^{n+2}z_0 + \dots +
+(z_0+h)z_0^{n-2} + z_0^{n-1}\big)\right|
+\end{equation*}
+Now, by choosing $\delta$ relatively small so that $|z_0|\leq r $, we have
+$|z_0|, |z_0+h| \leq r$ and so
+\begin{equation*}
+(z_0+h)^{n-1} + (z_0+h)^{n+2}z_0 + \dots + (z_0+h)z_0^{n-2} + z_0^{n-1} \leq nr^{n-1}
+\end{equation*}
+So,
+\begin{equation*}
+\left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right| \leq
+\sum^\infty_{n=N+1}nc_nr^{n-1} < \frac{\epsilon}{3}.
+\end{equation*}
+for a large enough $N$.
+\end{proof}
 \end{document}

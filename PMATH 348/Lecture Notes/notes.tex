@@ -11,6 +11,8 @@
 \newcommand{\cyclic}[1]{\left\langle #1 \right\rangle}
 \newcommand{\quotient}[2]{\faktor{#1}{#2}}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\ch}{ch}
 
 \hypersetup
 {pdfauthor={\me},
@@ -686,4 +688,136 @@ Thus, $[E:F] \mid m\fact k\fact$, which is a factor of $n\fact$ as
 \frac{n\fact}{m \fact k\fact} = \binom{n}{m} \in \Z
 \end{equation*}
 \end{proof}
+
+\pagebreak
+\section{Finite Fields}
+\subsection{Prime Fields}
+\begin{definition}
+The \underline{prime field} of a field $F$ is the intersection of all subfields
+of $F$.
+\end{definition}
+\begin{theorem}
+If $F$ is a field, then its prime field is isomorphic to either $\Q$ or $\Z_p
+\coloneqq \quotient{\Z}{p\Z}$ for some prime $p$.
+\label{theorem16}
+\end{theorem}
+\begin{proof}
+Consider the ring map $\chi:\Z \to F$ defined by
+\begin{equation*}
+\chi(x) = n\cdot 1 = \underbrace{1 + \dots + 1}_{n\,\text{times}}
+\end{equation*}
+Let $I = \ker(\chi)$, the kernel of $\chi$. Since $\quotient{\Z}{I} \cong
+\im(\chi)$, a subring of $F$, it is an integral domain. Thus, $I$ is a prime
+ideal. We break this down to two cases.\\
+\underline{Case 1}: If $I = \cyclic{0}$, then $\Z \subseteq F$. Since $F$ is a
+field, $\Q = \Frac(\Z) \subseteq F$.\\
+\underline{Case 2}: If $I = \cyclic{p}$, then
+\begin{equation*}
+\Z_p = \quotient{\Z}{p\Z} \cong \im{\chi} \subseteq F
+\end{equation*}
+\end{proof}
+\begin{definition}
+Given a field $F$, if its prime field is isomorphic to $\Q$ (respectively
+$\Z_p$), we say $F$ has \underline{characteristic 0} (respectively
+characteristic $p$) denoted by $\ch(F) = 0$ (respectively $\ch(F) = p$).
+\end{definition}
+\begin{remark}
+Note that if $\ch(F) = p$, for $a,b, \in F$,
+\begin{equation*}
+(a+b)^p = a^p + b^p.
+\end{equation*}
+Using this property, the following proposition follows.
+\end{remark}
+\begin{prop}
+Let $F$ be a field with $\ch(F) = p$ and let $n\in\N$. Then, the map $\phi:F \to
+F$ given by $u \mapsto u^{p^n}$ is an injective $\Z_p$-homomorphism of fields.
+If $F$ is finite, then $phi$ is a $\Z_p$-isomorphism of $F$.
+\end{prop}
+
+\subsection{Formal Derivatives and Repeated Roots}
+\begin{definition}
+If $F$ is a field, the monomials $\{1, x, x^2, \dots\}$ for a $F$-basis of
+$F[x]$. Define the linear operator
+\begin{equation*}
+D:F[x] \to F[x]
+\end{equation*}
+by $D(1) = 0$ and $D(x^i) = ix^{i-1}$ for all $i \in \N$. Thus for
+\begin{equation*}
+f(x) = a_0 + a_1x + \dots + a_nx^n, a_i \in F
+\end{equation*}
+we have
+\begin{equation*}
+D(f)(x) = a_1 + 2a_2x + \dots + na_nx^{n-1}.
+\end{equation*}
+Note that
+\begin{enumerate}
+\item $D$ is linear: $D(f+g) = D(f) + D(g)$
+\item $D$ respects the Leibniz Rule: $D(fg) = \big(D(f)\big)g +
+f\big(D(g)\big)$.
+\end{enumerate}
+We call $D(f) = f'$ the \underline{formal derivative} of $f$.
+\end{definition}
+\begin{theorem}
+Let $F$ be a field and $f(x) \in F[x]$.
+\begin{enumerate}
+\item If $\ch(F) = 0$, then $f'(x) = 0$ if and only if $f(x) = c$ for some $c
+\in F$.
+\item If $\ch(F) = p$, then $f'(x) = 0$ if and only if $f(x) = g(x^p)$ for some
+$g(x) \in F[x]$
+\end{enumerate}
+\label{theorem18}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item Backwards is trivial. Suppose we have $f(x) = a_0 + a_1x + \dots +
+a_nx^n$, then $f'(x) = a_1 + 2a_2x + \dots + na_nx^{n-1} = 0$. This implies that
+$ia_i = 0$ for all $1 \leq i \leq n$, Since $\ch(F) = 0$, $i \neq 0$. Thus,
+$a_i = 0$ for all $i \geq 1$. This, $f(x) = a_0 \in F$.
+\item 
+\underline{Forwards}. For $f(x) = a_0 + a_1x + \dots + a_nx^n$, $f'(x) = a_1 +
+2a_2x + \dots + na_nx^{x-1} = 0$ implies that $ia_i = 0$ for all $1 \leq i \leq
+n$. Since $\ch(F) = p$, $ia_i = 0$ implies that $ia_i = 0$ implies that
+$a_i = 0$ unless $p \mid i$. Thus,
+\begin{equation*}
+f(x) = a_0 + a_px^p + \dots a_{mp}x^{mp} = g(x^p)
+\end{equation*}
+where $g(x) = a_0 + a_p + \dots +a_{mp}x^m \in F[x]$.\\
+\underline{Backwards}. Write $g(x) = b_0 + b_1x + \dots + b_mx^m \in
+F[x]$. Then,
+\begin{equation*}
+f(x) = g(x^p) = b_0 + b_1x^p + \dots + b_mx^{mp}.
+\end{equation*}
+Thus, $g'(x) = pb_1x^{p-1} + 2pb_2x^{2p-1} + \dots + mpb_m^{pm-1}$. Since
+$ch(F) = p$, we have $f'(x) = 0$.
+\end{enumerate}
+\end{proof}
+\begin{definition}
+Let $\quotient{E}{F}$ is a field extension and $f(x) \in F[x]$. We say
+$\alpha \in E$ is a \underline{repeated root} of $f(x)$ if $f(x) =
+(x-\alpha)^2g(x)$ for some $g(x) \in E[x]$.
+\end{definition}
+\begin{theorem}
+Let $\quotient{E}{F}$ is a field extension and $f(x) \in F[x]$. Then $\alpha$ is
+a repeated root of $f(x)$ if and only if $(x -\alpha)$ divides both $f$ and
+$f'$. In other words, $(x - \alpha) \mid \gcd(f,f')$.
+\label{theorem19}
+\end{theorem}
+\begin{proof}
+\underline{Forwards}. Suppose $f(x) = (x-\alpha)^2g(x)$. Then,
+\begin{align*}
+f'(x) &= 2(x-\alpha)g(x) + (x-\alpha)^2g'(x)\\
+&= (x-a) \big(2g(x) + (x-\alpha)g'(x) \big)
+\end{align*}
+Thus, $(x-\alpha)$ divides both $f$ and $f'$.\\
+\underline{Backwards}. Suppose $(x-\alpha)$ divides both $f$ and $f'$. We write
+$f(x) = (x-\alpha)h(x)$ where $h(x) \in E[x]$. Then, $f'(x) = h(x) +
+(x-\alpha)h'(x)$. Since $f'(\alpha) = 0$, we have $h(\alpha) = 0$. Thus,
+$(x-\alpha)$ is a factor of $h(x)$ and $f(x) = (x-\alpha)^2g(x)$ for some
+$g(x) \in E[x]$.
+\end{proof}
+\begin{corollary}
+Let $F$ be a field and $f(x) \in F[x]$. Then $f(x)$ has no repeated roots if and
+only if $\gcd(f, f') = 1$.
+\label{corollary20}
+\end{corollary}
 \end{document}
