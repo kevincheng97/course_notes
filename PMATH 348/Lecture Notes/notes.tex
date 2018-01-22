@@ -649,8 +649,8 @@ F(\alpha)[x]$ (respectively $f(x) \in F(\alpha)[x]$) over $F(\alpha)$
 (respectively $F'(\alpha')$), by induction, there exists $\Psi:E \to E'$ which
 extends $\tilde \phi$. Thus, $\Psi$ extends $\phi$.
 \end{proof}
-\begin{corollary}
-Any two splitting fields of $f(x) \in F[x]$ over $F$ are $F$-isomorphic. This,
+\begin{corollary}\label{corollary14}
+Any two splitting fields of $f(x) \in F[x]$ over $F$ are $F$-isomorphic. Thus,
 we say ``the'' splitting field of $f(x)$ over $F$.
 \end{corollary}
 \begin{proof}
@@ -820,4 +820,86 @@ Let $F$ be a field and $f(x) \in F[x]$. Then $f(x)$ has no repeated roots if and
 only if $\gcd(f, f') = 1$.
 \label{corollary20}
 \end{corollary}
+
+\subsection{Finite Fields}
+\begin{prop}
+If $F$ is a finite field, then $\ch(F) = p \neq 0$ for some prime $p$ and $|F| =
+p^n$ for some $n \in \N$. 
+\end{prop}
+\begin{proof}
+Since $F$ is a finite field, by \cref{theorem16}, its prime field is $\Z_p$.
+Since $F$ is a finite dimensional vector space over $\Z_p$, we have
+\begin{equation*}
+F \cong \underbrace{\Z_p \times \dots \times \Z_p}_{n\>\text{summands}}.
+\end{equation*}
+Thus $|F| = p^n$.
+\end{proof}
+\begin{theorem}
+Let $F$ be a field and $F^* = F\setminus\{0\}$, multiplicative group of nonzero
+elements of $F$. Let $G$ be a finite subgroup of $F^*$, then $G$ is a cyclic
+group. In particular, if $F$ is a finite field, then $F^*$ is a cyclic group.
+\label{theorem21}
+\end{theorem}
+\begin{proof}
+If $G = \cyclic{1}$, the result follows immediately. Otherwise, since $G$ is a
+finite abelian group,
+\begin{equation*}
+G \cong \quotient{\Z}{n_1\Z} \times \dots \times \quotient{\Z}{n_r\Z}
+\end{equation*}
+where $n_i > 1$ and $n_1 \mid \dots \mid n_r$. Since
+$n_r\left(\quotient{\Z}{n_1\Z} \times \dots \times \quotient{\Z}{n_r\Z}\right) =
+0$, it follows that every $u \in G$ is a root of $x^{n_r} - 1 \in F[x]$. Since
+the polynomial has at most $n_r$ distinct roots in $F$, we have $r = 1$ and
+$G \cong \quotient{\Z}{n_r\Z}$.
+\end{proof}
+By taking $u$ to be a generator of the multiplicative group $F^*$, we have the
+following corollary.
+\begin{corollary}
+f $F$ is a finite field, then $F$ is a simple extension of $\Z_p$. In other
+words, $F = \Z_p(u)$ for some $u \in F$.
+\end{corollary}
+\begin{prop} \label{prop24}
+Let $p$ be prime and $n \in \N$. Then $F$ is a finite field with $|F| = p^n$ if
+and only if $F$ is a splitting field of $x^{p^n} - x$ over $\Z_p$.
+\end{prop}
+\begin{proof}
+\underline{Forwards}: If $|F| = p^n$, then $|F^*|= p^n - 1$. Thus, every $u \in
+F$ satisfies $u^{p^n-1} = 1$ and thus is a root of $x(x^{p^n-1} - 1) =
+x^{p^n} - x \in \Z_p[x]$. Since $0 \in F$ is also a root of $x^{p^n} - x$, the
+polynomial $x^{p^n} - x$ has distinct $p^n$ distinct roots in $F$. In other
+words, it splits over $F$. Thus $F$ is a splitting field of $x^{p^n} - x$ over
+$\Z_p$.\\
+\underline{Backwards}: Suppose $F$ is a splitting field of $f(x) = x^{p^n} - x$
+over $\Z_p$. Since $\ch(F) = p$, we have
+\begin{align*}
+f'(x) &= p^nx^{p^n-1} - 1\\
+&\equiv -1 \Mod{p}.
+\end{align*}
+Now, since $\gcd(f,f') = 1$, by \cref{corollary20}, $f(x)$ has $p^n$ distinct
+roots in $F$. Let $E$ be the set of the roots of $f(x)$ in $F$. Let $\varphi:F \to
+F$ be given by $u \mapsto u^{p^n}$. For $u \in F$, $u$ is a root of $f(x)$ if
+and only if $\varphi(u) = u$. Thus, the set $E$ is a subfield of $F$ of order $p^n$
+which contains $\Z_p$. Since $F$ is a splitting field, it is generated over
+$\Z_p$ by the roots of $f(x)$, in other words, the elements of $E$. Thus,
+$F = \Z_p(E) = E$.
+\end{proof}
+As a direct consequence of \cref{prop24} and \cref{corollary14}, we have the
+following corollary.
+\begin{corollary}[E. H. Moore]
+Let $p$ be a prime and $n \in \N$. Then any two finite field of order $p^n$ are
+isomorphic.
+\label{corollary25}
+\end{corollary}
+
+\subsection{Separable Polynomials}
+\begin{definition}
+Let $F$ be a field and $f(x) \in F[x]$, $f \neq 0$. If $f(x)$ is irreducible, we
+say $f(x)$ is \underline{separable over $F$} if it has no repeated root in any
+extension $E$ of $F$. In the general case, we say $f(x)$ is \underline{separable
+over $F$} if each irreducible factor of $f$ is separable over $F$.
+\end{definition}
+
+\begin{example}
+$f(x) = (x-2)^2$ is separable over $\Q$.
+\end{example}
 \end{document}
