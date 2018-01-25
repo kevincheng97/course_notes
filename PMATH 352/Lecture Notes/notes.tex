@@ -731,5 +731,76 @@ So,
 \sum^\infty_{n=N+1}nc_nr^{n-1} < \frac{\epsilon}{3}.
 \end{equation*}
 for a large enough $N$.
+
 \end{proof}
+TODO: missed a lecture
+
+\begin{corollary}[Corollary of Theorem 4]
+A power series is infinitely complex-differentiable in its radius of
+convergence. All its derivitives are also power series, obtained by termwise
+differentiation. If $\displaystyle f(z) = \sum^\infty_{n=0}a_nz^n$, then
+\begin{equation*}
+f^{(N)}(z) = \sum^\infty_{n=N}n(n-1)\cdots(n-N)c_nz^{n-N}
+\end{equation*}
+for some $N \in \N$.
+\end{corollary}
+In general, we have have $\displaystyle \sum^\infty_{n=0} c_n(z - z_0)^n$, which
+is the power series centered at $z \in \C$. Then as before, the readius of
+convergence $R$ is given by
+\begin{equation*}
+\frac{1}{R} = \limsup_{n\to\infty} |c_n|^{\frac{1}{n}}.
+\end{equation*}
+But the disc of convergence is now centered around $z_0$. We have shown that
+$f(z)$ has a power series expansion at $z_0$ (i.e. $\displaystyle f(z) =
+\sum^\infty_{n=0}c_n(z - z_0)^n$ in some neighborhood of $z_0$) with radius of
+convergence $R > 0$. This implies that $f(z)$ is holomorphic at $z_0$. In fact,
+the converse is true; any function holomorphic at $z_0$ is infinitely
+holomorphic at $z_0$.\\
+However, for this, we need the concept of integration over paths of curves.
+\begin{definition}
+A \underline{curve} in $\C$ is a continuous uction $\gamma(t) : [a,b] \to \C$
+with $a,b \in \R$. The image of $\gamma$ in $\C$ is called $\gamma^*$.
+\end{definition}
+\begin{example}
+Let $z_0 \in \C$, $r > 0$. Take $\gamma: [0, 2\pi] \to \C$ defined by $t \mapsto
+z_0 + re^{it}$. This is a circle of radius $r$ centered at $z_0$, oriented
+counterclockwise.
+\end{example}
+\begin{example}
+Consider $\hat\gamma: [0,1] \to \C$ defined by $t \mapsto z_0 + re^{2\pi it}$. This
+is identical to the curve $\gamma$ defined above with the same oriented path and
+shows that curves have different parameterizations.
+\end{example}
+\begin{definition}
+We say $\gamma$ is \underline{smooth} on the interval $[a,b]$ if $\gamma'$
+exists, is continuous on $[a,b]$ and $\gamma'(t) \neq 0$ for any $t \in [a,b]$.
+\end{definition}
+\begin{definition}
+$\gamma: [a,b] \to \C$ is \underline{piecewise-smooth} if it is smooth on
+$[a,b]$ except at finitely many points in $[a,b]$.
+\end{definition}
+\begin{remark}
+Piecewise smooth curves are called \underline{paths}.
+\end{remark}
+\begin{definition}
+Given a path $\gamma:[a,b] \to \C$ and $f(z)$ is a continuous function on
+$\gamma$, the \underline{integral of $f$ along $\gamma$} is defined by
+\begin{equation*}
+\int_\gamma f(z)\>dz \coloneqq \int^b_a f\big(\gamma(t)\big)\gamma'(t)\>dt.
+\end{equation*}
+\end{definition}
+\begin{remark}
+If $g$ is complex valued, then
+\begin{equation*}
+\int^b_a g(t)\>dt = \int^b_a \Re\big(g(t)\big)\> dt + i \int^b_a
+\Im\big(g(t)\big)\> dt.
+\end{equation*}
+\end{remark}
+\begin{remark}
+The integral $\int_\gamma f(z)\>dz$ can be shown to be independent of the
+parameterization chosen for $\gamma*$.
+\end{remark}
+\begin{theorem}
+Integration is linear.
+\end{theorem}<++>
 \end{document}

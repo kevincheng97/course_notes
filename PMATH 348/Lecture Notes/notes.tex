@@ -898,8 +898,113 @@ say $f(x)$ is \underline{separable over $F$} if it has no repeated root in any
 extension $E$ of $F$. In the general case, we say $f(x)$ is \underline{separable
 over $F$} if each irreducible factor of $f$ is separable over $F$.
 \end{definition}
-
 \begin{example}
 $f(x) = (x-2)^2$ is separable over $\Q$.
 \end{example}
+\begin{example}
+Consider the polynomial $f(x) = x^n - a \in F[x]$ with $n \geq 2$. We recall
+that if $\gcd(f, f') = 1$, then $f(x)$ has no repeated root in any extension of
+$F$. In other words, $f(x)$ is separable. Note that if $a = 0$, the only
+irreducible factor of $f(x)$ is $x$ and $\gcd(x, 1) = 1$. Thus, $f(x)$ is
+separable. Now, assume $a \neq 0$. Note that $f'(x) = nx^{n-1}$.
+\begin{enumerate}[(1)]
+\item If $\ch(F) = 0$, we have $\gcd(f,f') = 1$ since
+\begin{align*}
+1 &= \frac{x}{na}nx^{n-1} - \frac{1}{a}(x^n-a)\\
+&= \frac{x}{na}f' - \frac{1}{a}f
+\end{align*}
+Thus, $f$ is separable.
+\item If $\ch(F) = p$ and $\gcd(n,p)$, then by Fermat's Little Theorem, $f(x) =
+x - a$ and $f'(x) = 1$ so $\gcd(f,f') = 1$ and $f(x)$ is separable.
+\item If $\ch(F) = p$ and $\gcd(n,p) \neq 1$, consider $f(x) = x^p - a$. Since
+$f'(x) = px^{p-1} = 0$, we have $\gcd(f,f') \neq 1$. However, it is still
+possible that all irreducible factors $\ell(x)$ of $f(x)$ has the property that
+$\gcd(\ell, \ell') = 1$. To decide if $f(x)$ is separable, we need to find its
+irreducible factors first. Define
+\begin{equation*}
+F^p \coloneqq \{b^p : b \in F\}
+\end{equation*}
+which is a subfield of $F$.
+\begin{enumerate}[(3.1)]
+\item If $a \in F^p$, say $a = b^p$ for some $b \in F$, then
+\begin{equation*}
+f(x) = x^p - b^p = (x-b)^p \tag{by Binomial Theorem}
+\end{equation*}
+which is irreducible. Since each irreducible factor of $f(x)$ is linear, thus
+separable. Thus, $f(x)$ is separable.
+\item Suppose $a \not\in F$
+\begin{claim}
+$f(x) = x^p -a$ is irreducible in $F[x]$.
+\end{claim}
+We write $x^p - a = g(x)h(x)$ where $g(x),h(x) \in F[x]$ are monic polynomials.
+Let $\quotient{E}{F}$ be an extension where $x^p - a$ has a root, say $\beta \in
+E$ (i.e. $\beta^p - a = 0$). Note that $\beta \not\in F$, otherwise $a = b^p \in
+F^p$. We have
+\begin{equation*}
+x^p -a = x^p - \beta^p = (x - \beta)^p. \tag{by Binomial Theorem}
+\end{equation*}
+Thus, $g(x) = (x - \beta)^r$ and $h(x) = (x - \beta)^s$ for some $r,s \in \N
+\cup \{0\}$ and $r+s = p$. We write,
+\begin{equation*}
+g(x) = x^r - r\beta x^{r-1} + \dots
+\end{equation*}
+then $r\beta \in F$. Since $\beta \not\in F$, as an element of $F$, we have $r =
+0$. Thus, as an integer, we have $r = 0$ or $r = p$. It follows that wither
+$g(x) = 1$ or $h(x) = 1$ in $F[x]$. Thus, $f(x)$ is irreducible.\\
+
+Since $f(x)$ is irreducible and $f(x) = (x-\beta)^p \in E[x]$, it is not
+separable. This type of polynomial is called a \underline{purely inseparable
+polynomial}.
+\end{enumerate}
+\end{enumerate}
+\end{example}
+\begin{definition}
+A field $F$ is \underline{perfect} if every irreducible polynomial $r(x) \in
+F[x]$ is separable over $F$.
+\end{definition}
+\begin{theorem}
+Let $F$ be a field.
+\begin{enumerate}
+\item If $\ch(F) = 0$, then $F$ is perfect.
+\item If $\ch(F) = p$ and $F = F^p$, then $F$ is perfect.
+\end{enumerate}
+\label{theorem26}
+\end{theorem}
+\begin{proof}
+Let $r(x) \in F[x]$ be irreducible. Then
+\begin{equation*}
+\gcd(r,r') =
+\begin{cases}
+1 & \text{, if $r' \neq 0$}\\
+0 & \text{, if $r' = 0$}
+\end{cases}.
+\end{equation*}
+Suppose $r(x)$ is not separable. Then by \cref{corollary20}, $\gcd{r,r'} \neq
+1$, so it must be that $\gcd(r,r') = 0$.
+\begin{enumerate}
+\item If $\ch(F) = 0$, from \cref{theorem18}, $r'(x) = 0$ implis that $r(x) = c \in
+F$, which is a contradiction since $\deg(r) \geq 1$. Thus, $r(x)$ is separable
+and $F$ is perfect.
+\item If $\ch = p$, from \cref{theorem18}, $r'(x) = 0$ implies that
+\begin{equation*}
+r(x) = a_0 + a_1x^p + a_2x^{2p} + \dots + a_mx^{mp}, a_i \in F
+\end{equation*}
+Since $F = F^p$, we can write $a_i = b_i^p$ with $b_i \in F$. Thus,
+\begin{align*}
+r(x) &= b_0^p + b^p_1x^p + b^p_2x^{2p} + \dots + b^p_mx^{mp}\\
+&= (b_0 + b_1x + b_2x^2 + \dots + b_mx^m)^p
+\end{align*}
+which raises a contradiction since $r(x)$ is irreducible. Thus, $r(x)$ must be
+separable and $F$ is perfect.
+\end{enumerate}
+\end{proof}
+\begin{remark}
+Let $\ch(F) = p$ and $F \neq F^p$ (e.g. $F = \mathbb{F}_p(x)$). If we take
+$a \in \quotient{F}{F_p}$, then the polynomial $x^p -a$ is not separable. Thus,
+if $\ch(F) = p$, $F$ is perfect if and only if $F^p=F$.
+\end{remark}
+\begin{corollary}
+Every finite field is perfect.
+\label{corollary27}
+\end{corollary}
 \end{document}

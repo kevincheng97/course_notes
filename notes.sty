@@ -15,6 +15,7 @@
 \usepackage{tocloft}
 \usepackage{mathtools}
 \usepackage{indentfirst}
+\usepackage{etoolbox}
 \usepackage[super]{nth}
 \usepackage[object=vectorian]{pgfornament}
 \usetikzlibrary{calc,fadings,decorations.pathreplacing}
@@ -77,6 +78,13 @@
   \end{tikzpicture}}}}}
   \end{center}
 }
+
+\makeatletter
+\patchcmd{\upbracefill}{\m@th}{\scriptstyle\m@th}{}{}
+\patchcmd{\upbracefill}{$\braceld$}{$\scriptstyle\braceld$}{}{}
+\patchcmd{\upbracefill}{\bracelu}{\bracelu\mkern-1mu}{}{}
+\patchcmd{\upbracefill}{\hfill\braceru}{\hfill\mkern-1mu\braceru}{}{}
+\makeatother
 
 \newtheorem{theorem}{Theorem}
 \newtheorem*{theorem*}{Theorem}
