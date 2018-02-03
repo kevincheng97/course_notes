@@ -715,11 +715,11 @@ We have
 \end{equation*}
 As $a^n -b^n = (a-b)(a^{n-1} + a^{n-2}b + \dots+ab^{n-2} + b^{n-1})$ in any
 ring, we have
-\begin{equation*}
-\left|\frac{1}{h} \sum^\infty_{n=N+1}c_n \big((z_0+h)^h -z_0^n\big)\right|
-= \left|\sum^{\infty}_{n=N+1}c_n\big((z_0+h)^{n-1} + (z_0+h)^{n+2}z_0 + \dots +
+\begin{align*}
+&\>\left|\frac{1}{h} \sum^\infty_{n=N+1}c_n \big((z_0+h)^h -z_0^n\big)\right|\\
+=&\> \left|\sum^{\infty}_{n=N+1}c_n\big((z_0+h)^{n-1} + (z_0+h)^{n+2}z_0 + \dots +
 (z_0+h)z_0^{n-2} + z_0^{n-1}\big)\right|
-\end{equation*}
+\end{align*}
 Now, by choosing $\delta$ relatively small so that $|z_0|\leq r $, we have
 $|z_0|, |z_0+h| \leq r$ and so
 \begin{equation*}
@@ -730,14 +730,120 @@ So,
 \left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right| \leq
 \sum^\infty_{n=N+1}nc_nr^{n-1} < \frac{\epsilon}{3}.
 \end{equation*}
-for a large enough $N$.
+for a large enough $N_1$.\\
 
+Now, observe that by definition,
+\begin{equation*}
+S'_N(z_0) = \sum^N_{n=1} nc_nz^{n-1}.
+\end{equation*}
+Since,
+\begin{equation*}
+\lim_{N\to\infty} S'_N(z_0)
+= \lim_{N\to\infty} \sum^N_{n=1} nc_nz^{n-1}
+= \sum^\infty_{n=1} nc_nz^{n-1}
+= g(z_0)
+\end{equation*}
+we can pick some $\frac{\epsilon}{3} >0$ such that there exists some $N_2\in\N$,
+for all $n > N_2$, we have
+\begin{equation*}
+|S'_N(z_0) - g(z_0)| < \frac{\epsilon}{3}.
+\end{equation*}
+
+Finally, let $\frac{\epsilon}{3} > 0$. Observe that there exists some $\delta >
+0$ such that there exists some $N > \max{N_1,N_2}$, for all $n > N$,
+\begin{equation*}
+\left|\frac{S_N(z_0+h) - S_N(z_0)}{h} - S'_N(z_0)\right| <
+\frac{\epsilon}{3}.
+\end{equation*}
+as $|h| < \delta$. It follows that
+\begin{equation*}
+\left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right| < \epsilon
+\end{equation*}
+as desired.
 \end{proof}
-TODO: missed a lecture
 
-\begin{corollary}[Corollary of Theorem 4]
+\begin{example}
+Consider $\displaystyle f(z) = \sum^\infty_{n=1} \frac{z^n}{n}$. To find the
+radius of convergence, we use Hadamard's Formula,
+\begin{align*}
+\frac{1}{R} &= \limsup_{n\to\infty}\left(\frac{1}{n}\right)^{\frac{1}{n}}\\
+&= \lim_{n\to\infty}n^{\frac{1}{n}}\\
+&= 1
+\end{align*}
+Thus, $R=1$. By \cref{theorem3}, $f$ converges absolutely when $|z| < 1$ and
+diverges when $|z| > 1$. As for the boundary, in other words, when $|z| = 1$,
+consider the follwoing two cases:
+\begin{enumerate}
+\item If $z = 1$, then $\displaystyle f(1) = \sum^\infty_{n=1} \frac{1}{n}$ is a
+harmonic series, and hence $f$ diverges.
+\item If $z = i$, then
+\begin{align*}
+f(i) &= \sum^\infty_{n=1} \frac{i^n}{n}\\
+&= i - \frac{1}{2} - \frac{i}{3} + \frac{1}{4} + \frac{i}{5} - \frac{1}{6}\\
+&= \left(-\frac{1}{2} + \frac{1}{4} - \frac{1}{6} + \dots\right)
+i\left(1-\frac{1}{3} + \frac{1}{5} - \dots\right)
+\end{align*}
+which both real and imaginary parts converge by the alternating series test.
+Therefore, we observe that both convergence and divergence may occur on the
+boundary, depending on the value of $z$.
+\end{enumerate}
+\end{example}
+\begin{remark}
+The positions of $\lim$ and $\displaystyle \sum^\infty_{n=0}$ cannot be
+exchanged when we consider infinite sums. Consider the following example.
+\end{remark}
+\begin{example}
+Consider for $|x| > 1, \displaystyle \sum^\infty_{n=1} \lim_{x\to 1}
+(x^n-x^{n+1}) = \sum^\infty_{n=1}(1-1) = 0$. Now,
+\begin{align*}
+&\>\lim_{x\to 1}\lim_{N\to\infty}\sum^N_{n-1} (x^n - x^{n+1})\\
+=&\>\lim_{x\to 1}\lim_{N\to\infty} (x - x^2 + x^2 - x^3 + \dots + x^{N-1} - x^N
++ x^N - x^{N+1})\\
+=&\>\lim_{x\to 1}\lim_{N\to\infty} (x - x^{N+1})\\
+=&\>\lim_{x\to 1} x\\
+=&\> 1
+\end{align*}
+so that
+\begin{equation*}
+\sum^\infty_{n=1} \lim_{x\to 1} (x^n-x^{n+1}) \neq \lim_{x\to 1}
+\sum^\infty_{n=1} (x^n-x^{n+1}).
+\end{equation*}
+\end{example}
+\begin{definition}
+A function $f$ is said to be \underline{entire} if $f$ is holomorphic in the
+entire complex plane.
+\end{definition}
+\begin{example}
+Define $\displaystyle e^z = \sum^\infty_{n=0}\frac{z^n}{n!}$. Show that the
+radius of convergence of this series is $\infty$ (which implies $e^z$ is entire)
+and $(e^z)' = e^z$.
+\end{example}
+Consider Stirling's formula, which says as $n\to\infty, n\fact \sim
+\left(\frac{n}{e}\right)^n\sqrt{2\pi n}$. Then, we have
+\begin{equation*}
+e^z = \sum^\infty_{n=0} \frac{1}{\sqrt{2\pi n}}\left( \frac{ez}{n}\right)^n.
+\end{equation*}
+Now,
+\begin{align*}
+\frac{1}{R}
+&= \limsup_{n\to\infty}\left| \frac{1}{\sqrt{2\pi
+n}}\left(\frac{e}{n}\right)\right|^{\frac{1}{n}}\\
+&= \limsup_{n\to\infty}\left| \frac{1}{2\pi n} \right|^{\frac{1}{n}}
+\limsup_{n\to\infty}\left| \frac{e}{n} \right|^{\frac{1}{n}}\\
+&= 0
+\end{align*}
+Thus, $R \to \infty$ as $n \to \infty$. By \cref{theorem3}, $e^z$ is an entire
+function. Now, we can show the derivative by the limit defintition. Notice,
+\begin{align*}
+\lim_{h \to 0}\frac{e^{z+h} - e^z}{h}
+&= \lim_{h \to 0}\frac{e^{h} - 1}{h}\\
+&= \lim_{h \to 0}\frac{e^{h} - 1}{h}\\
+&= \lim_{h \to 0}\frac{e^{h}}{h}\lim_{h \to 0}\frac{1}{h}\\
+\end{align*}<++>
+
+\begin{corollary}[Corollary of \cref{theorem4}]
 A power series is infinitely complex-differentiable in its radius of
-convergence. All its derivitives are also power series, obtained by termwise
+convergence. All its derivatives are also power series, obtained by termwise
 differentiation. If $\displaystyle f(z) = \sum^\infty_{n=0}a_nz^n$, then
 \begin{equation*}
 f^{(N)}(z) = \sum^\infty_{n=N}n(n-1)\cdots(n-N)c_nz^{n-N}
@@ -758,7 +864,7 @@ the converse is true; any function holomorphic at $z_0$ is infinitely
 holomorphic at $z_0$.\\
 However, for this, we need the concept of integration over paths of curves.
 \begin{definition}
-A \underline{curve} in $\C$ is a continuous uction $\gamma(t) : [a,b] \to \C$
+A \underline{curve} in $\C$ is a continuous function $\gamma(t) : [a,b] \to \C$
 with $a,b \in \R$. The image of $\gamma$ in $\C$ is called $\gamma^*$.
 \end{definition}
 \begin{example}

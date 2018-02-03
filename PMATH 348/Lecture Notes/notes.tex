@@ -1007,4 +1007,401 @@ if $\ch(F) = p$, $F$ is perfect if and only if $F^p=F$.
 Every finite field is perfect.
 \label{corollary27}
 \end{corollary}
+\begin{proof}
+Every finite field $F$ with $|F|=p^n$ is the splitting field of $x^{p^n} - x$
+over $\Z_p$ for some prime $p$ and $n \in \N$. Thus, for every $a \in F$,
+$a = a^{p^n} = (a^{p^{n-1}})^p$. Since $a^{p^{n-1}} \in F$, $F = F^p$. Thus, by
+\cref{theorem26}, $F$ is perfect.
+\end{proof}
+\begin{remark}
+It is possible that $F^p = F$ and $F$ is an infinite field, say $F =
+\bar{\mathbb{F}_p}$.
+\end{remark}
+
+\pagebreak
+\section{The Sylow Theorems}
+Recall the following definitions and theorems from Group Theory:
+\begin{theorem*}[Lagrange's Theorem]
+If $H$ is a subgroup of a group $G$, then $|G| = [G:H]|H|$. In particular, if
+$G$ is finite, and $g\in G$, then $|\cyclic{g}|$ divides $|G|$.
+\end{theorem*}
+We can ask the reverse question; if a positive integer $m$ divides the order of
+a group $G$, does $G$ have a subgroup of order $m$?
+\begin{definition}
+An \underline{action} of a group $G$ on a set $S$ is a function $G\times S \to
+S$ (usually denoted by $(g,x) \mapsto gx$ such that for all $x \in S$ and $q_1,
+g,2 \in G$, we have $ex = x$ and $(g_1g_2)x = g_1(g_2x)$). We say $G$ acts on
+$S$ by a group action.
+\end{definition}
+\begin{definition}
+If $G$ acts on $S$, for $x \in S$, we define the \underline{orbit} of $x$ by
+$\bar x \coloneqq \{gx : g \in G\}$.
+\end{definition}
+\begin{definition}
+If $G$ acts on $S$, for $x \in S$, we define the \underline{stabilizer} of $x$
+by $G_x \coloneqq {g \in G : gx = x}$. $G_x$ is a subgroup of $G$ and $|\bar x|
+= [G:G_x]$.
+\end{definition}
+\begin{definition}
+Let $G$ be a group acting on itself by conjugation. Then, for $x \in G$, we
+define the \underline{centralizer} of $x$ by $C_G(x) \coloneqq G_x = \{g\in G:
+gxg^{-1} = x$.
+\end{definition}
+\begin{definition}
+Let $S$ be all subgroups of $G$ and let $G$ act on $S$ by conjugation. Then, for
+$K \in S$, we define the \underline{normalizer} of $K$ by $N_G(K) \coloneqq G_K
+= {g \in G:gKg^{-1} = K}$.
+\end{definition}
+\begin{definition}
+Let $G$ be a group. Then we define the \underline{center} of $G$ by $C(G)
+\coloneqq \{g \in G:gxg^{-1} = x, \forall x \in G\}$.
+\end{definition}
+\begin{theorem*}[Class Equation of a Group]
+Suppose $G$ is a finite group acting on itself by conjugation, $C(G)$ is the
+center of $G$, and $C_1, C_2, \dots, C_r$ are all the conjugacy classes in $G$
+comprising the elements outside the center. Let $g_i$ be an element in $C_i$ for
+each $1 \leq i \leq r$. Then, we have
+\begin{equation*}
+|G| = |C(G)| + \sum^r_{i=1}|G:C_G(g_i)|.
+\end{equation*}
+\end{theorem*}
+\begin{lemma}
+Let $H$ be a group of order $p^n$ for some prime $p$, which acts on a finite set
+$S$. Let $S_0 = \{ x \in S: hx = x, \forall h \in H\}$. Then, we have $|S|
+\equiv |S_0| \Mod{p}$.
+\label{lemma28}
+\end{lemma}
+\begin{proof}
+For $x \in S$, $|\bar x| = 1$ if and only if $x \in S_0$. Thus, $S$ can be
+written as a disjoint union $S = S_0 \cup \bar{x_1} \cup \dots \cup \bar{x_n}$.
+Thus,
+\begin{equation*}
+|S| = |S_0| + \sum^n_{i=0} |\bar{x_i}|.
+\end{equation*}
+Since $|\bar{x_i}| > 1$ and $|\bar{x_i}| = [H:H_{x_i}]$ divides $|H| = p^n$, we
+have $p \mid |\bar{x_i}|$ for all $i$. It follows that $|S| \equiv |S_0|
+\Mod{p}$.
+\end{proof}
+\begin{theorem}
+Let $p$ be prime and $G$ a finite group. If $p \mid |G|$, then $G$ contains an
+element of order $p$.
+\label{theorem29}
+\end{theorem}
+\begin{proof}
+Consider the set,
+\begin{equation*}
+S = \{(a_1, \dots, a_p) : a_i \in G, a_1\cdots a_p = e\}.
+\end{equation*}
+Since $a_p$ is uniquely determined and $|G| = n$, we have$|S| = n^{p-1}$. Since
+$p \mid n$, we have $|S| \equiv 0 \Mod{p}$. Let the group $\Z_p$ act on $S$ by
+cyclic permutation, in other words, for $k \in \Z_p, k(a_1,\dots,a_p) =
+(a_{k+1}, a_{k+2}, \dots, a_p, a_1, \dots, a_k)$. Since $(a_1, \dots, a_p) \in
+S_0$ if and only if $a_1 = \dots = a_p$. Clearly, $(e,\dots, e) \in S_0$, so
+$|S_0| \geq 1$. By \cref{lemma28}, we have $|S_0| \equiv |S| \equiv 0 \Mod{p}$.
+So $|S_0| \geq p$. Thus, there exists $a \neq e$ such that $(a, \dots, a) \in
+S_0$ which implies that $a^p = e$. Since $p$ is prime, the order of $a$ is $p$.
+\end{proof}
+
+\subsection{The Sylow Theorems}
+\begin{definition}
+Let $p$ be a prime. A group in which the order of every element is a
+non-negative power of $p$ is called a $p$-group. 
+\end{definition}
+\begin{corollary}
+A finite group $G$ is a $p$-group if and only if $|G|$ is a power of $p$.
+\label{corollary30}
+\end{corollary}
+\begin{proof}
+This is a direct consequence of \cref{theorem29}.
+\end{proof}
+\begin{lemma}
+The center $C(G)$ of a nontrivial finite $p$-group $G$ contains more than 1
+element.
+\label{lemma31}
+\end{lemma}
+\begin{proof}
+Since $G$ is a $p$-group by \cref{corollary30}, $|G|$ is a power of $p$. Recall
+the class equation:
+\begin{equation*}
+|G|=|C(G)|+\sum_{i=1}^n[G:C_G(x_i)], \quad\text{where } [G:C_G(x_i)]\geq 1.
+\end{equation*}
+Since $|G|$ is a power of $p$, $[G:C_G(x_i)]\mid|G|$, and $[G:C_G(x_i)]>1$. We
+see that $p \mid [G:C_G(x_i)]$. It follows that $p \mid |C(G)|$ since
+$|C(G)|\geq1$ so $C(G)$ has at least $p$ elements.
+\end{proof}
+\begin{definition}
+If $H$ is a subgroup of a group $G$, then the \underline{normalizer} of H is
+defined by
+\begin{equation*}
+N_G(H) = \{g \in G:gHg^{-1} = H\}.
+\end{equation*}
+In particular, $H \triangleleft N_G(H)$.
+\end{definition}
+\begin{lemma}
+If $p$ is prime and $H$ is a $p$-subgroup of a finite group $G$, then
+$[N_G(H):H] \equiv [G:H] \Mod{p}$.
+\label{lemma32}
+\end{lemma}
+\begin{proof}
+Let $S$ be the set of all left cosets of $H$ in $G$ and let $H$ act on $S$ by
+left translation, $G \times S \to S$ defined by,
+\begin{equation*}
+h\cdot xH \mapsto (hx)H
+\end{equation*}
+which fixes on coset to another. Then, $|S| = [G:H]$. For some fixed $x \in G$,
+consider the set $S_0$ defined by $xH \in S_0 \iff hxH = xH$ for all $h \in H$.
+In other words, all elements of $S_0$ are fixed by the group action. Now, we
+have,
+\begin{align*}
+xH \in S_0 &\iff hxH = xH\\
+&\iff x^{-1}hxH = H\\
+&\iff x^{-1}Hx = H\\
+&\iff x \in N_G(H)
+\end{align*}
+So, $|S_0| = [N_G(H):H]$. By \cref{lemma28},
+\begin{align*}
+[N_G(H):H] &= |S_0|\\
+&\equiv |S| \Mod{p}\\
+&= [G:H].
+\end{align*}
+\end{proof}
+\begin{corollary}
+If $H$ is a $p$-subgroup of a finite group $G$ such that $p \mid [G:H]$, then
+$N_G(H) \neq H$.
+\label{corollary33}
+\end{corollary}
+\begin{proof}
+Since $p \mid [G:H]$, by \cref{lemma32} we have $[H_G(H):H] \equiv [G:H] \equiv
+0 \Mod{p}$. Since $p \mid [N_G(H):H]$ and $[N_G(H):H] \geq 1$, we have
+$[N_G(H):H] \geq p$, so $N_G(H) \neq H$.
+\end{proof}
+\begin{theorem}[First Sylow Theorem]
+Let $G$ be a group with order $p^nm$ with $p$ prime, $n \geq 1$, $\gcd(p,m)=1$.
+Then $G$ contains a subgroup of order $p^i$ for all $1 \leq i \leq n$ which is
+normal under some subgroup of order $p^{i+1}$.
+\label{fst}
+\end{theorem}
+\begin{proof}
+We proceed with induction on $i$. For $i=1$, since $p \mid |G|$, we have be
+\cref{theorem29} that $G$ contains an element $a$ of order $p$, so
+$|\cyclic{a}| = p$. Suppose that the statement holds for some $1 \leq i \leq n$,
+say $H$ is a subgroup of order $p^i$. Now, from \cref{corollary33}, we have
+$p \mid [N_G(H):H]$ and $[N_G(H):H] \geq p$, since $H \triangleleft
+N_G(H)$. Then, by \cref{theorem29}, $\quotient{N_G(H)}{H}$ contains a subgroup
+of order $p$. Such a group is of the from $\quotient{H'}{H}$ where $H'$ is a
+subgroup of $N_G(H)$ containing $H$. Since $H \triangleleft N_G(H)$, we have
+$H \triangleleft H'$. Finally, $|H'| = |H|\left|\quotient{H'}{H}\right| =
+p^{i+1}$.
+\end{proof}
+\begin{definition}
+A subgroup $P$ of a group $G$ is said to be a \underline{Sylow $p$-subgroup} if
+$P$ is a maximal $p$-subgroup of $G$. In other words, if $P \subseteq H
+\subseteq G$ with $H$ a $p$-subgroup of $G$, then $P = H$.
+\end{definition}
+\begin{corollary}
+Let $G$ be a group of order $p^nm$ where $p$ is a prime, $n \geq 1$,
+$\gcd(p,m)=1$. Let $H$ be a $p$-subgroup of $G$. Then, all the following hold:
+\begin{enumerate}
+\item $H$ is a Sylow $p$-subgroup if and only if $|H| = p^n$
+\item Every conjugate of a Sylow $p$-subgroup is a Sylow $p$-subgroup
+\item If there is only one Sylow $p$-subgroup, $P$, then $P \triangleleft G$.
+\end{enumerate}
+\label{corollary35}
+\end{corollary}
+\begin{theorem}[Second Sylow Theorem]
+If $H$ is a $p$-subgroup of a finite group $G$, and $P$ is any Sylow
+$p$-subgroup of $G$, then there exists $g \in G$ such that $H \subseteq
+gPg^{-1}$. In particular, any two Sylow $p$-subgroups of $G$ are conjugate.
+\label{sst}
+\end{theorem}
+\begin{proof}
+Let $S$ be the set of all left cosets of $P$ in $G$, and let $H$ act on $S$ by
+left multiplication. By \cref{lemma28}, we have $|S_0| \equiv |S| = [G:P]
+\Mod{p}$. Since $p \nmid [G:P]$, we have $|S_0| \neq 0$. There exists $xP \in
+S_0$ for some $x \in G$. Note that
+\begin{align*}
+xP\in S_0 &\iff hxP = xP,\quad \forall h \in H\\
+&\iff x^{-1}hxP = P,\quad \forall h \in H\\
+&\iff x^{-1}Hx \subseteq P\\
+&\iff H \subseteq xPx^{-1}.
+\end{align*}
+In particular, if $H$ is a Sylow $p$-subgroup, then $|H| = |P| = |xPx^{-1}$.
+Thus, $H = xPx^{-1}$.
+\end{proof}
+\begin{theorem}[Third Sylow Theorem]
+If $G$ is a finite group and $p$ is prime, then the number of Sylow
+$p$-subgroups of $G$ divides $|G|$ and is of the form $kp+1$ for some $k \in \N
+\cup \{0\}$.
+\label{tst}
+\end{theorem}
+\begin{proof}
+By \cref{sst}, the number of Sylow $p$-subgroups of $G$ is the number of conjugates
+of any one of them, say $P$. This number is $[G:N_G(P)]$ which is a divisor of
+$|G|$. Let $S$ be the set of all Sylow $p$-subgroups of $G$ and let $P$ act on
+$S$ by conjugation. Then, $Q \in S_0$ if and only if $xQx^{-1} = Q$ for all $x
+\in P$. The latter condition holds if and only if $P \subseteq N_G(Q)$. Both $P$
+and $Q$ are Sylow $p$-subgroups of $G$ and hence of $N_G(Q)$. Thus, by
+\cref{corollary35}, the are conjugate in $N_G(Q)$. Since $Q \triangleleft
+N_G(Q)$, this can only occur if $Q=P$. Thus, $S_0 = \{p\}$ and by
+\cref{lemma28}, $|S| \equiv |S_0| \equiv 1 \Mod{p}$. Thus, $|S| = kp+1$ for some
+$k \in \N \cup \{0\}$.
+\end{proof}
+\begin{example}
+Every group of order 15 is cyclic.
+\end{example}
+Let $G$ be a group of order $15 = 3 \cdot 5$. Let $n_p$ be the number of Sylow
+$p$-subgroups of $G$. By \cref{tst}, we have $n_3 \mid 15$ and $n_3 \equiv 1
+\Mod{3}]$. Thus, $n_3 = 1$. Similarly, since $n_5 \mid 15$ and $n_5 \equiv 1
+\Mod{5}$, $n_5 = 1$. It follows that there is only one Sylow 3-subgroup and one
+Sylow 5-subgroup in $G$, say $P_3$ and $P_5$ respectively. Thus, $P_3
+\triangleleft G$ and $P_5 \triangleleft G$. Consider $|P_3 \cap P_5|$, which
+divides 3 and 5. Thus, $|P_3 \cap P_5| = 1$. Also, $|P_3P_5| = 15 = |G|$. It
+follows that
+\begin{equation*}
+G \cong P_3\times P_5 \cong \quotient{\Z}{\cyclic{3}} \times
+\quotient{\Z}{\cyclic{5}} \cong \quotient{\Z}{\cyclic{15}}.
+\end{equation*}
+\begin{example}
+There are exactly two isomorphism classes of groups of order 21.
+\end{example}
+Let $G$ be a group of order $21 = 7 \cdot 3$. Let $n_p$ be the number os Sylow
+$p$-subgroups of $G$. By \cref{tst}, we have $n_3 \mid 21$ and $n_3 \equiv 1
+\Mod{3}$. Thus, $n_3 = 1$ or 7. Similarly, we have $n_7 \mid 21$ and $n_7 \equiv
+1 \Mod{7}$. Thus, $n_7 = 1$. It follows that $G$ has a unique Sylow 7-subgroup,
+say $P_7$ and note that $P_7 \triangleleft G$ and $P_7$ is cyclic, say
+$P_7 = \cyclic{x}$ with $x^7 = 1$. Let $H$ be a Sylow 3-subgroup. Since $|H| =
+3$, $|H|$ is cyclic and $H = \cyclic{y}$ with $y^3 = 1$. Since $P_7
+\triangleleft G$, we have $yxy^{-1} = x^i$ for some power $i \in [0,6]$. It
+follows that
+\begin{align*}
+&\>x\\
+=&\>y^3xy^{-3}\\
+=&\>y^2yxy^{-1}y^{-2}\\
+=&\>y^2x^iy^{-2}\\
+=&\>yx^{i^2}y^{-1}\\
+=&\>x^{i^3}.
+\end{align*}
+Since $x^{i^3} = x$ and $x^7 = 1$, we have $i^3 - 1 \equiv 0 \Mod{7}$. Then,
+it must be that $i = 1,2,4$.
+\begin{enumerate}
+\item If $i = 1$, then $yxy^{-1} = x$ or $yx = xy$. Thus, $G$ is abelian and
+$G \cong \quotient{\Z}{\cyclic{21}}$.
+\item If $i = 2$, then $yxy^{-1} = x^2$. Thus,
+\begin{equation*}
+G = \{ x^iy^j : 0 \leq i \leq 6, 0 \leq j \leq 2, yxy^{-1} = x^2\}
+\end{equation*}
+which has 21 distinct elements. Here, $G$ is generated by $x$ and $y$.
+\item If $i = 4$, then $yxy^{-1} = x^4$. Note that
+\begin{equation*}
+y^2xy^{-2} = yx^4y^{-1} = x^{16} = x^2.
+\end{equation*}
+Note that $y^2$ is also a generator of $H$. Thus, by replacing $y$ by $y^2$, we
+get back to case (2).
+\end{enumerate}
+
+\pagebreak
+\section{Solvable Groups}
+\begin{definition}
+A group $G$ is \underline{solvable} if there exists a tower of subgroups
+\begin{equation*}
+\{1\} = G_0 < G_1 < \dots < G_k = G
+\end{equation*}
+such that $G_i \triangleright G_{i+1}$ and $\quotient{G_i}{G_{i+1}}$ is abelian.
+\end{definition}
+\begin{remark}
+$G_{i+1}$ is not necessarily a normal subgroup of $G$. However, if $G_{i+1}$ is
+a normal subgroup of $G$, we get $G_i \triangleright G_{i+1}$ for free.
+\end{remark}
+\begin{example}
+Consider the symmetric group $S_4$. Let $A_4$ be the alternating subgroup of
+$S_4$ and $ V \cong \quotient{\Z}{\cyclic{2}} \times \quotient{\Z}{\cyclic{2}}$
+the Klein 4 group. Note that $A_4$ and $V$ are normal subgroup of $S_4$. We have
+\begin{equation*}
+S_4 > A_4 > V > \{1\}.
+\end{equation*}
+Since $\quotient{S_4}{A_4} \cong \quotient{\Z}{\cyclic{2}}$ and
+$\quotient{A_4}{V} \cong \quotient{\Z}{\cyclic{3}}$, we see that $S_4$ is
+solvable.
+\end{example}
+\begin{theorem}[Second Isomorphism Theorem]
+If $H$ and $N$ are subgroups of a group $G$ with $N \triangleleft G$, then
+$\quotient{H}{H\cap N} \cong \quotient{NH}{N}$
+\label{sit}
+\end{theorem}
+\begin{theorem}[Third Isomorphism Theorem]
+If $H$ and $H$ are normal subgroups of a group $G$ such that $N \subseteq H$,
+then $\quotient{H}{N}$ is a normal subgroup of $G$ and  $\quotient{G}{N} \cong
+\faktor{\quotient{G}{N}}[1]{\quotient {H}{N}}[-1.5]$.
+\label{tit}
+\end{theorem}
+\begin{theorem}\leavevmode
+\begin{enumerate}
+\item If $G$ is a solvable group, every subgroup and every quotient group of $G$
+is solvable
+\item Conversely, if $N$ is a normal subgroup of a group $G$ and both $N$ and
+$\quotient{G}{N}$ are solvable, then $G$ is solvable.
+\end{enumerate}
+In particular, a direct product of finitely many solvable groups is solvable.
+\label{theorem38}
+\end{theorem}
+\begin{proof}\leavevmode
+\begin{enumerate}
+\item Suppose that $G$ is a solvable group with a tower
+\begin{equation*}
+\{1\} = G_0 < G_1 < \dots < G_k = G
+\end{equation*}
+with $G_i \triangleright G_{i+1}$ and  $\quotient{G_i}{G_{i+1}}$ is abelian.
+\begin{claim}
+Let $H$ be a subgroup of $G$. Then, $H$ is solvable.
+\end{claim}
+Define $H_i = H \cap G_i$. Since $G_{i+1} \triangleleft G_i$, we have a tower
+\begin{equation*}
+\{1\} = H_0 < H_1 < \dots < H_k = H
+\end{equation*}
+with $H_{i+1} \triangleleft H_i$. Note that both $H_i$ and $G_{i+1}$ are
+subgroups of $G_i$ and $H_{i+1} = H \cap G_{i+1} = H_i \cap G_{i+1}$. Applying
+\cref{sit} to $G_i$, we have
+\begin{equation*}
+\quotient{H_i}{H_{i+1}} = \quotient{H_i}{H_i \cap G_{i+1}} \cong 
+\quotient{H_iG_{i+1}}{G_{i+1}} \subset \quotient{G_i}{G_{i+1}}.
+\end{equation*}
+Since $\quotient{G_i}{G_{i+1}}$ is abelian, so is $\quotient{H_i}{H_{i+1}}$. So
+$H$ is solvable.
+\begin{claim}
+Let $N$ be a normal subgroup of $G$. Then $\quotient{G}{N}$ is solvable.
+\end{claim}
+Consider the towers
+\begin{equation*}
+N = G_0N < G_1N < \dots < G_kN = G
+\end{equation*}
+and
+\begin{equation*}
+\{1\} = \quotient{G_0N}{N} < \quotient{G_1N}{N} < \dots <
+\quotient{G_kN}{N} = \quotient{G}{N}.
+\end{equation*}
+Since $G_{i+1} \triangleleft G_i$ and $N \triangleleft G$, we have
+$G_{i+1}N \triangleleft G_iN$, which implies that $\quotient{G_{i+1}N}{N}
+\triangleleft \quotient{G_iN}{N}$. By \cref{tit},
+\begin{equation*}
+\quotient{\quotient{G_iN}{N}}{\quotient{G_{i+1}N}{N}} \cong
+\quotient{G_iN}{G_{i+1}N}.
+\end{equation*}
+By \cref{sit}, we have
+\begin{equation*}
+\quotient{G_iN}{G_{i+1}N} \cong \quotient{G_i}{G_i\cap G_{i+1}N}.
+\end{equation*}
+Since $G_{i+1} \subseteq (G_i \cap G_{i+1}N)$, there is a natural injection
+$\quotient{G_i}{G_i\cap G_{i+1}N} \to \quotient{G_i}{G_i+1}$ defined by
+\begin{equation*}
+g + (G_i\cap G_{i+1}N) \mapsto g + G_{i+1}.
+\end{equation*}
+Since $\quotient{G_i}{G_{i+1}}$ is abelian, so is $\quotient{G_i}{G_i \cap
+G_{i+1}N}$. Thus, $\quotient{\quotient{G_iN}{N}}{\quotient{G_{i+1}N}{N}}$ is
+abelian. It follows that $\quotient{G}{N}$ is solvable.\\
+
+Both these claims together show the first part of this theorem.
+\item Suppose that $N$ is a normal subgroup of a group $G$ and both $N$ and
+$\quotient{G}{N}$ are solvable.
+\end{enumerate}
+\end{proof}
 \end{document}
