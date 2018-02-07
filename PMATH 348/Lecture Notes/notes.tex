@@ -13,6 +13,7 @@
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 \DeclareMathOperator{\Frac}{Frac}
 \DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\Sub}{Sub}
 
 \hypersetup
 {pdfauthor={\me},
@@ -48,8 +49,8 @@ We notice immediately that there are a couple of operations that are involved in
 this equation.
 \begin{definition}
 An expression involving only addition, subtraction, multiplication, division and
-radicals is called a \underline{radical}. These operations are denoted by $+, -, \times,
-\div$ and $\sqrt[n]{\cdot}$
+radicals is called a \underline{radical}. These operations are denoted by $+, -,
+\times, \div$ and $\sqrt[n]{\cdot}$
 \end{definition}
 The natural question that is raised is the extension to higher dimensions.
 \subsection{Cubic Equations}
@@ -67,8 +68,8 @@ Formula}
 A radical solution can be obtained by reducing a quartic to a cubic equation.
 \subsection{Quintic Equations}
 \begin{itemize}
-\item General radical solutions were attempted by Euler, B\'ezout and Lagrange without
-success
+\item General radical solutions were attempted by Euler, B\'ezout and Lagrange
+without success
 \item In 1799, Ruffini gave a 516 page proof about the insolvability of quintic
 equations. His Proof was ``almost right''
 \item In 1824, Abel filled the gap in Ruffini's proof.
@@ -95,10 +96,10 @@ $\Q(\alpha)/\Q$ to the group
 isomorphism and } \Psi|_\Q = 1_\Q\bigg\}
 \end{equation*}
 It can be shown that if $\alpha$ is ``good'', say algebraic, $\Aut_\Q
-(\Q(\alpha))$ is finite. If $\alpha$ is ``very good'', say constructable, the order
-of $\Aut_\Q (\Q(\alpha))$ is in certain forms. Moreover, there is a one-to-one
-correspondence between the intermediate fields between $\Q(\alpha)$ and
-$\Q$ and the subgroups of $\Aut_\Q (\Q(\alpha))$. \\
+(\Q(\alpha))$ is finite. If $\alpha$ is ``very good'', say constructable, the
+order of $\Aut_\Q (\Q(\alpha))$ is in certain forms. Moreover, there is a
+one-to-one correspondence between the intermediate fields between $\Q(\alpha)$
+and $\Q$ and the subgroups of $\Aut_\Q (\Q(\alpha))$.
 \end{enumerate}
 
 It follows that given some ``good'' $\alpha$, we have that the
@@ -112,7 +113,8 @@ introduces \underline{Galois Theory}; the interplay between fields and groups.
 If $E$ is a field containing another field $F$, we say $E$ is a
 \underline{field extension} of $F$, denoted by $\quotient EF$.
 \end{definition}
-If $\quotient{E}{F}$ if a field extension, we can view $E$ as a vector space over $F$.
+If $\quotient{E}{F}$ if a field extension, we can view $E$ as a vector space
+over $F$.
 \begin{enumerate}
 \item \underline{Addition}: For $e_1, e_2 \in E$, $e_1 + e_2 \coloneqq e_1 +
 e_2$ (addition in $E$)
@@ -122,16 +124,16 @@ e_2$ (addition in $E$)
 \begin{definition}
 The dimension of $E$ over $F$ (viewed as a vector space) called the
 \underline{degree} of $E$ over $F$, denoted by $[E:F]$. If $[E:F] < \infty$, we
-say $\quotient EF$ is a \underline{finite extension}. Otherwise, $\quotient{E}{F}$ is an
-\underline{infinite extension}
+say $\quotient EF$ is a \underline{finite extension}. Otherwise,
+$\quotient{E}{F}$ is an \underline{infinite extension}.
 \end{definition}
 \begin{example}
 $[\C : \R] = 2$ is a  finite extension since $\C \cong \R + \R i$, with $i^2 =
 -1$.
 \end{example}
 \begin{example}
-Let $F$ be a field. Then $[F(x) : F]$ is $\infty$ since $\{1, x, x^2, \dots\}$ are
-linearly independent over $F$.
+Let $F$ be a field. Then $[F(x) : F]$ is $\infty$ since $\{1, x, x^2, \dots\}$
+are linearly independent over $F$.
 \end{example}
 \begin{remark}
 $F[x] = \{f(x) = a_0 + a_1x + \dots + a_nx^n : a_i \in F, n \in \N \cup
@@ -142,13 +144,13 @@ $F(x) = \{\frac{f(x)}{g(x)} : f(x), g(x) \in F[x]\}$, the fraction
 field of the polynomial ring of $F$. 
 \end{remark}
 \begin{theorem} \label{theorem1}
-If $E/K$ and $K/F$ are finite field extensions, then $\quotient{E}{F}$ is a finite field
-extension and
+If $E/K$ and $K/F$ are finite field extensions, then $\quotient{E}{F}$ is a
+finite field extension and
 \begin{equation*}
 [E:F] = [E:K][K:F]
 \end{equation*}
-In particular, $K$ is an intermediate field of an field extension $\quotient{E}{F}$, then
-$[K:F]\>\big|\> [E:F]$. 
+In particular, $K$ is an intermediate field of an field extension
+$\quotient{E}{F}$, then $[K:F]\>\big|\> [E:F]$. 
 \end{theorem}
 \begin{proof}
 Suppose $[E:K]=m$ and $[K:F] = n$. Let $\{a_i,\dots,a_m\}$ be a basis of
@@ -176,10 +178,10 @@ e = \sum^m_{i=1} \sum^n_{j=1} c_{ij}b_ja_i.
 The set $\{a_ib_j:1\leq i\leq m,1\leq j\leq n\}$ is linearly independent
 over $F$.
 \end{claim}
-Suppose that $$\sum_{i=1}^m\sum_{j=1}^nc_{ij}b_ja_i=0$$ with $c_{ij}\in F$. Since
-$\sum_{j=1}^nc_{ij}b_j\in K$ and $\{a_1,\dots,a_m\}$ are independent over $K$.
-We have $$\sum_{j=1}^nc_{ij}b_j=0.$$
-Since $\{b_1,\dots,b_n\}$ are independent over $F$, we have $c_{ij}=0$.\\
+Suppose that $$\sum_{i=1}^m\sum_{j=1}^nc_{ij}b_ja_i=0$$ with $c_{ij}\in F$.
+Since $\sum_{j=1}^nc_{ij}b_j\in K$ and $\{a_1,\dots,a_m\}$ are independent over
+$K$. We have $$\sum_{j=1}^nc_{ij}b_j=0.$$ Since $\{b_1,\dots,b_n\}$ are
+independent over $F$, we have $c_{ij}=0$.\\
 
 Combining both claims, we see that $\{a_ib_j,1\leq i\leq m,1\leq j\leq n\}$ is a
 basis of $\quotient{E}{F}$ and we have $[E:F]=[E:K][K:F]$.
@@ -187,8 +189,8 @@ basis of $\quotient{E}{F}$ and we have $[E:F]=[E:K][K:F]$.
 
 \subsection{Algebraic and Transcendental Extensions}
 \begin{definition}
-Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. We say $\alpha$ is
-\underline{algebraic over $F$} if there exists $f(x) \in F[x]\setminus \{0\}$
+Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. We say $\alpha$
+is \underline{algebraic over $F$} if there exists $f(x) \in F[x]\setminus \{0\}$
 with $f(\alpha) = 0$. Otherwise, $\alpha$ is \underline{transcendental over
 $F$}.
 \end{definition}
@@ -197,9 +199,9 @@ $\frac{c}{d} \in \Q$, $\sqrt 2$ $\sqrt[3]{7} + 2i$ are algebraic over $\Q$
 (see Assignment 1) but $e$ (Hermite, 1873) and $\pi$ (Lindemann, 1882) are
 transcendental over $\Q$.
 \end{example}
-Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. Let $F[\alpha]$ denote the
-smallest subfield of $E$ containing $F$ and $\alpha$. For $\alpha, \beta \in E$,
-we define $F[\alpha, \beta]$ and $F(\alpha, \beta)$ similarly.
+Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. Let $F[\alpha]$
+denote the smallest subfield of $E$ containing $F$ and $\alpha$. For $\alpha,
+\beta \in E$, we define $F[\alpha, \beta]$ and $F(\alpha, \beta)$ similarly.
 \begin{definition}
 If $F = F(\alpha)$ for some $\alpha \in E$, we say $E$ is a \underline{simple
 extension} of $F$.
@@ -210,8 +212,8 @@ $\Psi: R_1 \to R_2$ is said to be a \underline{$F$-homomorphism} if $\Psi|_F =
 1_F$.
 \end{definition}
 \begin{theorem} \label{theorem2}
-Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. If $\alpha$ is transcendental
-over $F$, then
+Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. If $\alpha$ is
+transcendental over $F$, then
 \begin{equation*}
 F[\alpha] \cong F[x] \quad \text{and} \quad F(\alpha) \cong F(x)
 \end{equation*}
@@ -238,11 +240,12 @@ F[\alpha] \cong F[x] \quad \text{and} \quad F(\alpha) \cong F(x).
 \end{equation*}
 \end{proof}
 \begin{theorem} \label{theorem3}
-Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. If $\alpha$ is algebraic over
-$F$, there exists a unique monic irreducible polynomial $p(x) \in F[x]$ such
-that there exists a $F$-homomorphism
+Let $\quotient{E}{F}$ be a field extension and $\alpha \in E$. If $\alpha$ is
+algebraic over $F$, there exists a unique monic irreducible polynomial $p(x) \in
+F[x]$ such that there exists a $F$-homomorphism
 \begin{equation*}
-\Psi:\quotient{F[x]}{\cyclic{p(x)}} \to F[\alpha] \quad \text{with } \Psi(x) = \alpha
+\Psi:\quotient{F[x]}{\cyclic{p(x)}} \to F[\alpha] \quad \text{with } \Psi(x) =
+\alpha
 \end{equation*}
 from which we conclude $F[\alpha] \cong F(\alpha)$.
 \end{theorem}
@@ -257,10 +260,10 @@ Let
 I = \ker(\Psi) = \{f(x) \in F[x] : f(\alpha) = 0 \}.
 \end{equation*}
 Since $\alpha$ is algebraic, $I \neq \{0\}$. We have $\quotient{F[x]}{I} \cong
-\im(\Psi) = F[\alpha] \subseteq F(\alpha)$, a subring of a field $F(\alpha)$. Thus,
-$\quotient{F[x]}{I}$ is an integral domain so $I$ is a prime ideal. It follows that
-$I = \cyclic{p(x)}$, where $p(x)$ is irreducible. If we assume $p(x)$ is
-monic, then it is unique. It follows that
+\im(\Psi) = F[\alpha] \subseteq F(\alpha)$, a subring of a field $F(\alpha)$.
+Thus, $\quotient{F[x]}{I}$ is an integral domain so $I$ is a prime ideal. It
+follows that $I = \cyclic{p(x)}$, where $p(x)$ is irreducible. If we assume
+$p(x)$ is monic, then it is unique. It follows that
 \begin{equation*}
 \quotient{F[x]}{\cyclic{p(x)}}\cong F[\alpha].
 \end{equation*}
@@ -269,8 +272,8 @@ $F[\alpha]$ is a field. It follows that $F[\alpha] = F(\alpha)$.
 \end{proof}
 \begin{definition}
 If $\alpha$ is algebraic over a field $F$, the unique monic polynomial
-irreducible polynomial $p(x)$ in \cref{theorem3} is called the \underline{minimal
-polynomial of $\alpha$ over $F$}.
+irreducible polynomial $p(x)$ in \cref{theorem3} is called the
+\underline{minimal polynomial of $\alpha$ over $F$}.
 \end{definition}
 \begin{remark}
 From the proof of \cref{theorem3}, if $f(x) \in F[x]$ with $f(\alpha) = 0$, then
@@ -289,13 +292,14 @@ $[F[\alpha]:F] = \deg(p)$ and $\{1, \alpha, \alpha^2, \dots,
 \end{theorem}
 \begin{proof}
 It suffices to prove the forward direction for each statement as the inverse
-direction implies the other statement.\\
-(1) {\bf Forwards}: From \cref{theorem2}, if $\alpha$ is transcendental over $F$, then
-$F(x) \cong F(\alpha)$. In $F(x)$, the elements $\{1, x, x^2, \dots\}$ are
-linearly independent over $F$. Thus, $[F(\alpha):F]$ is $\infty$.\\
-(2) {\bf Forwards}: From \cref{theorem3}, if $\alpha$ is algebraic over $F$,
-$\quotient{F[x]}{\cyclic{p(x)}} \cong F(x)$ with the map $x \mapsto \alpha$. Note
-that,
+direction implies the other statement.
+\begin{enumerate}
+\item {\bf Forwards}: From \cref{theorem2}, if $\alpha$ is transcendental over
+$F$, then $F(x) \cong F(\alpha)$. In $F(x)$, the elements $\{1, x, x^2, \dots\}$
+are linearly independent over $F$. Thus, $[F(\alpha):F]$ is $\infty$.\\
+\item {\bf Forwards}: From \cref{theorem3}, if $\alpha$ is algebraic over $F$,
+$\quotient{F[x]}{\cyclic{p(x)}} \cong F(x)$ with the map $x \mapsto \alpha$.
+Note that,
 \begin{equation*}
 \quotient{F[x]}{\cyclic{p(x)}} \cong \{r(x) \in F[x]: \deg(r) < \deg(p)\}
 \tag{$\deg(0) = -\infty$}
@@ -304,18 +308,21 @@ Thus, $\{1, x, x^2, \dots, x^{\deg(p) - 1}\}$ forms a basis for
 $\quotient{F[x]}{\cyclic{p(x)}}$. It follows that $[F(\alpha): F] =
 \deg(p)$ and $\{1, \alpha, \alpha^2, \dots,
 \alpha^{\deg (p) - 1}\}$ is a basis of $\quotient{F(\alpha)}{F}$.
+\end{enumerate}
 \end{proof}
 \begin{theorem}
-Let $\quotient{E}{F}$ be a field extension. If $[E:F] < \infty$, then there exists $\alpha_1, \dots, \alpha_n \in E$ such that
+Let $\quotient{E}{F}$ be a field extension. If $[E:F] < \infty$, then there
+exists $\alpha_1, \dots, \alpha_n \in E$ such that
 \begin{equation*}
-F \subsetneq F(\alpha_1) \subsetneq \dots \subsetneq F(\alpha_1, \dots, \alpha_n) = E.
+F \subsetneq F(\alpha_1) \subsetneq \dots \subsetneq F(\alpha_1, \dots,
+\alpha_n) = E.
 \end{equation*}
 \end{theorem}
 \begin{proof}
 We proceed with induction on $[E:F]$. If $[E:F] = 1$, $E=F$. Suppose that $[E:F]
 > 1$ and the statement holds for any field extension $\quotient{\tilde
-E}{\tilde F}$ with $[\tilde E : \tilde F] < [E:F]$. Let $\alpha_1 \in \quotient{E}{F}$.
-By \cref{theorem1},
+E}{\tilde F}$ with $[\tilde E : \tilde F] < [E:F]$. Let $\alpha_1 \in
+\quotient{E}{F}$. By \cref{theorem1},
 \begin{equation*}
 [E:F] = [E:F(\alpha_1)][F(\alpha_1) : F].
 \end{equation*}
@@ -326,7 +333,8 @@ F(\alpha_1) \subsetneq \dots \subsetneq F(\alpha_1, \dots, \alpha_n) = E.
 \end{equation*}
 Thus, we have
 \begin{equation*}
-F \subsetneq F(\alpha_1) \subsetneq \dots \subsetneq F(\alpha_1, \dots, \alpha_n) = E.
+F \subsetneq F(\alpha_1) \subsetneq \dots \subsetneq F(\alpha_1, \dots,
+\alpha_n) = E.
 \end{equation*}
 as desired.
 \end{proof}
@@ -422,8 +430,8 @@ $f(x) \in \Z[x]$  is irreducible in $\Z[x]$ if and only if either
 \end{remark}
 \begin{theorem}[Eisenstein's Criterion for {$\Z[x]$}] \label{eisenstien}
 Let $f(x) = a_nx^n + \dots + a_1x + a_0 \in \Z[x]$ and let $p$ be a prime
-integer. Suppose that $p \nmid a_n$, $p \mid a_i$ for all $0 \leq i \leq (n-1)$ and
-$p^2 \nmid a_0$, then $f(x)$ is irreducible in $\Q[x]$. In particular, if
+integer. Suppose that $p \nmid a_n$, $p \mid a_i$ for all $0 \leq i \leq (n-1)$
+and $p^2 \nmid a_0$, then $f(x)$ is irreducible in $\Q[x]$. In particular, if
 $f(x)$ is primitive, then it is irreducible in $\Z[x]$.
 \end{theorem}
 \begin{proof}
@@ -436,8 +444,9 @@ for all $0 \leq i (n-1)$, we have $\bar f(x) = \bar a_nx^n$ with $\bar a_n \neq
 0$. If $f(x)$ is reducible in $\Q[x]$, then it can be factored in $\Z[x]$ into
 polynomials of positive degree, say $f(x) = g(x)h(x)$ with $g(x), h(x) \in
 \Z[x]$ and $\deg(g), \deg(h) \geq 1$. It follows that $\bar a_nx^n = \bar
-g(x) \bar h(x)$ from which we see that $\bar g(x)$ and $\bar h(x)$ have no constant
-terms in $\Z_p[x]$, as $\Z_p[x]$ is a UFD\@. Since the constants of both $g(x)$
+g(x) \bar h(x)$ from which we see that $\bar g(x)$ and $\bar h(x)$ have no
+constant terms in $\Z_p[x]$, as $\Z_p[x]$ is a UFD\@. Since the constants of
+both $g(x)$
 and $h(x)$ are divisible by $p$, this implies that the constant of $f(x)$ is
 divisible by $p^{2}$, which leads to a contradiction. So, $f(x)$ is irreducible
 in $\Q[x]$
@@ -521,8 +530,8 @@ Let $\quotient{\tilde{E}}{F}$, $f(x) \in F[x]$ and $F \subseteq E \subseteq
 \item $f(x)$ splits over $E$
 \item there is no proper subfield of $E$ such that $f(x)$ splits over $E$, 
 \end{enumerate}
-then
-we say $E$ is a \underline{splitting field of $f(x) \in F[x]$ in $\tilde E$}.
+Then we say $E$ is a \underline{splitting field of $f(x) \in F[x]$ in $\tilde
+E$}.
 \end{definition}
 
 \subsection{Existence of Splitting Fields}
@@ -667,7 +676,7 @@ If $\quotient{E}{F}$ is the splitting field of $f(x)$, then $[E:F] \mid
 \begin{proof}
 We proceed by induction on $\deg(f)$. If $\deg(f) = 1$, choose $E = F$ and we
 have $[E:F] \mid 1$. Suppose $\deg(f) < 1$ and the statement holds for all
-$g(x)$ with $\deg(g) < \deg(f)$. We break this down into 2 cases.\\
+$g(x)$ with $\deg(g) < \deg(f)$. We break this down into two cases.\\
 \underline{\bf Case 1}: If $f(x) \in F[x]$ is irreducible and $\alpha \in E$ is
 a root of $f(x)$, by \cref{theorem13},
 \begin{equation*}
@@ -767,7 +776,7 @@ $g(x) \in F[x]$
 \end{enumerate}
 \label{theorem18}
 \end{theorem}
-\begin{proof}
+\begin{proof}\leavevmode
 \begin{enumerate}
 \item Backwards is trivial. Suppose we have $f(x) = a_0 + a_1x + \dots +
 a_nx^n$, then $f'(x) = a_1 + 2a_2x + \dots + na_nx^{n-1} = 0$. This implies that
@@ -876,11 +885,11 @@ f'(x) &= p^nx^{p^n-1} - 1\\
 &\equiv -1 \Mod{p}.
 \end{align*}
 Now, since $\gcd(f,f') = 1$, by \cref{corollary20}, $f(x)$ has $p^n$ distinct
-roots in $F$. Let $E$ be the set of the roots of $f(x)$ in $F$. Let $\varphi:F \to
-F$ be given by $u \mapsto u^{p^n}$. For $u \in F$, $u$ is a root of $f(x)$ if
-and only if $\varphi(u) = u$. Thus, the set $E$ is a subfield of $F$ of order $p^n$
-which contains $\Z_p$. Since $F$ is a splitting field, it is generated over
-$\Z_p$ by the roots of $f(x)$, in other words, the elements of $E$. Thus,
+roots in $F$. Let $E$ be the set of the roots of $f(x)$ in $F$. Let $\varphi:F
+\to F$ be given by $u \mapsto u^{p^n}$. For $u \in F$, $u$ is a root of $f(x)$
+if and only if $\varphi(u) = u$. Thus, the set $E$ is a subfield of $F$ of order
+$p^n$ which contains $\Z_p$. Since $F$ is a splitting field, it is generated
+over $\Z_p$ by the roots of $f(x)$, in other words, the elements of $E$. Thus,
 $F = \Z_p(E) = E$.
 \end{proof}
 As a direct consequence of \cref{prop24} and \cref{corollary14}, we have the
@@ -907,7 +916,7 @@ that if $\gcd(f, f') = 1$, then $f(x)$ has no repeated root in any extension of
 $F$. In other words, $f(x)$ is separable. Note that if $a = 0$, the only
 irreducible factor of $f(x)$ is $x$ and $\gcd(x, 1) = 1$. Thus, $f(x)$ is
 separable. Now, assume $a \neq 0$. Note that $f'(x) = nx^{n-1}$.
-\begin{enumerate}[(1)]
+\begin{enumerate}
 \item If $\ch(F) = 0$, we have $\gcd(f,f') = 1$ since
 \begin{align*}
 1 &= \frac{x}{na}nx^{n-1} - \frac{1}{a}(x^n-a)\\
@@ -925,7 +934,7 @@ irreducible factors first. Define
 F^p \coloneqq \{b^p : b \in F\}
 \end{equation*}
 which is a subfield of $F$.
-\begin{enumerate}[(3.1)]
+\begin{enumerate}
 \item If $a \in F^p$, say $a = b^p$ for some $b \in F$, then
 \begin{equation*}
 f(x) = x^p - b^p = (x-b)^p \tag{by Binomial Theorem}
@@ -982,9 +991,9 @@ Let $r(x) \in F[x]$ be irreducible. Then
 Suppose $r(x)$ is not separable. Then by \cref{corollary20}, $\gcd{r,r'} \neq
 1$, so it must be that $\gcd(r,r') = 0$.
 \begin{enumerate}
-\item If $\ch(F) = 0$, from \cref{theorem18}, $r'(x) = 0$ implis that $r(x) = c \in
-F$, which is a contradiction since $\deg(r) \geq 1$. Thus, $r(x)$ is separable
-and $F$ is perfect.
+\item If $\ch(F) = 0$, from \cref{theorem18}, $r'(x) = 0$ implis that $r(x) = c
+\in F$, which is a contradiction since $\deg(r) \geq 1$. Thus, $r(x)$ is
+separable and $F$ is perfect.
 \item If $\ch = p$, from \cref{theorem18}, $r'(x) = 0$ implies that
 \begin{equation*}
 r(x) = a_0 + a_1x^p + a_2x^{2p} + \dots + a_mx^{mp}, a_i \in F
@@ -1102,7 +1111,6 @@ So $|S_0| \geq p$. Thus, there exists $a \neq e$ such that $(a, \dots, a) \in
 S_0$ which implies that $a^p = e$. Since $p$ is prime, the order of $a$ is $p$.
 \end{proof}
 
-\subsection{The Sylow Theorems}
 \begin{definition}
 Let $p$ be a prime. A group in which the order of every element is a
 non-negative power of $p$ is called a $p$-group. 
@@ -1235,14 +1243,14 @@ $p$-subgroups of $G$ divides $|G|$ and is of the form $kp+1$ for some $k \in \N
 \label{tst}
 \end{theorem}
 \begin{proof}
-By \cref{sst}, the number of Sylow $p$-subgroups of $G$ is the number of conjugates
-of any one of them, say $P$. This number is $[G:N_G(P)]$ which is a divisor of
-$|G|$. Let $S$ be the set of all Sylow $p$-subgroups of $G$ and let $P$ act on
-$S$ by conjugation. Then, $Q \in S_0$ if and only if $xQx^{-1} = Q$ for all $x
-\in P$. The latter condition holds if and only if $P \subseteq N_G(Q)$. Both $P$
-and $Q$ are Sylow $p$-subgroups of $G$ and hence of $N_G(Q)$. Thus, by
-\cref{corollary35}, the are conjugate in $N_G(Q)$. Since $Q \triangleleft
-N_G(Q)$, this can only occur if $Q=P$. Thus, $S_0 = \{p\}$ and by
+By the \nameref{sst}, the number of Sylow $p$-subgroups of $G$ is the number of
+conjugates of any one of them, say $P$. This number is $[G:N_G(P)]$ which is a
+divisor of $|G|$. Let $S$ be the set of all Sylow $p$-subgroups of $G$ and let
+$P$ act on $S$ by conjugation. Then, $Q \in S_0$ if and only if $xQx^{-1} = Q$
+for all $x \in P$. The latter condition holds if and only if $P \subseteq
+N_G(Q)$. Both $P$ and $Q$ are Sylow $p$-subgroups of $G$ and hence of $N_G(Q)$.
+Thus, by \cref{corollary35}, the are conjugate in $N_G(Q)$. Since $Q
+\triangleleft N_G(Q)$, this can only occur if $Q=P$. Thus, $S_0 = \{p\}$ and by
 \cref{lemma28}, $|S| \equiv |S_0| \equiv 1 \Mod{p}$. Thus, $|S| = kp+1$ for some
 $k \in \N \cup \{0\}$.
 \end{proof}
@@ -1250,10 +1258,10 @@ $k \in \N \cup \{0\}$.
 Every group of order 15 is cyclic.
 \end{example}
 Let $G$ be a group of order $15 = 3 \cdot 5$. Let $n_p$ be the number of Sylow
-$p$-subgroups of $G$. By \cref{tst}, we have $n_3 \mid 15$ and $n_3 \equiv 1
-\Mod{3}]$. Thus, $n_3 = 1$. Similarly, since $n_5 \mid 15$ and $n_5 \equiv 1
-\Mod{5}$, $n_5 = 1$. It follows that there is only one Sylow 3-subgroup and one
-Sylow 5-subgroup in $G$, say $P_3$ and $P_5$ respectively. Thus, $P_3
+$p$-subgroups of $G$. By the \nameref{tst}, we have $n_3 \mid 15$ and $n_3
+\equiv 1 \Mod{3}]$. Thus, $n_3 = 1$. Similarly, since $n_5 \mid 15$ and $n_5
+\equiv 1 \Mod{5}$, $n_5 = 1$. It follows that there is only one Sylow 3-subgroup
+and one Sylow 5-subgroup in $G$, say $P_3$ and $P_5$ respectively. Thus, $P_3
 \triangleleft G$ and $P_5 \triangleleft G$. Consider $|P_3 \cap P_5|$, which
 divides 3 and 5. Thus, $|P_3 \cap P_5| = 1$. Also, $|P_3P_5| = 15 = |G|$. It
 follows that
@@ -1264,13 +1272,13 @@ G \cong P_3\times P_5 \cong \quotient{\Z}{\cyclic{3}} \times
 \begin{example}
 There are exactly two isomorphism classes of groups of order 21.
 \end{example}
-Let $G$ be a group of order $21 = 7 \cdot 3$. Let $n_p$ be the number os Sylow
-$p$-subgroups of $G$. By \cref{tst}, we have $n_3 \mid 21$ and $n_3 \equiv 1
-\Mod{3}$. Thus, $n_3 = 1$ or 7. Similarly, we have $n_7 \mid 21$ and $n_7 \equiv
-1 \Mod{7}$. Thus, $n_7 = 1$. It follows that $G$ has a unique Sylow 7-subgroup,
-say $P_7$ and note that $P_7 \triangleleft G$ and $P_7$ is cyclic, say
-$P_7 = \cyclic{x}$ with $x^7 = 1$. Let $H$ be a Sylow 3-subgroup. Since $|H| =
-3$, $|H|$ is cyclic and $H = \cyclic{y}$ with $y^3 = 1$. Since $P_7
+Let $G$ be a group of order $21 = 7 \cdot 3$. Let $n_p$ be the number of Sylow
+$p$-subgroups of $G$. By the \nameref{tst}, we have $n_3 \mid 21$ and $n_3
+\equiv 1 \Mod{3}$. Thus, $n_3 = 1$ or 7. Similarly, we have $n_7 \mid 21$ and
+$n_7 \equiv 1 \Mod{7}$. Thus, $n_7 = 1$. It follows that $G$ has a unique Sylow
+7-subgroup, say $P_7$ and note that $P_7 \triangleleft G$ and $P_7$ is cyclic,
+say $P_7 = \cyclic{x}$ with $x^7 = 1$. Let $H$ be a Sylow 3-subgroup. Since $|H|
+= 3$, $|H|$ is cyclic and $H = \cyclic{y}$ with $y^3 = 1$. Since $P_7
 \triangleleft G$, we have $yxy^{-1} = x^i$ for some power $i \in [0,6]$. It
 follows that
 \begin{align*}
@@ -1282,21 +1290,23 @@ follows that
 =&\>x^{i^3}.
 \end{align*}
 Since $x^{i^3} = x$ and $x^7 = 1$, we have $i^3 - 1 \equiv 0 \Mod{7}$. Then,
-it must be that $i = 1,2,4$.
+it must be that $i = 1,2,4$. We break this down to three cases:
 \begin{enumerate}
 \item If $i = 1$, then $yxy^{-1} = x$ or $yx = xy$. Thus, $G$ is abelian and
 $G \cong \quotient{\Z}{\cyclic{21}}$.
 \item If $i = 2$, then $yxy^{-1} = x^2$. Thus,
 \begin{equation*}
-G = \{ x^iy^j : 0 \leq i \leq 6, 0 \leq j \leq 2, yxy^{-1} = x^2\}
+G = \{ x^iy^j : 0 \leq i \leq 6,\>0 \leq j \leq 2,\> yxy^{-1} = x^2\}
 \end{equation*}
-which has 21 distinct elements. Here, $G$ is generated by $x$ and $y$.
+which has 21 distinct elements. Here, $G$ is generated by $x$ and $y$, which are
+order 3 and 7 respectively, so $G \cong \quotient{\Z}{\cyclic 3}\times
+\quotient{\Z}{\cyclic 7}$.
 \item If $i = 4$, then $yxy^{-1} = x^4$. Note that
 \begin{equation*}
 y^2xy^{-2} = yx^4y^{-1} = x^{16} = x^2.
 \end{equation*}
 Note that $y^2$ is also a generator of $H$. Thus, by replacing $y$ by $y^2$, we
-get back to case (2).
+get back to case 2.
 \end{enumerate}
 
 \pagebreak
@@ -1323,17 +1333,28 @@ Since $\quotient{S_4}{A_4} \cong \quotient{\Z}{\cyclic{2}}$ and
 $\quotient{A_4}{V} \cong \quotient{\Z}{\cyclic{3}}$, we see that $S_4$ is
 solvable.
 \end{example}
-\begin{theorem}[Second Isomorphism Theorem]
+\begin{theorem*}[First Isomorphism Theorem]
+If $G$ and $H$ are groups and $\phi: G \to H$ is a group homomorphism, then
+\begin{enumerate}
+\item $\ker(\phi) \triangleleft G$
+\item $\im(\phi) \leq H$
+\item $\quotient{G}{\ker(\phi)} \cong \im(\phi)$.
+\end{enumerate}
+In particular, if $\phi$ is a surjective map, then $H \cong
+\quotient{G}{\ker(\phi)}$.
+\label{fit}
+\end{theorem*}
+\begin{theorem*}[Second Isomorphism Theorem]
 If $H$ and $N$ are subgroups of a group $G$ with $N \triangleleft G$, then
-$\quotient{H}{H\cap N} \cong \quotient{NH}{N}$
+$\quotient{H}{H\cap N} \cong \quotient{NH}{N}$.
 \label{sit}
-\end{theorem}
-\begin{theorem}[Third Isomorphism Theorem]
+\end{theorem*}
+\begin{theorem*}[Third Isomorphism Theorem]
 If $H$ and $H$ are normal subgroups of a group $G$ such that $N \subseteq H$,
-then $\quotient{H}{N}$ is a normal subgroup of $G$ and  $\quotient{G}{N} \cong
-\faktor{\quotient{G}{N}}[1]{\quotient {H}{N}}[-1.5]$.
+then $\quotient{H}{N}$ is a normal subgroup of $G$ and $\quotient{G}{N} \cong
+\faktor{\quotient{G}{N}}{\quotient{H}{N}}$.
 \label{tit}
-\end{theorem}
+\end{theorem*}
 \begin{theorem}\leavevmode
 \begin{enumerate}
 \item If $G$ is a solvable group, every subgroup and every quotient group of $G$
@@ -1360,7 +1381,7 @@ Define $H_i = H \cap G_i$. Since $G_{i+1} \triangleleft G_i$, we have a tower
 \end{equation*}
 with $H_{i+1} \triangleleft H_i$. Note that both $H_i$ and $G_{i+1}$ are
 subgroups of $G_i$ and $H_{i+1} = H \cap G_{i+1} = H_i \cap G_{i+1}$. Applying
-\cref{sit} to $G_i$, we have
+the \nameref{sit} to $G_i$, we have
 \begin{equation*}
 \quotient{H_i}{H_{i+1}} = \quotient{H_i}{H_i \cap G_{i+1}} \cong 
 \quotient{H_iG_{i+1}}{G_{i+1}} \subset \quotient{G_i}{G_{i+1}}.
@@ -1381,12 +1402,12 @@ and
 \end{equation*}
 Since $G_{i+1} \triangleleft G_i$ and $N \triangleleft G$, we have
 $G_{i+1}N \triangleleft G_iN$, which implies that $\quotient{G_{i+1}N}{N}
-\triangleleft \quotient{G_iN}{N}$. By \cref{tit},
+\triangleleft \quotient{G_iN}{N}$. By the \nameref{tit},
 \begin{equation*}
 \quotient{\quotient{G_iN}{N}}{\quotient{G_{i+1}N}{N}} \cong
 \quotient{G_iN}{G_{i+1}N}.
 \end{equation*}
-By \cref{sit}, we have
+By the \nameref{sit}, we have
 \begin{equation*}
 \quotient{G_iN}{G_{i+1}N} \cong \quotient{G_i}{G_i\cap G_{i+1}N}.
 \end{equation*}
@@ -1402,6 +1423,97 @@ abelian. It follows that $\quotient{G}{N}$ is solvable.\\
 Both these claims together show the first part of this theorem.
 \item Suppose that $N$ is a normal subgroup of a group $G$ and both $N$ and
 $\quotient{G}{N}$ are solvable.
+Since $N$ is solvable, we have a tower
+\begin{equation*}
+\{1\} = N_0 < N_1 < \dots < N_k = N
+\end{equation*}
+where $N_i \triangleright N_{i+1}$ and $\quotient{N_{i+1}}{N_{i}}$ is abelian
+for all $0 \leq i \leq (m-1)$. For a subgroup $H \leq G$ with $N \leq H$, which
+we denote by $\bar H \coloneq \quotient{H}{N}$. Note $N \triangleleft G$ and
+$N \triangleleft H$. Since $\quotient{G}{N}$, we have a tower,
+\begin{equation*}
+\{1\} = \quotient{N}{N} = \bar G_0 < \bar G_1 < \dots < \bar G_r = \bar G =
+\quotient{G}{N}
+\end{equation*}
+with $\bar G_j \triangleright \bar G_{j+1}$ and $\quotient{\bar G_{j+1}}{\bar
+G_j}$ for all $0 \leq j \leq (r-1)$. Let $\Sub_N(G)$ be the group of subgroups
+of $G$ which contain $N$. Consider the map
+\begin{align*}
+\sigma : \Sub_N(G) &\to \Sub_N\left(\quotient{G}{N}\right)\\
+H &\mapsto \bar H \coloneqq \quotient{H}{N}
+\end{align*}
+which is trivially injective. Then, by \nameref{fit}, this is a bijection. For
+all $0 \leq j \leq r$, define $G_j \coloneqq \sigma^{-1}(\bar G_j)$. Since
+$N \triangleleft G$, $\bar G_{j+1} \triangleleft \bar G_j$, we have
+$G_{j+1} \triangleleft G_j$. Now, by \nameref{tit}, we have
+\begin{equation*}
+\quotient{G_j}{G_{j+1}} \cong
+\quotient{\quotient{G_j}{N}}{\quotient{G_{j+1}}{N}} \cong \quotient{\bar
+G_j}{\bar G_{j+1}}
+\end{equation*}
+which is abilian. If follows that
+\begin{equation*}
+\{1\} = N_0 < \dots < N_m = G_0 < \dots < G_r = G
+\end{equation*}
+so $G$ is solvable.
 \end{enumerate}
 \end{proof}
+\begin{example}
+$S_4$ contains subgroups isomorphic to $S_3$ and $S_2$. Since $S_4$ is solvable,
+by \cref{theorem38}, $S_3$ and $S_4$ are solvable
+\end{example}
+\begin{definition}
+A group $G$ is \underline{simple} if it is not trivial and has no normal
+subgroups other than $G$ and $\{1\}$.
+\end{definition}
+\begin{remark}
+$S_n$ is not solvable for $n \geq 5$.
+\end{remark}
+\begin{proof}
+One can show that the alternating group $A_5$ is simple. Since $A_5 \supsetneq
+\{1\}$ is the only tower and $\quotient{A_5}{\{1\}}$ is not abelian, $A_5$
+is not solvable. For all $n \geq 5$, $S_5$ is a subgroup of $S_n$. Then by
+\cref{theorem38}, $S_n$ is not solvable.
+\end{proof}
+\begin{corollary}
+$G$ is a finite solvable group if and only if there exists a tower
+\begin{equation*}
+\{1\} = G_0 < G_1 < \dots < G_m = G
+\end{equation*}
+with $G_{i} \triangleright G_{i+1}$ and $\quotient{G_i}{G_{i+1}}$ is cyclic.
+\label{corollary39}
+\end{corollary}
+\begin{proof}
+Let $A$ be a finite abelian group. We have
+\begin{equation*}
+A \cong C_{k_1} \times \dots \times C_{k_r} 
+\end{equation*}
+where $C_k$ is a cyclic group of order $k$. For a finite cyclic group $C$, we
+have
+\begin{equation*}
+C \cong \quotient{\Z}{\cyclic{p_1^{\alpha_1}}} \times \dots \times
+\quotient{\Z}{\cyclic{p_r^{\alpha_r}}}
+\end{equation*}
+be the Chinese Remainder Theorem, with $p_i$ distinct primes. For a cyclic group
+whose order is a prime power, say $\quotient{\Z}{\cyclic{p^\alpha}}$, be the
+\nameref{fst}, we have a tower of subgroups
+\begin{equation*}
+\{1\} < \quotient{\Z}{\cyclic{p}} < \dots < \quotient{\Z}{p^{\alpha-1}} <
+\quotient{\Z}{p^{\alpha-1}}
+\end{equation*}
+which concludes the proof.
+\end{proof}
+
+\pagebreak
+\section{Automorpism Groups}
+\begin{definition}
+Let $\quotient{E}{F}$ be a field extension. If $\Phi$ is an automorphism of $E$,
+in other words $\Phi: E \to E$ is an isomorphism and $\Phi|_F = 1_F$, we say
+$\Phi$ is an \underline{$F$-automorphism}. By map composition, the set
+\begin{equation*}
+\{\Phi:E\to E\>|\>\Phi\>\text{is an }F\text{-automorphism}\}
+\end{equation*}
+is a group. We call it the \underline{automorphism group of $\quotient{E}{F}$}
+denoted by $\Aut_F(E)$.
+\end{definition}
 \end{document}
