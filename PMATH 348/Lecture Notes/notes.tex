@@ -310,7 +310,7 @@ $\quotient{F[x]}{\cyclic{p(x)}}$. It follows that $[F(\alpha): F] =
 \alpha^{\deg (p) - 1}\}$ is a basis of $\quotient{F(\alpha)}{F}$.
 \end{enumerate}
 \end{proof}
-\begin{theorem}
+\begin{theorem}\label{theorem5}
 Let $\quotient{E}{F}$ be a field extension. If $[E:F] < \infty$, then there
 exists $\alpha_1, \dots, \alpha_n \in E$ such that
 \begin{equation*}
@@ -1505,15 +1505,88 @@ which concludes the proof.
 \end{proof}
 
 \pagebreak
-\section{Automorpism Groups}
+\section{Automorphism Groups}
 \begin{definition}
-Let $\quotient{E}{F}$ be a field extension. If $\Phi$ is an automorphism of $E$,
-in other words $\Phi: E \to E$ is an isomorphism and $\Phi|_F = 1_F$, we say
-$\Phi$ is an \underline{$F$-automorphism}. By map composition, the set
+Let $\quotient{E}{F}$ be a field extension. If $\psi$ is an automorphism of $E$,
+in other words $\psi: E \to E$ is an isomorphism and $\psi|_F = 1_F$, we say
+$\psi$ is an \underline{$F$-automorphism}. By map composition, the set
 \begin{equation*}
-\{\Phi:E\to E\>|\>\Phi\>\text{is an }F\text{-automorphism}\}
+\{\psi:E\to E\>|\>\psi\>\text{is an }F\text{-automorphism}\}
 \end{equation*}
 is a group. We call it the \underline{automorphism group of $\quotient{E}{F}$}
 denoted by $\Aut_F(E)$.
 \end{definition}
+\begin{lemma}
+Let $\quotient{E}{F}$ be a field extension with $f(x) \in F[x]$ and $\psi \in
+\Aut_F(E)$. If $\alpha \in E$ is a root of $f(x)$, then $\psi(\alpha)$ is also a
+root of $f(x)$.
+\label{lemma40}
+\end{lemma}
+\begin{proof}
+Write $f(x) = a_0 + a_1x + \dots + a_nx^n \in F[x]$. We have
+\begin{align*}
+f(\psi(\alpha)) &= a_0 + a_1\psi(\alpha) + a_2\psi^2(\alpha) + \dots +
+a_n\psi^n(\alpha)\\
+&= \psi(a_0) + \psi(a_1)\psi(\alpha) + \psi(a_2)\psi^2(\alpha) + \dots +
+\psi(a_n)\psi^n(\alpha)\\ 
+&= \psi(a_0 + a_1\alpha + \dots + a_n\alpha^n)\\ 
+&= \psi(0)\\ &= 0.
+\end{align*}
+\end{proof}
+\begin{lemma}
+Let $E = F(\alpha_1, \dots, \alpha_n)$ be a field extension of $F$. For
+$\psi_1,\psi_2 \in \Aut_F(E)$, if $\psi_1(\alpha_i) = \psi_2(\alpha_i)$ for all
+$\alpha_i$, $1 \leq i \leq n$, then $\psi_1 = \psi_2$.
+\label{lemma41}
+\end{lemma}
+\begin{proof}
+Since each $\alpha \in E$ is of the form $\displaystyle \frac{f(\alpha_1, \dots,
+\alpha_n)}{g(\alpha_1, \dots, \alpha_n)}$ where $f(x_1, \dots, x_n), g(x_1,
+\dots, x_n) \in F[x_1, \dots< x_n]$, the lemma follows.
+\end{proof}
+\begin{corollary}
+If $\quotient{E}{F}$ is a finite extension, then $\Aut_F(E)$ is a finite group.
+\label{corollary42}
+\end{corollary}
+\begin{proof}
+Since $\quotient{E}{F}$ is a finite extension, by \cref{theorem5}, $E =
+F(\alpha_1, \dots, \alpha_n)$ where $\alpha_i$ are algebraic over $F$ for all
+$1 \leq i \leq n$. For $\psi \in \Aut_F(E)$, by \cref{lemma40}, $\psi(\alpha_i)$
+is a root of the minimal polynomial of $\alpha_i$. Thus, there are finitely many
+choices for $\psi(\alpha_i)$. By \cref{lemma41}, since $\psi \in \Aut_F(E)$ is
+completely determined by $\psi(\alpha_i)$, there are finitely many choices for
+$\psi$. Thus, $\Aut_F(E)$ is finite.
+\end{proof}
+\begin{remark}
+The converse to \cref{corollary42} is false. For example, $[\R:\Q]$ in infinite,
+by $\Aut_\Q(\R) = \{1\}$.
+\end{remark}
+\begin{definition}
+Let $F$ be a field and $f(x) \in F[x]$. The \underline{Automorphism Group of
+$f(x)$ over $F$} is defined to be the group $\Aut_F(E)$, where $E$ is the
+splitting field of $f(x)$ over $F[x]$.
+\end{definition}
+From Assignment 2, we proved that the number of automorphisms is at most $[E:F]$
+with equality if and only if $f(x)$ is separable over $F$, we have the following
+theorem as a direct consequence.
+\begin{theorem}
+Let $\quotient{E}{F}$ be the splitting field of a nonzero polynomial $f(x) \in
+F[x]$. We have $|\Aut_F(E)| \leq [E:F]$ with equality if and only if $f(x)$ is
+separable.
+\label{theorem43}
+\end{theorem}
+\begin{example}
+Let $F$ be a field with $\ch(F) = p$ for some prime $p$ and $F^p \neq F$. Also
+consider $f(x) = x^p-a$ with $a \in F \setminus F^p$. Let $\quotient{E}{F}$ be
+the splitting field of $f(x)$. We have seen before that $f(x) = (x - \beta)$ for
+some $\beta \in E \setminus F$. Thus, $E = F(\beta)$, Since $\beta$ can only map
+to $\beta$, $\Aut_F(E)$ is trivial. Note that $|\Aut_F(E)| =1$ but $[E:F] = p$.
+We have $|\Aut_F(E)| \neq [E:F]$ because $f(x)$ is not separable.
+\end{example}
+\begin{theorem}
+If $f(x) \in F[x]$ has $n$ distinct roots in the splitting field $E$, then
+$\Aut_F(E)$ is isomorphic to a subgroup of the symmetric group $S_n$. In
+particular, $|\Aut_F(E)| \mid n\fact$.
+\label{theorem44}
+\end{theorem}
 \end{document}

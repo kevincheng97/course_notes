@@ -89,15 +89,6 @@
 \patchcmd{\upbracefill}{\hfill\braceru}{\hfill\mkern-1mu\braceru}{}{}
 \makeatother
 
-\makeatletter
-\def\@testdef #1#2#3{%
-  \def\reserved@a{#3}\expandafter \ifx \csname #1@#2\endcsname
- \reserved@a  \else
-\typeout{^^Jlabel #2 changed:^^J%
-\meaning\reserved@a^^J%
-\expandafter\meaning\csname #1@#2\endcsname^^J}%
-\@tempswatrue \fi}
-
 \newtheorem{theorem}{Theorem}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{prop}[theorem]{Proposition}
@@ -115,7 +106,7 @@
 
 \foreach \theoremenv in {theorem,theorem*,lemma,claim,prop,corollary,proof} {
     \AtBeginEnvironment{\theoremenv}{%
-        \setlist[enumerate]{label={(\arabic*)}}
+        \setlist[enumerate,2]{label={(\arabic{enumi}.\arabic*)}}
   }
 }
 
