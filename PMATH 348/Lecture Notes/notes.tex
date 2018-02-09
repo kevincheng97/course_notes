@@ -1506,6 +1506,7 @@ which concludes the proof.
 
 \pagebreak
 \section{Automorphism Groups}
+\subsection{Automorphism Groups}
 \begin{definition}
 Let $\quotient{E}{F}$ be a field extension. If $\psi$ is an automorphism of $E$,
 in other words $\psi: E \to E$ is an isomorphism and $\psi|_F = 1_F$, we say
@@ -1559,7 +1560,7 @@ $\psi$. Thus, $\Aut_F(E)$ is finite.
 \end{proof}
 \begin{remark}
 The converse to \cref{corollary42} is false. For example, $[\R:\Q]$ in infinite,
-by $\Aut_\Q(\R) = \{1\}$.
+but $\Aut_\Q(\R) = \{1\}$.
 \end{remark}
 \begin{definition}
 Let $F$ be a field and $f(x) \in F[x]$. The \underline{Automorphism Group of
@@ -1588,5 +1589,83 @@ If $f(x) \in F[x]$ has $n$ distinct roots in the splitting field $E$, then
 $\Aut_F(E)$ is isomorphic to a subgroup of the symmetric group $S_n$. In
 particular, $|\Aut_F(E)| \mid n\fact$.
 \label{theorem44}
+\end{theorem}
+\begin{proof}
+Let $X = \{\alpha_1, \dots, \alpha_n\}$ be distinct roots of $f(x)$ in $E$. By
+\cref{lemma40}, if $\psi \in \Aut_E(F)$, then $\psi(X) = X$ Let $\psi|_X$ be the
+restriction of $\psi$ in $X$ and $S_X$ the permutation group of $X$. The map
+$\Aut_F(E) \to S_X$ defined by $\psi \mapsto \psi|_X$ is a group homomorphism.
+Moreover, by \cref{lemma41}, it is injective. Thus, $\Aut_F(E)$ is isomorphic to
+the subgroup of $S_n$.
+\end{proof}
+\begin{example}
+Let $f(x) = x^3 -2 \in \Q[x]$ and $\quotient{E}{\Q}$ be the splitting field of
+$f(x)$. Thus, $E = \Q(\sqrt[3]2, \xi_3)$ and $[E:\Q] = 6$. Since $\ch(\Q) = 0$,
+$f(x)$ is separable. By \cref{theorem43},
+\begin{equation*}
+|\Aut_\Q(E)| = [E:\Q] = 6.
+\end{equation*}
+Also, since $f(x)$ has 3 distinct roots in $E$, by \cref{theorem44},
+$\Aut_\Q(E)$ is a subgroup of $S_3$. Since the only subgroup of $S_3$ which is
+of order 6 is $S_3$, we have
+\begin{equation*}
+\Aut_\Q(E) \cong S_3.
+\end{equation*}
+Furthermore, since $S_3$ is non-abelian, $\Aut_\Q(E)$ is non-abelian. This shows
+Automorphism groups are need not to be abelian.
+\end{example}
+
+\subsection{Fixed Fields}
+\begin{definition}
+Let $\quotient{E}{F}$ be a field extension and $\psi \in \Aut_F(E)$. Define
+\begin{equation*}
+E^\psi \coloneqq \{ a \in E: \psi(a) = a\}
+\end{equation*}
+which is a subfield of $E$ containing $F$. We call $E^\psi$ the
+\underline{fixed field of $\psi$}.
+\end{definition}
+\begin{definition}
+If $G \subseteq \Aut_F(E)$, the \underline{fixed field of $G$} is defined by
+\begin{equation*}
+E^G \coloneqq \bigcap_{\psi \in G}E^\psi = \{ a \in E:\psi(a) = a,\>\forall \psi
+\in G\}.
+\end{equation*}
+\end{definition}
+\begin{theorem}
+Let $f(x) \in F[x]$ be a separable polynomial and $\quotient{E}{F}$ its
+splitting field. If $G =\Aut_F(E)$, then $E^G = F$.
+\label{theorem45}
+\end{theorem}
+\begin{proof}
+Since $F \subseteq E^G$, we have $\Aut_E^G(E) \subseteq \Aut_F(E)$. On the other
+hand, if $\psi \in \Aut_F(E)$, be defintion of $E^G$, for all $a \in E^G$, we
+have $\psi(a) = a$. This implies that $\phi \in \Aut_E^G(E)$. Thus
+\begin{equation*}
+\Aut_E^G(E) = \Aut_F(E).
+\end{equation*}
+Note that since $f(x)$ is separable over $F$ and splits over $E$, $f(x)$ is also
+separable over $E^G$ and has $E$as its splitting field over $E^G$. Thus, by
+\cref{theorem43}, we have
+\begin{equation*}
+|Aut_F(E)| = [E:F] \quad\text{and}\quad |Aut_E^G(E)| = [E:E^G] 
+\end{equation*}
+It follows that since $[E:E^G] = [E:F]$. Since $[E:F]=[E:E^G]=[E^G:F]$, we have
+$[E^G:F] = 1$. In other words, $E^G = F$.
+\end{proof}
+
+\pagebreak
+\section{Separable and Normal Extensions}
+\subsection{Separable Extensions}
+\begin{definition}
+Let $\quotient{E}{F}$ be an algebraic field extension. For $\alpha \in E$, let
+$p(x) \in F[x]$ be the minimal polynomial of $\alpha$. We say $\alpha$ is
+\underline{separable over $F$} if $p(x)$ is separable over $F$. If for all
+$\alpha \in E$, $\alpha$ is separable, we say $\quotient{E}{F}$ is
+\underline{separable}.
+\end{definition}
+\begin{theorem}
+Let $\quotient{E}{F}$ be a splitting field of $f(x)\in F[x]$. If $f(x)$ is
+separable, then $\quotient{E}{F}$ is separable.
+\label{theorem46}
 \end{theorem}
 \end{document}
