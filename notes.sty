@@ -106,6 +106,7 @@
 
 \foreach \theoremenv in {theorem,theorem*,lemma,claim,prop,corollary,proof} {
     \AtBeginEnvironment{\theoremenv}{%
+        \setlist[enumerate]{label*={(\arabic*)}}
         \setlist[enumerate,2]{label={(\arabic{enumi}.\arabic*)}}
   }
 }

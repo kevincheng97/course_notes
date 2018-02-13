@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{notes}
 
-\newcommand{\thiscoursecode}{PMATH 348}
+\newcommand{\thiscoursecode}{PMATH 352}
 \newcommand{\thiscoursename}{Complex Analysis}
 \newcommand{\thisprof}{Prof. Akshaa Vatwani}
 \newcommand{\me}{Kevin Cheng}
@@ -9,6 +9,7 @@
 
 \newcommand{\Arg}{\text{Arg}}
 \newcommand*{\pd}[3][]{\ensuremath{\frac{\partial^{#1} #2}{\partial #3^{#1}}}}
+\newcommand*\dif{\mathop{}\!d}
 
 \hypersetup
 {pdfauthor={\me},
@@ -34,8 +35,8 @@ pdflang={English}}
 
 \section{Complex Numbers}
 \begin{definition}
-A \underline{complex number} is a vector in $\R^2$. The \underline{complex plane} denoted by $\C$ is the
-set of complex numbers. 
+A \underline{complex number} is a vector in $\R^2$. The \underline{complex
+plane} denoted by $\C$ is the set of complex numbers. 
 \begin{equation*}
 \C = \R^2 = \bigg\{\begin{pmatrix}x\\y\end{pmatrix}: x, y \in \R \bigg\}
 \end{equation*}
@@ -141,8 +142,8 @@ If $z = x + iy, x, y, \in \R$, then the \underline{conjugate of $z$} is
 $\bar{z} = x - iy$.
 \end{definition}
 \begin{definition}
-We define the \underline{modulus} (or length or magnitude) of $z = x + iy, x, y \in \R$ to
-be
+We define the \underline{modulus} (or length or magnitude) of $z = x + iy, x, y
+\in \R$ to be
 \begin{equation*}
 |z| = \sqrt{x^2 + y^2} \in \R
 \end{equation*}
@@ -589,6 +590,9 @@ then, $f$ is holomorphic at $z_0$.
 \end{theorem}
 TODO: find proof online.
 
+\pagebreak
+\section{Power Series}
+\subsection{Convergence and Divergence}
 \begin{example}
 Consider the \underline{power series}, an expression of the form
 \begin{equation*}
@@ -616,15 +620,17 @@ Absolute convergence implies converges. Notice,
 \end{equation*}
 for each $N \in \N$.
 \end{remark}
+
+\subsection{Radius of Convergence}
 \begin{theorem}
-For any power series $\displaystyle\sum^\infty_{n=0} c_nz^n, \exists 0 \leq R \leq
-\infty$, such that
+For any power series $\displaystyle\sum^\infty_{n=0} c_nz^n, \exists 0 \leq R
+\leq \infty$, such that
 \begin{enumerate}
 \item If $|z| < R$, the series converges absolutely
 \item If $|z| > R$, the series diverges.
 \end{enumerate}
-Moreover, $R$ is given by Hadamard's formula: $\displaystyle\frac{1}{R} = \limsup_{n \to
-\infty} |c_n|^\frac{1}{n}$
+Moreover, $R$ is given by Hadamard's formula: $\displaystyle\frac{1}{R} =
+\limsup_{n \to \infty} |c_n|^\frac{1}{n}$
 \label{theorem3}
 \end{theorem}
 \begin{remark}
@@ -863,6 +869,10 @@ convergence $R > 0$. This implies that $f(z)$ is holomorphic at $z_0$. In fact,
 the converse is true; any function holomorphic at $z_0$ is infinitely
 holomorphic at $z_0$.\\
 However, for this, we need the concept of integration over paths of curves.
+
+\pagebreak
+\section{Integration}
+\subsection{Curves and Paths}
 \begin{definition}
 A \underline{curve} in $\C$ is a continuous function $\gamma(t) : [a,b] \to \C$
 with $a,b \in \R$. The image of $\gamma$ in $\C$ is called $\gamma^*$.
@@ -873,9 +883,9 @@ z_0 + re^{it}$. This is a circle of radius $r$ centered at $z_0$, oriented
 counterclockwise.
 \end{example}
 \begin{example}
-Consider $\hat\gamma: [0,1] \to \C$ defined by $t \mapsto z_0 + re^{2\pi it}$. This
-is identical to the curve $\gamma$ defined above with the same oriented path and
-shows that curves have different parameterizations.
+Consider $\hat\gamma: [0,1] \to \C$ defined by $t \mapsto z_0 + re^{2\pi it}$.
+This is identical to the curve $\gamma$ defined above with the same oriented
+path and shows that curves have different parameterizations.
 \end{example}
 \begin{definition}
 We say $\gamma$ is \underline{smooth} on the interval $[a,b]$ if $\gamma'$
@@ -888,31 +898,127 @@ $[a,b]$ except at finitely many points in $[a,b]$.
 \begin{remark}
 Piecewise smooth curves are called \underline{paths}.
 \end{remark}
+\subsection{The Integral}
 \begin{definition}
 Given a path $\gamma:[a,b] \to \C$ and $f(z)$ is a continuous function on
-$\gamma$, the \underline{integral of $f$ along $\gamma$} is defined by
+$\gamma$, the \underline{integral of $f$ along $\gamma$}, (called the
+\underline{contour}) is defined by
 \begin{equation*}
 \int_\gamma f(z)\>dz \coloneqq \int^b_a f\big(\gamma(t)\big)\gamma'(t)\>dt.
 \end{equation*}
+where $z = \gamma(t)$, so $dz = \gamma'(t)\dif t$.
 \end{definition}
 \begin{remark}
 If $g$ is complex valued, then
 \begin{equation*}
-\int^b_a g(t)\>dt = \int^b_a \Re\big(g(t)\big)\> dt + i \int^b_a
-\Im\big(g(t)\big)\> dt.
+\int^b_a g(t)\dif t = \int^b_a \Re\big(g(t)\big)\dif t + i \int^b_a
+\Im\big(g(t)\big)\dif t.
 \end{equation*}
 \end{remark}
 \begin{remark}
-The integral $\int_\gamma f(z)\>dz$ can be shown to be independent of the
+The integral $\int_\gamma f(z)\dif z$ can be shown to be independent of the
 parameterization chosen for $\gamma*$.
 \end{remark}
-\begin{theorem}\leavevmode
+\begin{theorem}
+For any complex valued functions $f(z), g(z)$, and $\alpha, \beta \in \C$, the
+following hold:
 \begin{enumerate}
-\item Integration is linear; For any $\alpha, \beta \in \C$, and any curve
-$\gamma:[\alpha,\beta] \to \C$,
+\item Integration is linear; For any curve $\gamma:[\alpha,\beta] \to \C$,
+\begin{equation*} \int_{\gamma} (\alpha f(z) + \beta g(z))\dif z =
+\alpha\int_\gamma f(z)\dif z + \beta\int_\gamma g(z)\dif z
+\end{equation*}
+\item If $\beta \leq \alpha$,
 \begin{equation*}
-\int_{\gamma}<++>
-\end{equation*}<++>
+\left| \int_a^b g(z)\dif z\right| \leq \int_a^b |g(z)| \dif z
+\end{equation*}
+\item If $f(x)$ is continuous on the path $\gamma:[\alpha,\beta] \to \C$,
+\begin{equation*}
+\left| \int_\gamma f(z)\dif z\right| \leq \sup_{z \in \gamma} |f(x)| \cdot
+\underbrace{\int_a^b |\gamma(t)| \dif t}_{\text{length of the path}}
+\end{equation*}
+\item If $\gamma^-$ is the reverse direction of the path $\gamma:[a:b]\to\C$,
+then
+\begin{equation*}
+\int_{\gamma^-} f(z)\dif z = -\int_\gamma f(z)\dif z
+\end{equation*}
 \end{enumerate}
 \end{theorem}
+\begin{proof}\leavevmode
+\begin{enumerate}
+\item This follows as we can write $f(x) = \Re(f) + i\Im(f)$ and apply linearity
+of real-valued integrals.
+\item Since we have $-|g(z)| \leq g(z) \leq |g(z)|$, for all $z \in [a,b]$, we
+have
+\begin{equation*}
+-\int_a^b |g(z)| \dif z \leq \int_a^b g(z) \dif z \leq \int_a^b |g(z)| \dif z
+\end{equation*}
+and the result follows.
+\item Notice,
+\begin{align*}
+\left| \int_\gamma f(z) \dif z\right|
+&= \left| \int_a^b f(\gamma(t))\gamma'(t)\dif t\right|\\
+&\leq \int_a^b |f(\gamma(t))\gamma'(t)| \dif t \tag{from (2)}\\
+&\leq \int_a^b \sup_{z\in\gamma} |f(z)| |\gamma'(t)| \dif t \tag{$|f(z)|\leq
+\sup_{z\in\gamma}|f(z)|$}\\
+&= \sup_{z\in\gamma} |f(z)| \int_a^b |\gamma'(t)| \dif t 
+\end{align*}
+as desired.
+\item This follows trivially from the \nameref{ftoc}. We can
+define $\gamma^-:[b,a] \to \C$ and
+\begin{equation*}
+\int_{\gamma^-} f(z) \dif z
+= \int_b^a f(z) \dif z
+= F(a) - F(a)
+= -(F(a) - F(b))
+= \int_a^b f(z) \dif z
+\int_{\gamma} f(z) \dif z
+\end{equation*}
+where $F(z) = \int f(z) \dif z$.
+\end{enumerate}
+\end{proof}
+At this point, we generalize the \nameref{ftoc} for $\C$
+
+\subsection{Fundamental Theorem of Calculus}
+\begin{remark}
+We denote the set of all holomorphic functions $f: \Omega \subseteq \C \to \C$
+by $H(\Omega)$ where $\Omega$ is an open set. In other words, $f$ is holomorphic
+in $\Omega$ if and only if $f \in H(\Omega)$.
+\end{remark}
+\begin{theorem}[Fundamental Theorem of Calculus]
+Let $\gamma:[a,b] \to \mathbb{C}$ be a path inside an open set $\Omega \subseteq
+\mathbb{C}$. Suppose $f(z)$ is continuous on $\gamma$, and has an antiderivative
+$F \in \Omega$. Then,
+\begin{equation}
+\int_{\gamma} f(z) dz = F\big(\gamma(b)\big) - F\big(\gamma(a)\big)
+\end{equation}
+\label{ftoc}
+\end{theorem}
+\begin{proof}
+Let $G = F \circ \gamma$ and suppose $\gamma$ is a smooth function. Since
+$\gamma$ is smooth, $\gamma'$ exists and is continuous on $[a, b]$ and
+$\gamma'(t) \neq 0$ for all $t \in [a, b]$, and since $f$ is continuous on $[a,
+b]$, $G(t) = F'(\gamma(t))\gamma'(t)$ is continuous as well. Now
+\begin{align*}
+\int_{\gamma} f(z) \dif z
+&= \int_{a}^{b} f\big(\gamma(t)\big)\gamma'(t) \dif t \\
+&= \int_{a}^{b} F'\big(\gamma(t)\big)\gamma'(t) \dif t \\
+&= \int_{a}^{b} G'(t) \dif t \\
+\end{align*}
+Now, we can write $G'(t) = \Re(G) + i\Im(G)$ and apply the Fundamental Theorem
+of Calculus in $\R$ to arrive at
+\begin{align*}
+&= \int_{a}^{b} G'(t) \dif t \\
+&= \int_{a}^{b} \Re(G) \dif t + i\int_a^b \Im(G)\dif t \\
+&= \Re(G(b)) + i\Im(G(b)) - \Re(G(a)) - i\Im(G(b))\\
+&= G(b) - G(a) \\
+&= F(\gamma(b)) - F(\gamma(a))
+\end{align*}
+If $\gamma$ is piecewise smooth, then we can simply apply the above to each of
+the smooth paths separately and sum up all of the integrals.
+\end{proof}
+\begin{definition}
+A path $\gamma: [a, b] \to \C$ is said to be \underline{closed} if
+$\gamma(a) = \gamma(b)$.
+\end{definition}
+
 \end{document}

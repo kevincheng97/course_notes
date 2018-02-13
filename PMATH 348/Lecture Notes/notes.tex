@@ -652,7 +652,7 @@ which extends $\phi$. It follows that there exists a field isomorphism,
 \begin{equation*}
 \tilde\phi: F(\alpha) \to F'(\alpha), \quad \alpha \mapsto \alpha'
 \end{equation*}
-which extends $\phi$. Note that since $\deg(p) > 2$, $[E:F[\alpha]] < [E:F]$.
+which extends $\phi$. Note that since $\deg(p) \geq 2$, $[E:F[\alpha]] < [E:F]$.
 Since $E$ (respectively $E'$) is the splitting field of $f(x) \in
 F(\alpha)[x]$ (respectively $f(x) \in F(\alpha)[x]$) over $F(\alpha)$
 (respectively $F'(\alpha')$), by induction, there exists $\Psi:E \to E'$ which
@@ -988,7 +988,7 @@ Let $r(x) \in F[x]$ be irreducible. Then
 0 & \text{, if $r' = 0$}
 \end{cases}.
 \end{equation*}
-Suppose $r(x)$ is not separable. Then by \cref{corollary20}, $\gcd{r,r'} \neq
+Suppose $r(x)$ is not separable. Then by \cref{corollary20}, $\gcd(r,r') \neq
 1$, so it must be that $\gcd(r,r') = 0$.
 \begin{enumerate}
 \item If $\ch(F) = 0$, from \cref{theorem18}, $r'(x) = 0$ implis that $r(x) = c
@@ -1233,7 +1233,7 @@ xP\in S_0 &\iff hxP = xP,\quad \forall h \in H\\
 &\iff x^{-1}Hx \subseteq P\\
 &\iff H \subseteq xPx^{-1}.
 \end{align*}
-In particular, if $H$ is a Sylow $p$-subgroup, then $|H| = |P| = |xPx^{-1}$.
+In particular, if $H$ is a Sylow $p$-subgroup, then $|H| = |P| = |xPx^{-1}|$.
 Thus, $H = xPx^{-1}$.
 \end{proof}
 \begin{theorem}[Third Sylow Theorem]
@@ -1259,7 +1259,7 @@ Every group of order 15 is cyclic.
 \end{example}
 Let $G$ be a group of order $15 = 3 \cdot 5$. Let $n_p$ be the number of Sylow
 $p$-subgroups of $G$. By the \nameref{tst}, we have $n_3 \mid 15$ and $n_3
-\equiv 1 \Mod{3}]$. Thus, $n_3 = 1$. Similarly, since $n_5 \mid 15$ and $n_5
+\equiv 1 \Mod{3}$. Thus, $n_3 = 1$. Similarly, since $n_5 \mid 15$ and $n_5
 \equiv 1 \Mod{5}$, $n_5 = 1$. It follows that there is only one Sylow 3-subgroup
 and one Sylow 5-subgroup in $G$, say $P_3$ and $P_5$ respectively. Thus, $P_3
 \triangleleft G$ and $P_5 \triangleleft G$. Consider $|P_3 \cap P_5|$, which
@@ -1639,17 +1639,17 @@ splitting field. If $G =\Aut_F(E)$, then $E^G = F$.
 \begin{proof}
 Since $F \subseteq E^G$, we have $\Aut_E^G(E) \subseteq \Aut_F(E)$. On the other
 hand, if $\psi \in \Aut_F(E)$, be defintion of $E^G$, for all $a \in E^G$, we
-have $\psi(a) = a$. This implies that $\phi \in \Aut_E^G(E)$. Thus
+have $\psi(a) = a$. This implies that $\psi \in \Aut_{E^G}(E)$. Thus
 \begin{equation*}
-\Aut_E^G(E) = \Aut_F(E).
+\Aut_{E^G}(E) = \Aut_F(E).
 \end{equation*}
 Note that since $f(x)$ is separable over $F$ and splits over $E$, $f(x)$ is also
 separable over $E^G$ and has $E$as its splitting field over $E^G$. Thus, by
 \cref{theorem43}, we have
 \begin{equation*}
-|Aut_F(E)| = [E:F] \quad\text{and}\quad |Aut_E^G(E)| = [E:E^G] 
+|\Aut_F(E)| = [E:F] \quad\text{and}\quad |\Aut_{E^G}(E)| = [E:E^G] 
 \end{equation*}
-It follows that since $[E:E^G] = [E:F]$. Since $[E:F]=[E:E^G]=[E^G:F]$, we have
+It follows that $[E:E^G] = [E:F]$. Since $[E:F]=[E:E^G]=[E^G:F]$, we have
 $[E^G:F] = 1$. In other words, $E^G = F$.
 \end{proof}
 
