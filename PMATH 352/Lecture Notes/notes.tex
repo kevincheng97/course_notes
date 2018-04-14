@@ -8,300 +8,305 @@
 \newcommand{\thisterm}{Winter 2018}
 
 \newcommand{\Arg}{\text{Arg}}
-\newcommand*{\pd}[3][]{\ensuremath{\frac{\partial^{#1} #2}{\partial #3^{#1}}}}
+\newcommand*{\pd}[3][]{\ensuremath{\frac{^{#1} #2}{ #3^{#1}}}}
 \newcommand*\dif{\mathop{}\!d}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 
 \hypersetup
 {pdfauthor={\me},
-pdftitle={\thiscoursecode \thisterm Lecutre Notes},
-pdfsubject={\thiscoursename}
+	pdftitle={\thiscoursecode \thisterm Lecutre Notes},
+	pdfsubject={\thiscoursename}
 pdflang={English}}
 
 \begin{document}
 \begin{titlepage}
-\begin{centering}
-{\scshape\LARGE University of Waterloo \par}
-\globe
-{\huge\bf \thiscoursecode}\\
-{\scshape\Large \thiscoursename}\\
-\vspace{.3cm}
-{\scshape \thisprof~\textbullet~\thisterm \par}
-\end{centering}
-\sectionline
-\tableofcontents
-\sectionline
-\thispagestyle{empty}
+	\begin{centering}
+		{\scshape\LARGE University of Waterloo \par}
+		\globe
+		{\huge\bf \thiscoursecode}\\
+		{\scshape\Large \thiscoursename}\\
+		\vspace{.3cm}
+		{\scshape \thisprof~\textbullet~\thisterm \par}
+	\end{centering}
+	\sectionline
+	\tableofcontents
+	\sectionline
+	\thispagestyle{empty}
 \end{titlepage}
 
 \section{Complex Numbers}
 \begin{definition}
-A \underline{complex number} is a vector in $\R^2$. The \underline{complex
-plane} denoted by $\C$ is the set of complex numbers. 
-\begin{equation*}
-\C = \R^2 = \bigg\{\begin{pmatrix}x\\y\end{pmatrix}: x, y \in \R \bigg\}
-\end{equation*}
-In $\C$, we usually write,
-\begin{align*} 
-0 &= \begin{pmatrix}0\\0\end{pmatrix}\\
-1 &= \begin{pmatrix}1\\0\end{pmatrix}\\
-i &= \begin{pmatrix}0\\1\end{pmatrix}\\
-x &= \begin{pmatrix}x\\0\end{pmatrix}\\
-iy &= \begin{pmatrix}0\\y\end{pmatrix}
-\end{align*}
-with $x, y \in \R$. If $z = x + iy, x, y \in \R$, then $x$ is called the real
-part of $z$ and $y$ the imaginary part of $z$ and write
-\begin{equation*}
-\Re(z) = x \qquad \Im(z) = y
-\end{equation*}
+	A \underline{complex number} is a vector in $\R^2$. The \underline{complex
+	plane} denoted by $\C$ is the set of complex numbers.
+	\begin{equation*}
+		\C = \R^2 = \bigg\{\begin{pmatrix}x\\y\end{pmatrix}: x, y \in \R \bigg\}
+	\end{equation*}
+	In $\C$, we usually write,
+	\begin{align*}
+		0 &= \begin{pmatrix}0\\0\end{pmatrix}\\
+		1 &= \begin{pmatrix}1\\0\end{pmatrix}\\
+		i &= \begin{pmatrix}0\\1\end{pmatrix}\\
+		x &= \begin{pmatrix}x\\0\end{pmatrix}\\
+		iy &= \begin{pmatrix}0\\y\end{pmatrix}
+	\end{align*}
+	with $x, y \in \R$. If $z = x + iy, x, y \in \R$, then $x$ is called the
+	real part of $z$ and $y$ the imaginary part of $z$ and write
+	\begin{equation*}
+		\Re(z) = x \qquad \Im(z) = y
+	\end{equation*}
 \end{definition}
 \begin{definition}
-We define the \underline{sum of two complex numbers} to be the vector sum.
-\begin{align*}
-(a+ib)+(c + id) &=
-\begin{pmatrix}a \\ b\end{pmatrix} + 
-\begin{pmatrix}c \\ d\end{pmatrix}\\
-&= 
-\begin{pmatrix}a + c \\ b + d\end{pmatrix} 
-\end{align*}
-We define the \underline{product of two complex numbers} by setting $i^2 = -1$ and by
-requiring the product to be commutative, associative and distributive over the
-sum.
-So,
-\begin{align*}
-(a + bi)(c + di) &=
-ac + iad + ibc + i^2bd\\
-&= (ac - bd) + (ad + bc)
-\end{align*}
+	We define the \underline{sum of two complex numbers} to be the vector sum.
+	\begin{align*}
+		(a+ib)+(c + id) &=
+		\begin{pmatrix}a \\ b\end{pmatrix} +
+		\begin{pmatrix}c \\ d\end{pmatrix}\\
+		&=
+		\begin{pmatrix}a + c \\ b + d\end{pmatrix}
+	\end{align*}
+	We define the \underline{product of two complex numbers} by setting $i^2 =
+	-1$ and by requiring the product to be commutative, associative and
+	distributive over the sum. So,
+	\begin{align*}
+		(a + bi)(c + di) &=
+		ac + iad + ibc + i^2bd\\
+		&= (ac - bd) + (ad + bc)
+	\end{align*}
 \end{definition}
 \begin{prop}[Mulitplicative Inverses]
-Every complex number has a unique multiplicative inverse denoted by
-$z^{-1}$.
+	Every complex number has a unique multiplicative inverse denoted by
+	$z^{-1}$.
 \end{prop}
 \begin{proof}
-Let $z = a + i, a,b \in \R$ with $a^2 + b^2 = 0$. We want to solve for $x$ and
-$y$ such that $(a + ib)(x + iy) = 1$. In other words,
-\begin{align*}
-&\> (ax - by) + i(ay + bx) = 1\\
-\Rightarrow &\>
-\begin{pmatrix}
-ax - by \\ bx + ay
-\end{pmatrix}
-= (1,0)\\
-\Rightarrow &\>
-\begin{pmatrix}
-a & -b\\
-b & a
-\end{pmatrix}
-\begin{pmatrix}
-x \\ y
-\end{pmatrix}
-= (1,0)\\
-\Rightarrow &\>
-\begin{pmatrix}
-x \\ y
-\end{pmatrix}
-=
-\begin{pmatrix}
-a & -b\\
-b & a
-\end{pmatrix}^{-1}
-\begin{pmatrix}
-1 \\ 0
-\end{pmatrix}\\
-\Rightarrow &\>
-\begin{pmatrix}
-x \\ y
-\end{pmatrix}
-=
-\frac{1}{a^2 + b^2}
-\begin{pmatrix}
-a & b\\
--b & a
-\end{pmatrix}
-\begin{pmatrix}
-1 \\ 0
-\end{pmatrix}\\
-\Rightarrow &\>
-\begin{pmatrix}
-x \\ y
-\end{pmatrix}
-=
-\begin{pmatrix}
-\frac{a}{a^2 + b^2} \\ \frac{b}{a^2 + b^2}
-\end{pmatrix}
-\end{align*}
-This is unique as the inverse matrix is unique.
+	Let $z = a + i, a,b \in \R$ with $a^2 + b^2 = 0$. We want to solve for $x$
+	and $y$ such that $(a + ib)(x + iy) = 1$. In other words,
+	\begin{align*}
+		&\> (ax - by) + i(ay + bx) = 1\\
+		\Rightarrow &\>
+		\begin{pmatrix}
+			ax - by \\ bx + ay
+		\end{pmatrix}
+		= (1,0)\\
+		\Rightarrow &\>
+		\begin{pmatrix}
+			a & -b\\
+			b & a
+		\end{pmatrix}
+		\begin{pmatrix}
+			x \\ y
+		\end{pmatrix}
+		= (1,0)\\
+		\Rightarrow &\>
+		\begin{pmatrix}
+			x \\ y
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			a & -b\\
+			b & a
+		\end{pmatrix}^{-1}
+		\begin{pmatrix}
+			1 \\ 0
+		\end{pmatrix}\\
+		\Rightarrow &\>
+		\begin{pmatrix}
+			x \\ y
+		\end{pmatrix}
+		=
+		\frac{1}{a^2 + b^2}
+		\begin{pmatrix}
+			a & b\\
+			-b & a
+		\end{pmatrix}
+		\begin{pmatrix}
+			1 \\ 0
+		\end{pmatrix}\\
+		\Rightarrow &\>
+		\begin{pmatrix}
+			x \\ y
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			\frac{a}{a^2 + b^2} \\ \frac{b}{a^2 + b^2}
+		\end{pmatrix}
+	\end{align*}
+	This is unique as the inverse matrix is unique.
 \end{proof}
 \begin{remark}
-The set of complex numbers is a \underline{field} under the operations of
-addition and multiplication as operations are associative, commutative
-and distributive and every element has a unique inverse as before.
+	The set of complex numbers is a \underline{field} under the operations of
+	addition and multiplication as operations are associative, commutative
+	and distributive and every element has a unique inverse as before.
 \end{remark}
 \begin{definition}
-If $z = x + iy, x, y, \in \R$, then the \underline{conjugate of $z$} is
-$\bar{z} = x - iy$.
+	If $z = x + iy, x, y, \in \R$, then the \underline{conjugate of $z$} is
+	$\bar{z} = x - iy$.
 \end{definition}
 \begin{definition}
-We define the \underline{modulus} (or length or magnitude) of $z = x + iy, x, y
-\in \R$ to be
-\begin{equation*}
-|z| = \sqrt{x^2 + y^2} \in \R
-\end{equation*}
+	We define the \underline{modulus} (or length or magnitude) of $z = x + iy,
+	x, y \in \R$ to be
+	\begin{equation*}
+		|z| = \sqrt{x^2 + y^2} \in \R
+	\end{equation*}
 \end{definition}
 \begin{remark}
-For any $z, w \in \C$,
-\begin{align*}
-\bar{\bar{z}} &= z\\
-z + \bar{z} &= 2\Re(z)\\
-z - \bar{z} &= 2\Im(z)\\
-z\cdot\bar{z} &= |z|^2\\
-|z| &= |\bar{z}|\\
-\bar{z+w} &= \bar z + \bar w\\
-\bar{zw} &= \bar z\cdot\bar w\\
-|zw| &= |z||w|
-\end{align*}
+	For any $z, w \in \C$,
+	\begin{align*}
+		\bar{\bar{z}} &= z\\
+		z + \bar{z} &= 2\Re(z)\\
+		z - \bar{z} &= 2\Im(z)\\
+		z\cdot\bar{z} &= |z|^2\\
+		|z| &= |\bar{z}|\\
+		\bar{z+w} &= \bar z + \bar w\\
+		\bar{zw} &= \bar z\cdot\bar w\\
+		|zw| &= |z||w|
+	\end{align*}
 \end{remark}
 \begin{prop}
-The following inequalities hold for any $z \in \C$.
-\begin{enumerate}
-\item $|\Re(z)| \leq |z|$
-\item $|\Im(z)| \leq |z|$
-\item $|z + w| \leq |z| + |w|$
-\item $|z + w| \geq \bigg| |z| - |w|\bigg|$
-\end{enumerate}
-\begin{proof}
-(1) and (2) follows as
-\begin{equation*}
-|z|^2 = \Re(z)^2 + \Im(z)^2. 
-\end{equation*}
-(3). Notice,
-\begin{align*}
-|x + iy|^2 &= (x + iy)\bar{(x + iy)}\\
-&= (x + iy)(\bar{x} + \bar{iy})\\
-&= x\bar x + y \bar y + x \bar y + y \bar x\\
-&= |x|^2 + |y|^2 + x \bar y + y \bar x\\
-&= |x|^2 + |y|^2 + 2\Re(x\bar y)\\
-&\leq |x|^2 + |y|^2 + 2|x\bar y|\\
-&= |x|^2 + |y|^2 + 2|x| \cdot |\bar y|\\
-&= |x + y|^2
-\end{align*}
-Taking the square root of both sides gives the result.\\
+	The following inequalities hold for any $z \in \C$.
+	\begin{enumerate}
+		\item $|\Re(z)| \leq |z|$
+		\item $|\Im(z)| \leq |z|$
+		\item $|z + w| \leq |z| + |w|$
+		\item $|z + w| \geq \bigg| |z| - |w|\bigg|$
+	\end{enumerate}
+	\begin{proof}
+		(1) and (2) follows as
+		\begin{equation*}
+			|z|^2 = \Re(z)^2 + \Im(z)^2.
+		\end{equation*}
+		(3). Notice,
+		\begin{align*}
+			|x + iy|^2 &= (x + iy)\bar{(x + iy)}\\
+					   &= (x + iy)(\bar{x} + \bar{iy})\\
+					   &= x\bar x + y \bar y + x \bar y + y \bar x\\
+					   &= |x|^2 + |y|^2 + x \bar y + y \bar x\\
+					   &= |x|^2 + |y|^2 + 2\Re(x\bar y)\\
+					   &\leq |x|^2 + |y|^2 + 2|x\bar y|\\
+					   &= |x|^2 + |y|^2 + 2|x| \cdot |\bar y|\\
+					   &= |x + y|^2
+		\end{align*}
+		Taking the square root of both sides gives the result.\\
 
-(4). From (3), we have that
-\begin{align*}
-|z| = |z - w + w| &\leq |z - w| + |w|\\ 
-|w| = |w - z + z| &\leq |w - z| + |z|
-\end{align*}
-Then, isolating $|z - w|$ implies the result. More specifically since we have the simulateous inequality,
-\begin{equation*}
-\begin{cases}
-|z| - |w| \leq |z - w| \\
-|w| - |z| \leq |z - w|
-\end{cases}
-\Rightarrow
-|z - w| \geq \bigg| |z| - |w| \bigg|
-\end{equation*}
-as desired.
-\end{proof}
+		(4). From (3), we have that
+		\begin{align*}
+			|z| = |z - w + w| &\leq |z - w| + |w|\\
+			|w| = |w - z + z| &\leq |w - z| + |z|
+		\end{align*}
+		Then, isolating $|z - w|$ implies the result. More specifically since we
+		have the simultaneous inequality, \begin{equation*}
+			\begin{cases}
+				|z| - |w| \leq |z - w| \\
+				|w| - |z| \leq |z - w|
+			\end{cases}
+			\Rightarrow
+			|z - w| \geq \bigg| |z| - |w| \bigg|
+		\end{equation*}
+		as desired.
+	\end{proof}
 \end{prop}
 \begin{prop}
-Every non-zero complex number has exactly 2 square roots.
+	Every non-zero complex number has exactly 2 square roots.
 \end{prop}
 \begin{proof}
-Let $z = x + iy \in \C$ with $x^2 + y^2 \neq 0, x, y, \in \R$. We want to solve
-$w^2 = z$ for $w \in \C$. Say $w$ takes the form $w = u + iv, u, v \in \R$. Then
-\begin{align*}
-& \> w^2 = z\\
-\Rightarrow & \> (u+iv)^2 = x + iy\\
-\Rightarrow & \> (u^2 - v^2) + i2uv = x + iy
-\end{align*}
-So we have that $x = u^2 - v^2$ and $y = 2uv^2$. We can solve for $u$ and $v$.
-Take the square of both sides of the second equation to get $4u^2v^2 = y^2$.
-Now, we multiply the first equation by $4u^2$ to get
-\begin{align*}
-& \> 4u^4 - 4u^2v^2 = 4xu^2\\
-\Rightarrow & \> 4u^4 - 4xu^2 - y^2 = 0
-\end{align*}
-This is a quadratic equation over $u^2$ so,
-\begin{equation*}
-u^2 = \frac{4x \pm \sqrt{16x^2 + 16y^2}}{8} = \frac{x \pm \sqrt{x^2 + y^2}}{2}
-\end{equation*}
-Suppose that $y \neq 0$. Then we must take the positive solution above to get
-\begin{equation*}
-u^2 = \frac{x + \sqrt{x^2 + y^2}}{2}
-\end{equation*}
-Under the assumption that $x^2 + y^2 > 0$, this solution exists. Notice we
-cannot take the negative solution as it yields a negative $u^2$ which is
-impossible. We can use a similar procedure to find that
-\begin{equation*}
-v^2 = \frac{-x + \sqrt{x^2 + y^2}}{2}
-\end{equation*}
-Rooting $u$ and $v$ gives 2 solutions for each. However, if $y$ is positive,
-since $2uv = y$, $u$ and $v$ must take the same sign. Similarly, if $y$ is
-negative, they must take different signs. In each of these cases, there are 2
-solutions for $u$ and $v$. So,
-\begin{equation*}
-w = 
-\begin{cases}
-\pm \Bigg[ \bigg(\sqrt{\frac{x + \sqrt{x^2 + y^2}}{2}}\bigg) +
-i\bigg(\sqrt{\frac{-x + \sqrt{x^2 + y^2}}{2}}\bigg)\Bigg] &, \> y > 0\\
-\pm \Bigg[ \bigg(\sqrt{\frac{x + \sqrt{x^2 + y^2}}{2}}\bigg) -
-i\bigg(\sqrt{\frac{-x + \sqrt{x^2 + y^2}}{2}}\bigg)\Bigg] &, \> y < 0\\
-\pm \sqrt x &, \> x > 0,\> y = 0\\
-\pm i\sqrt -x &, \> x < 0,\> y = 0
-\end{cases}
-\end{equation*}
+	Let $z = x + iy \in \C$ with $x^2 + y^2 \neq 0, x, y, \in \R$. We want to
+	solve $w^2 = z$ for $w \in \C$. Say $w$ takes the form $w = u + iv, u, v \in
+	\R$. Then
+	\begin{align*}
+		& \> w^2 = z\\
+		\Rightarrow & \> (u+iv)^2 = x + iy\\
+		\Rightarrow & \> (u^2 - v^2) + i2uv = x + iy
+	\end{align*}
+	So we have that $x = u^2 - v^2$ and $y = 2uv^2$. We can solve for $u$ and
+	$v$. Take the square of both sides of the second equation to get $4u^2v^2 =
+	y^2$. Now, we multiply the first equation by $4u^2$ to get
+	\begin{align*}
+		& \> 4u^4 - 4u^2v^2 = 4xu^2\\
+		\Rightarrow & \> 4u^4 - 4xu^2 - y^2 = 0
+	\end{align*}
+	This is a quadratic equation over $u^2$ so,
+	\begin{equation*}
+		u^2 = \frac{4x \pm \sqrt{16x^2 + 16y^2}}{8} = \frac{x \pm \sqrt{x^2 +
+		y^2}}{2}
+	\end{equation*}
+	Suppose that $y \neq 0$. Then we must take the positive solution above to
+	get
+	\begin{equation*}
+		u^2 = \frac{x + \sqrt{x^2 + y^2}}{2}
+	\end{equation*}
+	Under the assumption that $x^2 + y^2 > 0$, this solution exists. Notice we
+	cannot take the negative solution as it yields a negative $u^2$ which is
+	impossible. We can use a similar procedure to find that
+	\begin{equation*}
+		v^2 = \frac{-x + \sqrt{x^2 + y^2}}{2}
+	\end{equation*}
+	Rooting $u$ and $v$ gives 2 solutions for each. However, if $y$ is positive,
+	since $2uv = y$, $u$ and $v$ must take the same sign. Similarly, if $y$ is
+	negative, they must take different signs. In each of these cases, there are
+	2 solutions for $u$ and $v$. So,
+	\begin{equation*}
+		w =
+		\begin{cases}
+			\pm \Bigg[ \bigg(\sqrt{\frac{x + \sqrt{x^2 + y^2}}{2}}\bigg) +
+			i\bigg(\sqrt{\frac{-x + \sqrt{x^2 + y^2}}{2}}\bigg)\Bigg] &, \> y >
+			0\\
+			\pm \Bigg[ \bigg(\sqrt{\frac{x + \sqrt{x^2 + y^2}}{2}}\bigg) -
+			i\bigg(\sqrt{\frac{-x + \sqrt{x^2 + y^2}}{2}}\bigg)\Bigg] &, \> y <
+			0\\
+			\pm \sqrt x &, \> x > 0,\> y = 0\\
+			\pm i\sqrt -x &, \> x < 0,\> y = 0
+		\end{cases}
+	\end{equation*}
 \end{proof}
 \begin{remark}
-Let $z \in \C$. The notation $\sqrt z$ may represent either one of the square
-roots of $z$ or both of the square roots.
+	Let $z \in \C$. The notation $\sqrt z$ may represent either one of the
+	square roots of $z$ or both of the square roots.
 \end{remark}
 \begin{remark}
-The square root doesn't distribute. Consider $z = w = -1 \in \C$.
-$\sqrt{zw} \neq \sqrt z \sqrt w$.
+	The square root doesn't distribute. Consider $z = w = -1 \in \C$.
+	$\sqrt{zw} \neq \sqrt z \sqrt w$.
 \end{remark}
 \begin{remark}
-The Quadratic Formula holds true for complex polynomials. In other words, if $a,
-b, c \in \C, a \neq 0$,
-\begin{equation*}
-az^2 + bz + c = 0 \Rightarrow z = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-\end{equation*}
+	The Quadratic Formula holds true for complex polynomials. In other words, if
+	$a, b, c \in \C, a \neq 0$,
+	\begin{equation*}
+		az^2 + bz + c = 0 \Rightarrow z = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+	\end{equation*}
 \end{remark}
 \begin{definition}
-If $z \in \C \setminus \{0\}$, we define the \underline{angle} (or
-\underline{argument}) of $z$ to be the angle $\theta(z)$ from the positive
-$x$-axis counterclockwise to $z$. In other words, $\theta(z)$ is the angle such
-that
-\begin{equation*}
-z = |z|\big(\cos\theta(z) + i\sin\theta(z)\big).
-\end{equation*}
+	If $z \in \C \setminus \{0\}$, we define the \underline{angle} (or
+	\underline{argument}) of $z$ to be the angle $\theta(z)$ from the positive
+	$x$-axis counterclockwise to $z$. In other words, $\theta(z)$ is the angle
+	such that
+	\begin{equation*}
+		z = |z|\big(\cos\theta(z) + i\sin\theta(z)\big).
+	\end{equation*}
 \end{definition}
 \begin{remark}
-For $\theta \in \R$ (or for $\theta \in \R/2\pi$), we have that
-\begin{equation*}
-e^{i\theta} = \cos(\theta) + i\sin(\theta)
-\end{equation*}
+	For $\theta \in \R$ (or for $\theta \in \R/2\pi$), we have that
+	\begin{equation*}
+		e^{i\theta} = \cos(\theta) + i\sin(\theta)
+	\end{equation*}
 \end{remark}
 \begin{remark}
-If $z \neq 0$, we have $x = \Re(z)$, $y = \Im(z)$, $r = |z|$ and
-\begin{align*}
-x &= r\cos\theta\\
-y &= r\sin\theta\\
-\tan\theta &= \frac{y}{x},\>\text{if } x \neq 0\\
-z &= re{i\theta}\\
-\bar z &= re^{-i\theta}\\
-z^{-1} &= \frac{1}{r}e^{-i\theta} 
-\end{align*}
+	If $z \neq 0$, we have $x = \Re(z)$, $y = \Im(z)$, $r = |z|$ and
+	\begin{align*}
+		x &= r\cos\theta\\
+		y &= r\sin\theta\\
+		\tan\theta &= \frac{y}{x},\>\text{if } x \neq 0\\
+		z &= re{i\theta}\\
+		\bar z &= re^{-i\theta}\\
+		z^{-1} &= \frac{1}{r}e^{-i\theta}
+	\end{align*}
 \end{remark}
 \begin{remark}
-We now have 2 representations of a complex number $z\in\C$. We say that
-$z = x + iy$ is the \underline{cartesian coordinates} of $z$ and $z =
-re^{i\theta}$, where $r = |z|$, is the \underline{polar form} of $z$.
+	We now have 2 representations of a complex number $z\in\C$. We say that
+	$z = x + iy$ is the \underline{cartesian coordinates} of $z$ and $z =
+	re^{i\theta}$, where $r = |z|$, is the \underline{polar form} of $z$.
 \end{remark}
 Consider $z = re^{i\alpha}$ and $w = se^{i\beta}$. We have,
 \begin{align*}
-zw &= rs(\cos\alpha + i\sin\alpha)(\sin\beta + i\cos\beta)\\
-&= rs\big((\cos\alpha\cos\beta-\sin\alpha \sin\beta) +
+	zw &= rs(\cos\alpha + i\sin\alpha)(\sin\beta + i\cos\beta)\\
+	   &= rs\big((\cos\alpha\cos\beta-\sin\alpha \sin\beta) +
 i(\sin\alpha\cos\beta+\cos\alpha\sin\beta)\big)\\
 &= rs\big(\cos(\alpha + \beta) + i\sin(\alpha + \beta)\big)\\
 &= e^{i(\alpha + \beta)}
@@ -309,163 +314,164 @@ i(\sin\alpha\cos\beta+\cos\alpha\sin\beta)\big)\\
 which defines a formula for multiplication in polar coordinates. Notice that the
 following identity known as De Moivre's Law follows.
 \begin{equation*}
-(re^{i\theta})^n = r^ne^{in\theta}
+	(re^{i\theta})^n = r^ne^{in\theta}
 \end{equation*}
 for all $r,\theta \in \R$, $n \in \Z$. We can use this identity to find the
 $n^\text{th}$ roots of $z$. In other words, we solve $w^n = z$. We have,
 \begin{align*}
-&\> w^n = z\\
-\Rightarrow & \> (se^{i\alpha})^n = re^{i\theta}\\
-\Rightarrow & \> s^ne^{in\alpha} = re^{i\theta}
+	&\> w^n = z\\
+	\Rightarrow & \> (se^{i\alpha})^n = re^{i\theta}\\
+	\Rightarrow & \> s^ne^{in\alpha} = re^{i\theta}
 \end{align*}
 so $s^n = r$ and $n\alpha = \theta + 2\pi k$ for $k \in \Z$. In other words, we
 have
 \begin{equation*}
-(re^{i\theta}) = \sqrt[n]r e^{i(\theta + 2\pi k )/n}, \quad k = 0,\dots,n-1
+	(re^{i\theta}) = \sqrt[n]r e^{i(\theta + 2\pi k )/n}, \quad k = 0,\dots,n-1
 \end{equation*}
 \begin{remark}
-When working with complex numbers, for $0 \neq z \in \C$, and for $0 < n \in
-\Z$, $\sqrt[n]z$ or $z^{1/n}$ denotes either one of the $n$ roots, or the set of
-all $n^{\text{th}}$ roots.
+	When working with complex numbers, for $0 \neq z \in \C$, and for $0 < n \in
+	\Z$, $\sqrt[n]z$ or $z^{1/n}$ denotes either one of the $n$ roots, or the
+	set of all $n^{\text{th}}$ roots.
 \end{remark}
 \begin{example}
-Consider the $n-1$ diagonals of a regular $n$-gon inscribed in a circle of
-radius 1 obtained by connecting one vector with all the others. Show that the
-product of these diagonals is $n$.
+	Consider the $n-1$ diagonals of a regular $n$-gon inscribed in a circle of
+	radius 1 obtained by connecting one vector with all the others. Show that
+	the product of these diagonals is $n$.
 \end{example}
 Notice that $z_2,\dots,z_n$ are the $n^{\text{th}}$ roots of unity other than 1.
 Let $z$ be the variable and consider the polynomial
 \begin{equation*}
-P(z) \coloneqq 1 + z + \dots + z^{n-1}.
+	P(z) \coloneqq 1 + z + \dots + z^{n-1}.
 \end{equation*}
 Since the roots of $P(z)$ are $n^{\text{th}}$ roots of unity other than 1, we
 can factorize
 \begin{align*}
-P(z) &= 1 + z + \dots + z^{n-1}\\
-&= (z - z_2)\dots(z-z_n)
+	P(z) &= 1 + z + \dots + z^{n-1}\\
+		 &= (z - z_2)\dots(z-z_n)
 \end{align*}
 and setting $z = 1$, the result follows. In particular, we have
 \begin{equation*}
-|1 - z_2|\dots|1 - z_n| = n.
+	|1 - z_2|\dots|1 - z_n| = n.
 \end{equation*}
 
 \section{Complex Functions}
 \subsection{Limits}
 \begin{definition}
-A sequence of complex numbers $z_1, z_2 \dots$ converges to $z \in C$ if
-\begin{equation*}
-\lim_{n \to \infty} |z_n - z| = 0.
-\end{equation*}
-Equivalently, given any $\epsilon > 0$, $\exists N_\epsilon \in \N$ sufficiently
-large such that $|z_n - z| < \epsilon$ whenever $n>N$.
+	A sequence of complex numbers $z_1, z_2 \dots$ converges to $z \in C$ if
+	\begin{equation*}
+		\lim_{n \to \infty} |z_n - z| = 0.
+	\end{equation*}
+	Equivalently, given any $\epsilon > 0$, $\exists N_\epsilon \in \N$
+	sufficiently large such that $|z_n - z| < \epsilon$ whenever $n>N$.
 \end{definition}
 \begin{remark}
-If $\{z_n\}_n$ converges to $z$, we write
-\begin{equation*}
-\lim_{n \to \infty} z_n = z
-\end{equation*}
-or $z_n \to z$ as $n \to \infty$.
+	If $\{z_n\}_n$ converges to $z$, we write
+	\begin{equation*}
+		\lim_{n \to \infty} z_n = z
+	\end{equation*}
+	or $z_n \to z$ as $n \to \infty$.
 \end{remark}
 \begin{example}
-For $|z| > 1$, show that $\{\frac{1}{z^n}\}^{\infty}_{n=1}$ converges.
+	For $|z| > 1$, show that $\{\frac{1}{z^n}\}^{\infty}_{n=1}$ converges.
 \end{example}
 Notice,
 \begin{equation*}
-\lim_{n \to \infty} \bigg|\frac{1}{z^n} - 0\bigg|
-= \lim_{n \to \infty} \bigg|\frac{1}{z^n}\bigg|
-= 0
+	\lim_{n \to \infty} \bigg|\frac{1}{z^n} - 0\bigg|
+	= \lim_{n \to \infty} \bigg|\frac{1}{z^n}\bigg|
+	= 0
 \end{equation*}
 as $|z| > 1$.
 \begin{example}
-Show that $\{i^n\}^\infty_{n-1}$ does not converge.
+	Show that $\{i^n\}^\infty_{n-1}$ does not converge.
 \end{example}
 \begin{definition}
-Let $f:\Omega \subseteq \C \to \C$. We say
-\begin{equation*}
-\lim_{z \to z_0} f(z) = L
-\end{equation*}
-if for every sequence $\{z_n\}_n \subseteq \Omega$ we have that $z_n \to z
-\Rightarrow f(z_n) \to L$.
+	Let $f:\Omega \subseteq \C \to \C$. We say
+	\begin{equation*}
+		\lim_{z \to z_0} f(z) = L
+	\end{equation*}
+	if for every sequence $\{z_n\}_n \subseteq \Omega$ we have that $z_n \to z
+	\Rightarrow f(z_n) \to L$.
 \end{definition}
 \begin{remark}
-Here, $z_0$ need not to be in $\Omega$.
+	Here, $z_0$ need not to be in $\Omega$.
 \end{remark}
 \begin{example} \label{lim}
-Let $f(z) = \frac{\bar z}{z}, z \in \C \setminus \{0\}$. Find $\lim_z \to 0
-f(z)$.
+	Let $f(z) = \frac{\bar z}{z}, z \in \C \setminus \{0\}$. Find $\lim_z \to 0
+	f(z)$.
 \end{example}
 If $z = x \in \R \setminus \{0\}$, then $f(z) = \frac{x}{x} = 1$. So
 $\lim_{x \to 0} f(x) = 1$. If $z = iy, y \in \R \setminus \{0\}$, then $f(z) =
 \frac{-iy}{iy} = -1$. So $\lim_{y \to 0} f(iy) = -1$. Hence, the limit does not
 exist.
 \begin{example}
-Show that $z_n \to z$ if and only if $\Re z_n \to \Re z$ and $\Im z_n \to z$.
+	Show that $z_n \to z$ if and only if $\Re z_n \to \Re z$ and $\Im z_n \to
+	z$.
 \end{example}
 
 \subsection{Function Continuity}
 \begin{definition}
-Let $f:\Omega \subseteq \C \to \C $. We say $f$ is \underline{continuous at
-$z_0 \in \Omega$} if for every sequence $\{z_n\} \subseteq \Omega$, we have $z_0 \to z
-\Rightarrow f(z_0) \to f(z)$. Equivalently, given any $\epsilon > 0, \exists
-\delta > 0$ such that $|f(z) - f(z_0)| < \epsilon$ whenever $|z - z_0| <
-\delta$.
+	Let $f:\Omega \subseteq \C \to \C $. We say $f$ is \underline{continuous at
+	$z_0 \in \Omega$} if for every sequence $\{z_n\} \subseteq \Omega$, we have
+	$z_0 \to z \Rightarrow f(z_0) \to f(z)$. Equivalently, given any $\epsilon >
+	0, \exists \delta > 0$ such that $|f(z) - f(z_0)| < \epsilon$ whenever $|z -
+	z_0| < \delta$.
 \end{definition}
 \begin{remark}
-$f$ is continuous on $\Omega$ if it is continuous at ever point of $\Omega$. 
+	$f$ is continuous on $\Omega$ if it is continuous at ever point of $\Omega$.
 \end{remark}
 \begin{remark}
-We may split $f$ into its real and imaginary parts
-\begin{equation*}
-f(z) = f(x,y) = u(x,y) + iv(x,y)
-\end{equation*}
-where $u,v : \R^2 \to \R$.
+	We may split $f$ into its real and imaginary parts
+	\begin{equation*}
+		f(z) = f(x,y) = u(x,y) + iv(x,y)
+	\end{equation*}
+	where $u,v : \R^2 \to \R$.
 \end{remark}
 
 \subsection{Holomorphic Functions}
 \begin{definition}
-An open disk of radius $r$ at $z_0$ with $r>0$ is the \underline{neighborhood}
-around $z_0$ denoted by $D(z_0, r)$ with
-\begin{equation*}
-D(z_0, r) \coloneqq \{z\in\C:|z-z_0|<r\}
-\end{equation*}
+	An open disk of radius $r$ at $z_0$ with $r>0$ is the
+	\underline{neighborhood} around $z_0$ denoted by $D(z_0, r)$ with
+	\begin{equation*}
+		D(z_0, r) \coloneqq \{z\in\C:|z-z_0|<r\}
+	\end{equation*}
 \end{definition}
 \begin{definition}
-Let $f(z)$ be defined in a neighborhood of $z_0$. We say $f$ is
-\underline{complex differentiable} (or holomorphic) at $z_0$ if
-\begin{equation*}
-\lim_{h\to 0} \frac{f(z_0+h) - f(z_0)}{h}
-\end{equation*}
-exists. If it does, we denote the limit by $f'(z_0)$.
+	Let $f(z)$ be defined in a neighborhood of $z_0$. We say $f$ is
+	\underline{complex differentiable} (or holomorphic) at $z_0$ if
+	\begin{equation*}
+		\lim_{h\to 0} \frac{f(z_0+h) - f(z_0)}{h}
+	\end{equation*}
+	exists. If it does, we denote the limit by $f'(z_0)$.
 \end{definition}
 \begin{remark}
-Here, $h\in\C$ can approach zero from any direction in $\C$.
+	Here, $h\in\C$ can approach zero from any direction in $\C$.
 \end{remark}
 \begin{example}
-Where is $f(z) = \frac{1}{z}, z \neq 0$ holomorphic?
+	Where is $f(z) = \frac{1}{z}, z \neq 0$ holomorphic?
 \end{example}
 Notice,
 \begin{equation*}
-\lim_{h\to 0} \frac{\frac{1}{z_0+h} - \frac{1}{z_0}}{h}
-= \lim_{h\to 0} \frac{-h}{(z_0+h)(z_0)}
-= -\frac{1}{z_0^2}
+	\lim_{h\to 0} \frac{\frac{1}{z_0+h} - \frac{1}{z_0}}{h}
+	= \lim_{h\to 0} \frac{-h}{(z_0+h)(z_0)}
+	= -\frac{1}{z_0^2}
 \end{equation*}
 So, $f$ is holomorphic at any $z \in \C \setminus \{0\}$, and $f'(z) =
 -\frac{1}{z_0^2}$.
 \begin{example}
-$f(z) = \bar z$ is not holomorphic at any $z \in \C$.
+	$f(z) = \bar z$ is not holomorphic at any $z \in \C$.
 \end{example}
 Notice,
 \begin{equation*}
-\lim_{h\to 0} \frac{\bar{z_0 + h} - \bar{z_0}}{h}
-= \lim_{h \to 0} \frac{\bar h}{h}
+	\lim_{h\to 0} \frac{\bar{z_0 + h} - \bar{z_0}}{h}
+	= \lim_{h \to 0} \frac{\bar h}{h}
 \end{equation*}
 which does not exist from \cref{lim}. However, the function can be though of a
 map from $\R^2 \to \R^2$ defined as $(x,y) \mapsto (x,-y)$ which is
 differentiable as all partial derivatives exist. This distinguishes real
 analysis from complex analysis.
 \begin{remark}
-If $f$ and $g$ are holomorphic, so are $f+g$, $fg$ and $\frac{f}{g}$ (when
-$g\neq 0$). The proof is identical to the statements of real functions.
+	If $f$ and $g$ are holomorphic, so are $f+g$, $fg$ and $\frac{f}{g}$ (when
+	$g\neq 0$). The proof is identical to the statements of real functions.
 \end{remark}
 \sectionline
 We can now generalize when a function is complex differentiable. If the complex
@@ -473,87 +479,88 @@ function $f(z) = u + iv$. If the complex derivative $f'(z)$ is to exist, then it
 must be that the limit exists approaching from both the real and imaginary
 axis. Thus, we have,
 \begin{equation*}
-f'(z)  = \lim_{t\to 0} \frac{f(z+t) - f(z)}{t} = \lim_{t\to 0} \frac{f(z+it) -
-f(z)}{it}
+	f'(z)  = \lim_{t\to 0} \frac{f(z+t) - f(z)}{t} = \lim_{t\to 0} \frac{f(z+it)
+	- f(z)}{it}
 \end{equation*}
 where $t$ is a real number. In terms of $u$ and $v$, taking the derivative along
 the real line gives,
 \begin{align*}
-&\>\lim_{t\to 0} \frac{f(z+t) - f(z)}{t}\\
-=&\> \lim_{t\to 0} \frac{u(x+t,y) + iv(x+t,y) - u(x,y) - iv(x,y)}{t}\\
-=&\> \lim_{t\to 0} \frac{u(x+t,y) - u(x,y)}{t} + i\lim_{t\to 0} \frac{v(x+t,y) - 
-v(x,y)}{t}\\
-=&\> \pd{u}{x} + i \pd{v}{x}.
+	&\>\lim_{t\to 0} \frac{f(z+t) - f(z)}{t}\\
+	=&\> \lim_{t\to 0} \frac{u(x+t,y) + iv(x+t,y) - u(x,y) - iv(x,y)}{t}\\
+	=&\> \lim_{t\to 0} \frac{u(x+t,y) - u(x,y)}{t} + i\lim_{t\to 0}
+	\frac{v(x+t,y) - v(x,y)}{t}\\
+	=&\> \pd{u}{x} + i \pd{v}{x}.
 \end{align*}
 Taking the derivative along the vertical line gives,
 \begin{align*}
-&\>\lim_{t\to 0} \frac{f(z+it) - f(z)}{it}\\
-=&\> -i\lim_{t\to 0} \frac{u(x,y+t) + iv(x,y+t) - u(x,y) - iv(x,y)}{t}\\
-=&\> -i\lim_{t\to 0} \frac{u(x,y+t) - u(x,y)}{t} + \lim_{t\to 0} \frac{v(x,y+t) - 
-v(x,y)}{t}\\
-=&\> -i\pd{u}{y} + \pd{v}{y}.
+	&\>\lim_{t\to 0} \frac{f(z+it) - f(z)}{it}\\
+	=&\> -i\lim_{t\to 0} \frac{u(x,y+t) + iv(x,y+t) - u(x,y) - iv(x,y)}{t}\\
+	=&\> -i\lim_{t\to 0} \frac{u(x,y+t) - u(x,y)}{t} + \lim_{t\to 0}
+	\frac{v(x,y+t) - v(x,y)}{t}\\
+	=&\> -i\pd{u}{y} + \pd{v}{y}.
 \end{align*}
 Equating real and imaginary parts, we arrive at the following theorem.
 \begin{theorem}[Cauchy-Riemann Equations] \label{theorem1}
-If a function $f(z) = u + iv$ is holomorphic in a neighborhood around $z_0 = x_0
-+ iy_0$, then the partial derivatives of $u$ and $v$ exist at $(x_0,y_0)$ and satisfy
-\begin{equation*}
-\pd{u}{x} = \pd{v}{y} \quad \text{and} \quad \pd{v}{x} = - \pd{u}{y}\quad\text{at }
-(x_0,y_0)
-\end{equation*}
-with
-\begin{equation*}
-f'(z_0) = \pd{u}{x} + i \pd{v}{x} = \pd{v}{y} - i\pd{u}{y}.
-\end{equation*}
+	If a function $f(z) = u + iv$ is holomorphic in a neighborhood around $z_0 =
+	x_0 + iy_0$, then the partial derivatives of $u$ and $v$ exist at
+	$(x_0,y_0)$ and satisfy
+	\begin{equation*}
+		\pd{u}{x} = \pd{v}{y} \quad \text{and} \quad \pd{v}{x} = -
+		\pd{u}{y}\quad\text{at } (x_0,y_0)
+	\end{equation*}
+	with
+	\begin{equation*}
+		f'(z_0) = \pd{u}{x} + i \pd{v}{x} = \pd{v}{y} - i\pd{u}{y}.
+	\end{equation*}
 \end{theorem}
 \begin{example}
-Show that
-\begin{equation*}
-f(z) =
-\begin{cases}
-\frac{\bar z^2}{z} & \text{, if } z \neq 0\\
-0 & \text{, if } z = 0
-\end{cases}
-\end{equation*}
-is not holomorphic at $z = 0$ and that the Cauchy-Reimann Equations hold at
-$z = 0$.
+	Show that
+	\begin{equation*}
+		f(z) =
+		\begin{cases}
+			\frac{\bar z^2}{z} & \text{, if } z \neq 0\\
+			0 & \text{, if } z = 0
+		\end{cases}
+	\end{equation*}
+	is not holomorphic at $z = 0$ and that the Cauchy-Reimann Equations hold at
+	$z = 0$.
 \end{example}
 Notice,
 \begin{equation*}
-\lim_{h \to 0} \frac{f(0+h) - f(0)}{h}
-= \lim_{h \to 0} \frac{\bar h^2}{h^2}
-= \lim_{h \to 0} \bigg(\frac{\bar x-iy}{x+iy}\bigg)^2
+	\lim_{h \to 0} \frac{f(0+h) - f(0)}{h}
+	= \lim_{h \to 0} \frac{\bar h^2}{h^2}
+	= \lim_{h \to 0} \bigg(\frac{\bar x-iy}{x+iy}\bigg)^2
 \end{equation*}
 Let $h = x + imx$, $m \neq 0, x \to 0$. We get
 \begin{equation*}
-\lim_{x \to 0} \bigg( \frac{x - imx}{x + imx}\bigg)^2
-\bigg( \frac{1 - im}{1 + im}\bigg)^2
+	\lim_{x \to 0} \bigg( \frac{x - imx}{x + imx}\bigg)^2
+	\bigg( \frac{1 - im}{1 + im}\bigg)^2
 \end{equation*}
 which is dependent of $m$ and thus the limit does not exist. Now, notice we have
 \begin{equation*}
-\frac{\bar z^2}{z} = \frac{(x - iy)^2}{x+iy} = \frac{(x-iy)^3}{x^2+y^2}
-= \frac{x^3 - 3xy^2}{x^2+y^2} + i \frac{-3x^2y + y^3}{x^2+y^2}
+	\frac{\bar z^2}{z} = \frac{(x - iy)^2}{x+iy} = \frac{(x-iy)^3}{x^2+y^2}
+	= \frac{x^3 - 3xy^2}{x^2+y^2} + i \frac{-3x^2y + y^3}{x^2+y^2}
 \end{equation*}
 So we have
 \begin{equation*}
-u(x,y) =
-\begin{cases}
-\frac{x^3 - 3xy^2}{x^2+y^2} & \text{, if } (x,y) \neq (0,0)\\
-0 & \text{, if } (x,y) = (0,0)
-\end{cases}
+	u(x,y) =
+	\begin{cases}
+		\frac{x^3 - 3xy^2}{x^2+y^2} & \text{, if } (x,y) \neq (0,0)\\
+		0 & \text{, if } (x,y) = (0,0)
+	\end{cases}
 \end{equation*}
 and
 \begin{equation*}
-v(x,y) = 
-\begin{cases}
-\frac{-3x^2y + y^3}{x^2+y^2} & \text{, if } (x,y) \neq (0,0)\\
-0 & \text{, if } (x,y) = (0,0)
-\end{cases}.
+	v(x,y) =
+	\begin{cases}
+		\frac{-3x^2y + y^3}{x^2+y^2} & \text{, if } (x,y) \neq (0,0)\\
+		0 & \text{, if } (x,y) = (0,0)
+	\end{cases}.
 \end{equation*}
 Now, we can verify that the Cauchy-Riemann Equations hold. Indeed,
 \begin{align*}
-\pd{u}{x}\bigg(\frac{x^3 - 3xy^2}{x^2+y^2}\bigg)
-&= \frac{\big(\pd{}{x}(x^3 - 3xy^2)\big)(x^2 + y^2) - (x^3 -
+	\pd{u}{x}\bigg(\frac{x^3 - 3xy^2}{x^2+y^2}\bigg)
+	&= \frac{\big(\pd{}{x}(x^3 - 3xy^2)\big)(x^2 + y^2) - (x^3 -
 3xy^2)\big(\pd{}{x}(x^2+y^2)\big)}{(x^2 + y^2)^2}\\
 &= \frac{(3x^2 - 3y^2)(x^2 + y^2) - (x^3 - 3xy^2)(2x)}{(x^2 + y^2)^2}\\
 &= \frac{x^4 + 6x^2y^2 - 3y^4}{(x^2 + y^2)^2}\\
@@ -565,8 +572,8 @@ Now, we can verify that the Cauchy-Riemann Equations hold. Indeed,
 \end{align*}
 and
 \begin{align*}
-\pd{u}{y}\bigg(\frac{x^3 - 3xy^2}{x^2+y^2}\bigg)
-&= \frac{\big(\pd{}{y}(x^3 - 3xy^2)\big)(x^2 + y^2) - (x^3 -
+	\pd{u}{y}\bigg(\frac{x^3 - 3xy^2}{x^2+y^2}\bigg)
+	&= \frac{\big(\pd{}{y}(x^3 - 3xy^2)\big)(x^2 + y^2) - (x^3 -
 3xy^2)\big(\pd{}{y}(x^2+y^2)\big)}{(x^2 + y^2)^2}\\
 &= \frac{(-6xy)(x^2 + y^2) - (x^3 - 3xy^2)(2y)}{(x^2 + y^2)^2}\\
 &= -\frac{8x^3y}{x^2 + y^2}\\
@@ -579,14 +586,15 @@ and
 
 Thus, we can consider the converse statement of \cref{theorem1}.
 \begin{theorem}
-Let $f=u+iv : \Omega \subseteq \C \to \C$, $z_0 = x_0 + iy_0 \in \Omega$. If
-\begin{enumerate}
-\item the partials of $u,v$ exist in a neighborhood of $(x_0,y_0)$
-\item the partials of $u,v$ are continuous at $(x_0,y_0)$
-\item $\pd{u}{x} = \pd{v}{y}$ and $\pd{v}{x} = - \pd{u}{y}$ at $(x_0,y_0)$
-\end{enumerate}
-then, $f$ is holomorphic at $z_0$.
-\label{theorem2}
+	Let $f=u+iv : \Omega \subseteq \C \to \C$, $z_0 = x_0 + iy_0 \in \Omega$. If
+	\begin{enumerate}
+		\item the partials of $u,v$ exist in a neighborhood of $(x_0,y_0)$
+		\item the partials of $u,v$ are continuous at $(x_0,y_0)$
+		\item $\pd{u}{x} = \pd{v}{y}$ and $\pd{v}{x} = - \pd{u}{y}$ at
+			$(x_0,y_0)$
+	\end{enumerate}
+	then, $f$ is holomorphic at $z_0$.
+	\label{theorem2}
 \end{theorem}
 TODO: find proof online.
 
@@ -594,245 +602,255 @@ TODO: find proof online.
 \section{Power Series}
 \subsection{Convergence and Divergence}
 \begin{example}
-Consider the \underline{power series}, an expression of the form
-\begin{equation*}
-\sum^\infty_{n=0} c_nz^n
-\end{equation*}
-where $c_n \in \C$. This expression \underline{converges} if the sequence of
-partials sums, $\{s_N\}$ defined by
-\begin{equation*}
-s_N \coloneqq \sum^N_{n=0} c_nz^n 
-\end{equation*}
-converges as $N \to \infty$. This is quite a strong condition, so we consider
-the following definition.
+	Consider the \underline{power series}, an expression of the form
+	\begin{equation*}
+		\sum^\infty_{n=0} c_nz^n
+	\end{equation*}
+	where $c_n \in \C$. This expression \underline{converges} if the sequence of
+	partials sums, $\{s_N\}$ defined by
+	\begin{equation*}
+		s_N \coloneqq \sum^N_{n=0} c_nz^n
+	\end{equation*}
+	converges as $N \to \infty$. This is quite a strong condition, so we
+	consider the following definition.
 \end{example}
 \begin{definition}
-A power series expression \underline{converges absolutely} if
-\begin{equation*}
-\sum^{\infty}_{n=0} |c_n||z|^n
-\end{equation*}
-converges.
+	A power series expression \underline{converges absolutely} if
+	\begin{equation*}
+		\sum^{\infty}_{n=0} |c_n||z|^n
+	\end{equation*}
+	converges.
 \end{definition}
 \begin{remark}
-Absolute convergence implies converges. Notice,
-\begin{equation*}
-\bigg| \sum_{n=0}^N c_n z^n \bigg| = \sum^N_{n=0} |c_n||z|^n
-\end{equation*}
-for each $N \in \N$.
+	Absolute convergence implies converges. Notice,
+	\begin{equation*}
+		\bigg| \sum_{n=0}^N c_n z^n \bigg| = \sum^N_{n=0} |c_n||z|^n
+	\end{equation*}
+	for each $N \in \N$.
 \end{remark}
 
 \subsection{Radius of Convergence}
 \begin{theorem}
-For any power series $\displaystyle\sum^\infty_{n=0} c_nz^n, \exists 0 \leq R
-\leq \infty$, such that
-\begin{enumerate}
-\item If $|z| < R$, the series converges absolutely
-\item If $|z| > R$, the series diverges.
-\end{enumerate}
-Moreover, $R$ is given by Hadamard's formula: $\displaystyle\frac{1}{R} =
-\limsup_{n \to \infty} |c_n|^\frac{1}{n}$
-\label{theorem3}
+	For any power series $\displaystyle\sum^\infty_{n=0} c_nz^n, \exists 0 \leq
+	R \leq \infty$, such that
+	\begin{enumerate}
+		\item If $|z| < R$, the series converges absolutely
+		\item If $|z| > R$, the series diverges.
+	\end{enumerate}
+	Moreover, $R$ is given by Hadamard's formula: $\displaystyle\frac{1}{R} =
+	\limsup_{n \to \infty} |c_n|^\frac{1}{n}$
+	\label{theorem3}
 \end{theorem}
 \begin{remark}
-$R$ is called the radius of convergence of the series and $\{z \in \C:|z| < R\}$
-is called the disk of convergence of the series.
+	$R$ is called the radius of convergence of the series and $\{z \in \C:|z| <
+	R\}$ is called the disk of convergence of the series.
 \end{remark}
 \begin{remark}
-Recall, $$\limsup_{n\to\infty} a_n \coloneqq \lim_{n\to\infty}\bigg(
-\sup_{m\leq n} a_m\bigg)$$
-and is the ``highest peak reached by $a_n$'s as $n \to \infty$''.
+	Recall, $$\limsup_{n\to\infty} a_n \coloneqq \lim_{n\to\infty}\bigg(
+	\sup_{m\leq n} a_m\bigg)$$
+	and is the ``highest peak reached by $a_n$'s as $n \to \infty$''.
 \end{remark}
 \begin{prop}[Property of $\limsup$]
-If $L = \limsup_{n\to\infty}a_n$, then for any $\epsilon > 0, \exists N > 0$
-such that $\forall n \leq N, a_n < L + \epsilon$
-\label{limsup}
+	If $L = \limsup_{n\to\infty}a_n$, then for any $\epsilon > 0, \exists N > 0$
+	such that $\forall n \leq N, a_n < L + \epsilon$
+	\label{limsup}
 \end{prop}
 \begin{proof}[Proof of \cref{theorem3}]
-Let $\displaystyle L \coloneqq \frac{1}{R} = \limsup_{n \to
-\infty} |c_n|^\frac{1}{n}$ Clearly, $L \leq 0$.
-\begin{enumerate}
-\item
-Suppose $|z| < R$. So, there exists some $\epsilon > 0$ such that $r \coloneqq
-|z|(L + \epsilon) < 1$ and $0 < r < 1$. By \cref{limsup}, $\exists N \in \N$
-such that $\forall n > N$, $|c_n|^{\frac{1}{n}} < L+\epsilon$. Now,
-\begin{equation*}
-\sum^\infty_{n = N}|c_n||z|^n = \sum^\infty_{n=N}\left(|c_n|^{\frac{1}{n}}|z|
-\right)^n < \sum^\infty_{n=N}r^n
-\end{equation*}
-converges as $0<r<1$. By the comparison test, $\sum^\infty_{n = N}|c_n||z|^n$ is
-monotonic and bounded and thus converges by Bolzano-Weierstrass.
-\item
-This follows from the proof above. Specifically, this time, notice that there
-exists some $\epsilon > 0$ such that $r \coloneqq |z|(L - \epsilon) > 1$. Again,
-by \cref{limsup}, there exists some $N \in \N$ such that for all $n > N$,
-$|c_n|^{\frac{1}{n}} > L - \epsilon$ so that
-\begin{equation*}
-\sum^\infty_{n = N}|c_n||z|^n = \sum^\infty_{n=N}\left(|c_n|^{\frac{1}{n}}|z|
-\right)^n > \sum^\infty_{n=N}r^n
-\end{equation*}
-follows and so the series diverges.
-\end{enumerate}
+	Let $\displaystyle L \coloneqq \frac{1}{R} = \limsup_{n \to
+	\infty} |c_n|^\frac{1}{n}$ Clearly, $L \leq 0$.
+	\begin{enumerate}
+		\item
+			Suppose $|z| < R$. So, there exists some $\epsilon > 0$ such that $r
+			\coloneqq |z|(L + \epsilon) < 1$ and $0 < r < 1$. By \cref{limsup},
+			$\exists N \in \N$ such that $\forall n > N$, $|c_n|^{\frac{1}{n}} <
+			L+\epsilon$. Now,
+			\begin{equation*}
+				\sum^\infty_{n = N}|c_n||z|^n =
+				\sum^\infty_{n=N}\left(|c_n|^{\frac{1}{n}}|z| \right)^n <
+				\sum^\infty_{n=N}r^n
+			\end{equation*}
+			converges as $0<r<1$. By the comparison test, $\sum^\infty_{n =
+			N}|c_n||z|^n$ is monotonic and bounded and thus converges by
+			Bolzano-Weierstrass.
+		\item
+			This follows from the proof above. Specifically, this time, notice
+			that there exists some $\epsilon > 0$ such that $r \coloneqq |z|(L -
+			\epsilon) > 1$. Again, by \cref{limsup}, there exists some $N \in
+			\N$ such that for all $n > N$, $|c_n|^{\frac{1}{n}} > L - \epsilon$
+			so that
+			\begin{equation*}
+				\sum^\infty_{n = N}|c_n||z|^n =
+				\sum^\infty_{n=N}\left(|c_n|^{\frac{1}{n}}|z| \right)^n >
+				\sum^\infty_{n=N}r^n
+			\end{equation*}
+			follows and so the series diverges.
+	\end{enumerate}
 \end{proof}
 \begin{theorem}
-Suppose $\displaystyle f(z) = \sum^\infty_{n=0}c_nz^n$ has radius of
-convergence $R$. Then $f'(z)$ exists and equals
-\begin{equation*}
-\sum^{\infty}_{n=1} nc_nz^{n-1}
-\end{equation*}
-throughout $|z| < R$. Moreover, $f'$ has the same radius of convergence as $f$.
-\label{theorem4}
+	Suppose $f(z) = \sum^\infty_{n=0}c_nz^n$ has radius of
+	convergence $R$. Then $f'(z)$ exists and equals
+	\begin{equation*}
+		\sum^{\infty}_{n=1} nc_nz^{n-1}
+	\end{equation*}
+	throughout $|z| < R$. Moreover, $f'$ has the same radius of convergence as
+	$f$.
+	\label{theorem4}
 \end{theorem}
 \begin{proof}
-$f'$ has some radius of convergence because
-\begin{equation*}
-\limsup_{n\to\infty}|nc_n|^{\frac{1}{n}}
-= \limsup_{n\to\infty}n^{\frac{1}{n}}|c_n|^{\frac{1}{n}}
-= \limsup_{n\to\infty}|c_n|^{\frac{1}{n}}
-\end{equation*}
-since $\displaystyle\lim_{n\to\infty}n^{\frac{1}{n}} = 1$. Let $|z_0| \leq r <
-R$, $\displaystyle g(z_0) \coloneqq \sum^\infty_{n=1} nc_nz_0^{n-1}$. We want to
-show
-\begin{equation*}
-\lim_{k\to 0} \frac{f(z_0+h) - f(z_0)}{h} = g
-\end{equation*}
-or equivalently, for any $\epsilon > 0$, there exists $\delta > 0$ such that
-\begin{equation*}
-|h| < \delta \Rightarrow \left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right| <
-\epsilon.
-\end{equation*}
-For any fixed $\epsilon > 0$, we write
-\begin{equation*}
-f(z) = \underbrace{\sum^N_{n=0}c_nz^n}_{\coloneqq S_N(z)} +
-\underbrace{\sum^\infty_{n=N+1}c_nz^n}_{\coloneqq E_N(z)} 
-\end{equation*}
-We have $S_N' = \sum^N_{n=1}nc_nz^{n-1}$ and
-\begin{align*}
-&\>\left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right|\\
-=&\> \left|\frac{S_N(z_0+h) - S_N(z_0)}{h} + \frac{E_N(z_0+h) - E_N(z_0)}{h} -
-g(z_0) + S_N'(z_0) -S_N'(z_0)\right|\\
-=&\> \left|\frac{S_N(z_0+h) - S_N(z_0)}{h} - S_N'(z_0) \right|
-+ \left|\frac{E_N(z_0+h) - E_N(z_0)}{h}\right| + \left|S_N'(z_0) -
-g(z_0)\right|.
-\end{align*}
-We have
-\begin{equation*}
-\left|\frac{E_N(z_0+h) - E_N(z_0)}{h}\right|
-= \left|\frac{1}{h} \sum^\infty_{n=N+1}c_n \big((z_0+h)^h -z_0^n\big)\right|
-\end{equation*}
-As $a^n -b^n = (a-b)(a^{n-1} + a^{n-2}b + \dots+ab^{n-2} + b^{n-1})$ in any
-ring, we have
-\begin{align*}
-&\>\left|\frac{1}{h} \sum^\infty_{n=N+1}c_n \big((z_0+h)^h -z_0^n\big)\right|\\
-=&\> \left|\sum^{\infty}_{n=N+1}c_n\big((z_0+h)^{n-1} + (z_0+h)^{n+2}z_0 + \dots +
-(z_0+h)z_0^{n-2} + z_0^{n-1}\big)\right|
+	$f'$ has some radius of convergence because
+	\begin{equation*}
+		\limsup_{n\to\infty}|nc_n|^{\frac{1}{n}}
+		= \limsup_{n\to\infty}n^{\frac{1}{n}}|c_n|^{\frac{1}{n}}
+		= \limsup_{n\to\infty}|c_n|^{\frac{1}{n}}
+	\end{equation*}
+	since $\displaystyle\lim_{n\to\infty}n^{\frac{1}{n}} = 1$. Let $|z_0| \leq r
+	< R$, $\displaystyle g(z_0) \coloneqq \sum^\infty_{n=1} nc_nz_0^{n-1}$. We
+	want to show
+	\begin{equation*}
+		\lim_{k\to 0} \frac{f(z_0+h) - f(z_0)}{h} = g
+	\end{equation*}
+	or equivalently, for any $\epsilon > 0$, there exists $\delta > 0$ such that
+	\begin{equation*}
+		|h| < \delta \Rightarrow \left|\frac{f(z_0+h) - f(z_0)}{h} -
+		g(z_0)\right| < \epsilon.
+	\end{equation*}
+	For any fixed $\epsilon > 0$, we write
+	\begin{equation*}
+		f(z) = \underbrace{\sum^N_{n=0}c_nz^n}_{\coloneqq S_N(z)} +
+		\underbrace{\sum^\infty_{n=N+1}c_nz^n}_{\coloneqq E_N(z)}
+	\end{equation*}
+	We have $S_N' = \sum^N_{n=1}nc_nz^{n-1}$ and
+	\begin{align*}
+		&\>\left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right|\\
+		=&\> \left|\frac{S_N(z_0+h) - S_N(z_0)}{h} + \frac{E_N(z_0+h) -
+		E_N(z_0)}{h} - g(z_0) + S_N'(z_0) -S_N'(z_0)\right|\\
+		=&\> \left|\frac{S_N(z_0+h) - S_N(z_0)}{h} - S_N'(z_0) \right|
+		+ \left|\frac{E_N(z_0+h) - E_N(z_0)}{h}\right| + \left|S_N'(z_0) -
+		g(z_0)\right|.
+	\end{align*}
+	We have
+	\begin{equation*}
+		\left|\frac{E_N(z_0+h) - E_N(z_0)}{h}\right| = \left|\frac{1}{h}
+		\sum^\infty_{n=N+1}c_n \big((z_0+h)^h -z_0^n\big)\right|
+	\end{equation*}
+	As $a^n -b^n = (a-b)(a^{n-1} + a^{n-2}b + \dots+ab^{n-2} + b^{n-1})$ in any
+	ring, we have
+	\begin{align*}
+		&\>\left|\frac{1}{h} \sum^\infty_{n=N+1}c_n \big((z_0+h)^h
+	-z_0^n\big)\right|\\ =&\>
+	\left|\sum^{\infty}_{n=N+1}c_n\big((z_0+h)^{n-1} +
+	(z_0+h)^{n+2}z_0 + \dots + (z_0+h)z_0^{n-2} + z_0^{n-1}\big)\right|
 \end{align*}
 Now, by choosing $\delta$ relatively small so that $|z_0|\leq r $, we have
 $|z_0|, |z_0+h| \leq r$ and so
 \begin{equation*}
-(z_0+h)^{n-1} + (z_0+h)^{n+2}z_0 + \dots + (z_0+h)z_0^{n-2} + z_0^{n-1} \leq nr^{n-1}
+	(z_0+h)^{n-1} + (z_0+h)^{n+2}z_0 + \dots + (z_0+h)z_0^{n-2} + z_0^{n-1}
+	\leq nr^{n-1}
 \end{equation*}
 So,
 \begin{equation*}
-\left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right| \leq
-\sum^\infty_{n=N+1}nc_nr^{n-1} < \frac{\epsilon}{3}.
+	\left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right| \leq
+	\sum^\infty_{n=N+1}nc_nr^{n-1} < \frac{\epsilon}{3}.
 \end{equation*}
 for a large enough $N_1$.\\
 
 Now, observe that by definition,
 \begin{equation*}
-S'_N(z_0) = \sum^N_{n=1} nc_nz^{n-1}.
+	S'_N(z_0) = \sum^N_{n=1} nc_nz^{n-1}.
 \end{equation*}
 Since,
 \begin{equation*}
-\lim_{N\to\infty} S'_N(z_0)
-= \lim_{N\to\infty} \sum^N_{n=1} nc_nz^{n-1}
-= \sum^\infty_{n=1} nc_nz^{n-1}
-= g(z_0)
+	\lim_{N\to\infty} S'_N(z_0)
+	= \lim_{N\to\infty} \sum^N_{n=1} nc_nz^{n-1}
+	= \sum^\infty_{n=1} nc_nz^{n-1}
+	= g(z_0)
 \end{equation*}
-we can pick some $\frac{\epsilon}{3} >0$ such that there exists some $N_2\in\N$,
-for all $n > N_2$, we have
+we can pick some $\frac{\epsilon}{3} >0$ such that there exists some
+$N_2\in\N$, for all $n > N_2$, we have
 \begin{equation*}
-|S'_N(z_0) - g(z_0)| < \frac{\epsilon}{3}.
+	|S'_N(z_0) - g(z_0)| < \frac{\epsilon}{3}.
 \end{equation*}
 
-Finally, let $\frac{\epsilon}{3} > 0$. Observe that there exists some $\delta >
-0$ such that there exists some $N > \max{N_1,N_2}$, for all $n > N$,
+Finally, let $\frac{\epsilon}{3} > 0$. Observe that there exists some
+$\delta > 0$ such that there exists some $N > \max{N_1,N_2}$, for all $n >
+N$,
 \begin{equation*}
-\left|\frac{S_N(z_0+h) - S_N(z_0)}{h} - S'_N(z_0)\right| <
-\frac{\epsilon}{3}.
+	\left|\frac{S_N(z_0+h) - S_N(z_0)}{h} - S'_N(z_0)\right| <
+	\frac{\epsilon}{3}.
 \end{equation*}
 as $|h| < \delta$. It follows that
 \begin{equation*}
-\left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right| < \epsilon
+	\left|\frac{f(z_0+h) - f(z_0)}{h} - g(z_0)\right| < \epsilon
 \end{equation*}
 as desired.
 \end{proof}
 
 \begin{example}
-Consider $\displaystyle f(z) = \sum^\infty_{n=1} \frac{z^n}{n}$. To find the
-radius of convergence, we use Hadamard's Formula,
-\begin{align*}
-\frac{1}{R} &= \limsup_{n\to\infty}\left(\frac{1}{n}\right)^{\frac{1}{n}}\\
-&= \lim_{n\to\infty}n^{\frac{1}{n}}\\
-&= 1
-\end{align*}
-Thus, $R=1$. By \cref{theorem3}, $f$ converges absolutely when $|z| < 1$ and
-diverges when $|z| > 1$. As for the boundary, in other words, when $|z| = 1$,
-consider the follwoing two cases:
-\begin{enumerate}
-\item If $z = 1$, then $\displaystyle f(1) = \sum^\infty_{n=1} \frac{1}{n}$ is a
-harmonic series, and hence $f$ diverges.
-\item If $z = i$, then
-\begin{align*}
-f(i) &= \sum^\infty_{n=1} \frac{i^n}{n}\\
-&= i - \frac{1}{2} - \frac{i}{3} + \frac{1}{4} + \frac{i}{5} - \frac{1}{6}\\
-&= \left(-\frac{1}{2} + \frac{1}{4} - \frac{1}{6} + \dots\right)
-i\left(1-\frac{1}{3} + \frac{1}{5} - \dots\right)
-\end{align*}
-which both real and imaginary parts converge by the alternating series test.
-Therefore, we observe that both convergence and divergence may occur on the
-boundary, depending on the value of $z$.
-\end{enumerate}
+	Consider $\displaystyle f(z) = \sum^\infty_{n=1} \frac{z^n}{n}$. To find the
+	radius of convergence, we use Hadamard's Formula,
+	\begin{align*}
+		\frac{1}{R} &=
+		\limsup_{n\to\infty}\left(\frac{1}{n}\right)^{\frac{1}{n}}\\
+		&= \lim_{n\to\infty}n^{\frac{1}{n}}\\
+		&= 1
+	\end{align*}
+	Thus, $R=1$. By \cref{theorem3}, $f$ converges absolutely when $|z| < 1$ and
+	diverges when $|z| > 1$. As for the boundary, in other words, when $|z| = 1$,
+	consider the follwoing two cases:
+	\begin{enumerate}
+		\item If $z = 1$, then $\displaystyle f(1) = \sum^\infty_{n=1}
+			\frac{1}{n}$ is a harmonic series, and hence $f$ diverges.
+		\item If $z = i$, then
+			\begin{align*}
+				f(i) &= \sum^\infty_{n=1} \frac{i^n}{n}\\ &= i - \frac{1}{2} -
+				\frac{i}{3} + \frac{1}{4} + \frac{i}{5} - \frac{1}{6}\\ &=
+				\left(-\frac{1}{2} + \frac{1}{4} - \frac{1}{6} + \dots\right)
+				i\left(1-\frac{1}{3} + \frac{1}{5} - \dots\right)
+			\end{align*}
+			which both real and imaginary parts converge by the alternating series test.
+			Therefore, we observe that both convergence and divergence may occur on the
+			boundary, depending on the value of $z$.
+	\end{enumerate}
 \end{example}
 \begin{remark}
-The positions of $\lim$ and $\displaystyle \sum^\infty_{n=0}$ cannot be
-exchanged when we consider infinite sums. Consider the following example.
+	The positions of $\lim$ and $\displaystyle \sum^\infty_{n=0}$ cannot be
+	exchanged when we consider infinite sums. Consider the following example.
 \end{remark}
 \begin{example}
-Consider for $|x| > 1, \displaystyle \sum^\infty_{n=1} \lim_{x\to 1}
-(x^n-x^{n+1}) = \sum^\infty_{n=1}(1-1) = 0$. Now,
-\begin{align*}
-&\>\lim_{x\to 1}\lim_{N\to\infty}\sum^N_{n-1} (x^n - x^{n+1})\\
-=&\>\lim_{x\to 1}\lim_{N\to\infty} (x - x^2 + x^2 - x^3 + \dots + x^{N-1} - x^N
-+ x^N - x^{N+1})\\
-=&\>\lim_{x\to 1}\lim_{N\to\infty} (x - x^{N+1})\\
-=&\>\lim_{x\to 1} x\\
-=&\> 1
-\end{align*}
-so that
-\begin{equation*}
-\sum^\infty_{n=1} \lim_{x\to 1} (x^n-x^{n+1}) \neq \lim_{x\to 1}
-\sum^\infty_{n=1} (x^n-x^{n+1}).
-\end{equation*}
+	Consider for $|x| > 1, \displaystyle \sum^\infty_{n=1} \lim_{x\to 1}
+	(x^n-x^{n+1}) = \sum^\infty_{n=1}(1-1) = 0$. Now,
+	\begin{align*}
+		&\>\lim_{x\to 1}\lim_{N\to\infty}\sum^N_{n-1} (x^n - x^{n+1})\\
+		=&\>\lim_{x\to 1}\lim_{N\to\infty} (x - x^2 + x^2 - x^3 + \dots + x^{N-1} - x^N
+		+ x^N - x^{N+1})\\
+		=&\>\lim_{x\to 1}\lim_{N\to\infty} (x - x^{N+1})\\
+		=&\>\lim_{x\to 1} x\\
+		=&\> 1
+	\end{align*}
+	so that
+	\begin{equation*}
+		\sum^\infty_{n=1} \lim_{x\to 1} (x^n-x^{n+1}) \neq \lim_{x\to 1}
+		\sum^\infty_{n=1} (x^n-x^{n+1}).
+	\end{equation*}
 \end{example}
 \begin{definition}
-A function $f$ is said to be \underline{entire} if $f$ is holomorphic in the
-entire complex plane.
+	A function $f$ is said to be \underline{entire} if $f$ is holomorphic in the
+	entire complex plane.
 \end{definition}
 \begin{example}
-Define $\displaystyle e^z = \sum^\infty_{n=0}\frac{z^n}{n!}$. Show that the
-radius of convergence of this series is $\infty$ (which implies $e^z$ is entire)
-and $(e^z)' = e^z$.
+	Define $\displaystyle e^z = \sum^\infty_{n=0}\frac{z^n}{n\fact }$. Show that
+	the radius of convergence of this series is $\infty$ (which implies $e^z$ is
+	entire) and $(e^z)' = e^z$.
 \end{example}
 Consider Stirling's formula, which says as $n\to\infty, n\fact \sim
 \left(\frac{n}{e}\right)^n\sqrt{2\pi n}$. Then, we have
 \begin{equation*}
-e^z = \sum^\infty_{n=0} \frac{1}{\sqrt{2\pi n}}\left( \frac{ez}{n}\right)^n.
+	e^z = \sum^\infty_{n=0} \frac{1}{\sqrt{2\pi n}}\left( \frac{ez}{n}\right)^n.
 \end{equation*}
 Now,
 \begin{align*}
-\frac{1}{R}
-&= \limsup_{n\to\infty}\left| \frac{1}{\sqrt{2\pi
+	\frac{1}{R}
+	&= \limsup_{n\to\infty}\left| \frac{1}{\sqrt{2\pi
 n}}\left(\frac{e}{n}\right)\right|^{\frac{1}{n}}\\
 &= \limsup_{n\to\infty}\left| \frac{1}{2\pi n} \right|^{\frac{1}{n}}
 \limsup_{n\to\infty}\left| \frac{e}{n} \right|^{\frac{1}{n}}\\
@@ -841,26 +859,26 @@ n}}\left(\frac{e}{n}\right)\right|^{\frac{1}{n}}\\
 Thus, $R \to \infty$ as $n \to \infty$. By \cref{theorem3}, $e^z$ is an entire
 function. Now, we can show the derivative by the limit defintition. Notice,
 \begin{align*}
-\lim_{h \to 0}\frac{e^{z+h} - e^z}{h}
-&= \lim_{h \to 0}\frac{e^{h} - 1}{h}\\
-&= \lim_{h \to 0}\frac{e^{h} - 1}{h}\\
-&= \lim_{h \to 0}\frac{e^{h}}{h}\lim_{h \to 0}\frac{1}{h}\\
+	\lim_{h \to 0}\frac{e^{z+h} - e^z}{h}
+	&= \lim_{h \to 0}\frac{e^{h} - 1}{h}\\
+	&= \lim_{h \to 0}\frac{e^{h} - 1}{h}\\
+	&= \lim_{h \to 0}\frac{e^{h}}{h}\lim_{h \to 0}\frac{1}{h}\\
 \end{align*}
 
 \begin{corollary}[Corollary of \cref{theorem4}]
-A power series is infinitely complex-differentiable in its radius of
-convergence. All its derivatives are also power series, obtained by termwise
-differentiation. If $\displaystyle f(z) = \sum^\infty_{n=0}a_nz^n$, then
-\begin{equation*}
-f^{(N)}(z) = \sum^\infty_{n=N}n(n-1)\cdots(n-N)c_nz^{n-N}
-\end{equation*}
-for some $N \in \N$.
+	A power series is infinitely complex-differentiable in its radius of
+	convergence. All its derivatives are also power series, obtained by termwise
+	differentiation. If $\displaystyle f(z) = \sum^\infty_{n=0}a_nz^n$, then
+	\begin{equation*}
+		f^{(N)}(z) = \sum^\infty_{n=N}n(n-1)\cdots(n-N)c_nz^{n-N}
+	\end{equation*}
+	for some $N \in \N$.
 \end{corollary}
 In general, we have have $\displaystyle \sum^\infty_{n=0} c_n(z - z_0)^n$, which
 is the power series centered at $z \in \C$. Then as before, the readius of
 convergence $R$ is given by
 \begin{equation*}
-\frac{1}{R} = \limsup_{n\to\infty} |c_n|^{\frac{1}{n}}.
+	\frac{1}{R} = \limsup_{n\to\infty} |c_n|^{\frac{1}{n}}.
 \end{equation*}
 But the disc of convergence is now centered around $z_0$. We have shown that
 $f(z)$ has a power series expansion at $z_0$ (i.e. $\displaystyle f(z) =
@@ -874,151 +892,398 @@ However, for this, we need the concept of integration over paths of curves.
 \section{Integration}
 \subsection{Curves and Paths}
 \begin{definition}
-A \underline{curve} in $\C$ is a continuous function $\gamma(t) : [a,b] \to \C$
-with $a,b \in \R$. The image of $\gamma$ in $\C$ is called $\gamma^*$.
+	A \underline{curve} in $\C$ is a continuous function $\gamma(t) : [a,b] \to \C$
+	with $a,b \in \R$. The image of $\gamma$ in $\C$ is called $\gamma^*$.
 \end{definition}
 \begin{example}
-Let $z_0 \in \C$, $r > 0$. Take $\gamma: [0, 2\pi] \to \C$ defined by $t \mapsto
-z_0 + re^{it}$. This is a circle of radius $r$ centered at $z_0$, oriented
-counterclockwise.
+	Let $z_0 \in \C$, $r > 0$. Take $\gamma: [0, 2\pi] \to \C$ defined by $t \mapsto
+	z_0 + re^{it}$. This is a circle of radius $r$ centered at $z_0$, oriented
+	counterclockwise.
 \end{example}
 \begin{example}
-Consider $\hat\gamma: [0,1] \to \C$ defined by $t \mapsto z_0 + re^{2\pi it}$.
-This is identical to the curve $\gamma$ defined above with the same oriented
-path and shows that curves have different parameterizations.
+	Consider $\hat\gamma: [0,1] \to \C$ defined by $t \mapsto z_0 + re^{2\pi it}$.
+	This is identical to the curve $\gamma$ defined above with the same oriented
+	path and shows that curves have different parameterizations.
 \end{example}
 \begin{definition}
-We say $\gamma$ is \underline{smooth} on the interval $[a,b]$ if $\gamma'$
-exists, is continuous on $[a,b]$ and $\gamma'(t) \neq 0$ for any $t \in [a,b]$.
+	We say $\gamma$ is \underline{smooth} on the interval $[a,b]$ if $\gamma'$
+	exists, is continuous on $[a,b]$ and $\gamma'(t) \neq 0$ for any $t \in [a,b]$.
 \end{definition}
 \begin{definition}
-$\gamma: [a,b] \to \C$ is \underline{piecewise-smooth} if it is smooth on
-$[a,b]$ except at finitely many points in $[a,b]$.
+	$\gamma: [a,b] \to \C$ is \underline{piecewise-smooth} if it is smooth on
+	$[a,b]$ except at finitely many points in $[a,b]$.
 \end{definition}
 \begin{remark}
-Piecewise smooth curves are called \underline{paths}.
+	Piecewise smooth curves are called \underline{paths}.
 \end{remark}
 \subsection{The Integral}
 \begin{definition}
-Given a path $\gamma:[a,b] \to \C$ and $f(z)$ is a continuous function on
-$\gamma$, the \underline{integral of $f$ along $\gamma$}, (called the
-\underline{contour}) is defined by
-\begin{equation*}
-\int_\gamma f(z)\>dz \coloneqq \int^b_a f\big(\gamma(t)\big)\gamma'(t)\>dt.
-\end{equation*}
-where $z = \gamma(t)$, so $dz = \gamma'(t)\dif t$.
+	Given a path $\gamma:[a,b] \to \C$ and $f(z)$ is a continuous function on
+	$\gamma$, the \underline{integral of $f$ along $\gamma$}, (called the
+	\underline{contour}) is defined by
+	\begin{equation*}
+		\int_\gamma f(z)\>dz \coloneqq \int^b_a f\big(\gamma(t)\big)\gamma'(t)\>dt.
+	\end{equation*}
+	where $z = \gamma(t)$, so $dz = \gamma'(t)\dif t$.
 \end{definition}
 \begin{remark}
-If $g$ is complex valued, then
-\begin{equation*}
-\int^b_a g(t)\dif t = \int^b_a \Re\big(g(t)\big)\dif t + i \int^b_a
-\Im\big(g(t)\big)\dif t.
-\end{equation*}
+	If $g$ is complex valued, then
+	\begin{equation*}
+		\int^b_a g(t)\dif t = \int^b_a \Re\big(g(t)\big)\dif t + i \int^b_a
+		\Im\big(g(t)\big)\dif t.
+	\end{equation*}
 \end{remark}
 \begin{remark}
-The integral $\int_\gamma f(z)\dif z$ can be shown to be independent of the
-parameterization chosen for $\gamma*$.
+	The integral $\int_\gamma f(z)\dif z$ can be shown to be independent of the
+	parameterization chosen for $\gamma*$.
 \end{remark}
-\begin{theorem}
-For any complex valued functions $f(z), g(z)$, and $\alpha, \beta \in \C$, the
-following hold:
-\begin{enumerate}
-\item Integration is linear; For any curve $\gamma:[\alpha,\beta] \to \C$,
-\begin{equation*} \int_{\gamma} (\alpha f(z) + \beta g(z))\dif z =
-\alpha\int_\gamma f(z)\dif z + \beta\int_\gamma g(z)\dif z
-\end{equation*}
-\item If $\beta \leq \alpha$,
-\begin{equation*}
-\left| \int_a^b g(z)\dif z\right| \leq \int_a^b |g(z)| \dif z
-\end{equation*}
-\item If $f(x)$ is continuous on the path $\gamma:[\alpha,\beta] \to \C$,
-\begin{equation*}
-\left| \int_\gamma f(z)\dif z\right| \leq \sup_{z \in \gamma} |f(x)| \cdot
-\underbrace{\int_a^b |\gamma(t)| \dif t}_{\text{length of the path}}
-\end{equation*}
-\item If $\gamma^-$ is the reverse direction of the path $\gamma:[a:b]\to\C$,
-then
-\begin{equation*}
-\int_{\gamma^-} f(z)\dif z = -\int_\gamma f(z)\dif z
-\end{equation*}
-\end{enumerate}
+\begin{example}\label{example1}
+	For all $n \in \mathbb{Z}$, evaluate $\int_{\gamma} z^n \dif{z}$. That is,
+	continue on the path $\gamma$ that describes any circle centered at origin
+	oriented anticlockwise.
+\end{example}
+Let $R \in \R$ and define
+\begin{gather*}
+	\gamma: [0, 1] \to \mathbb{C} \quad t \mapsto Re^{2\pi i t} \\
+	\gamma'(t) = 2R\pi i e^{2\pi i t} = 2 \pi i \gamma(t).
+\end{gather*}
+Then,
+\begin{align*}
+	\int_{\gamma} z^n \dif{z}
+	&= \int_{0}^{1} R^ne^{2 \pi i n t} \cdot 2 \pi i \cdot Re^{2 \pi i t} \dif t \\
+	&= 2 \pi i R^{n + 1} \int_{0}^{1} e^{2 \pi i (n + 1) t} \dif t \\
+	&= \begin{cases}
+	\frac{R^{n + 1}}{n + 1} e^{2 \pi i (n + 1) t} \Big|_{0}^{1} & \text{if } n \in
+	\mathbb{Z} \setminus \{-1\} \\ 2 \pi i t \Big|_{0}^{1} & \text{if } n = -1
+\end{cases} \\
+&= \begin{cases}
+\frac{R^{n + 1}}{n + 1} \left(e^{2 \pi i (n + 1)} - 1 \right) & \text{if } n \in
+\mathbb{Z} \setminus \{-1\} \\ 2 \pi i  & \text{if } n = -1
+\end{cases} \tag{since $e^{2 \pi k i} \equiv 1 \Mod{2 \pi}$}\\
+&= \begin{cases}
+0   & \text{if } n \in \mathbb{Z} \setminus \{-1\} \\
+2 \pi i & \text{if } n = -1
+\end{cases}
+\end{align*}
+Note that our final answer does not depend on $R$, the radius of the circle.
+\begin{theorem}\label{theorem10}
+	For any complex valued functions $f(z), g(z)$, and $\alpha, \beta \in \C$, the
+	following hold:
+	\begin{enumerate}
+		\item Integration is linear; For any curve $\gamma:[\alpha,\beta] \to \C$,
+			\begin{equation*} \int_{\gamma} (\alpha f(z) + \beta g(z))\dif z =
+				\alpha\int_\gamma f(z)\dif z + \beta\int_\gamma g(z)\dif z
+			\end{equation*}
+		\item If $\beta \leq \alpha$,
+			\begin{equation*}
+				\left| \int_a^b g(z)\dif z\right| \leq \int_a^b |g(z)| \dif z
+			\end{equation*}
+		\item If $f(x)$ is continuous on the path $\gamma:[\alpha,\beta] \to \C$,
+			\begin{equation*}
+				\left| \int_\gamma f(z)\dif z\right| \leq \sup_{z \in \gamma}
+				|f(x)| \cdo\rightt
+				\underbrace{\int_a^b |\gamma(t)| \dif t}_{\text{length of the path}}
+			\end{equation*}
+		\item If $\gamma^-$ is the reverse direction of the path $\gamma:[a,b]\to\C$,
+			then
+			\begin{equation*}
+				\int_{\gamma^-} f(z)\dif z = -\int_\gamma f(z)\dif z
+			\end{equation*}
+	\end{enumerate}
 \end{theorem}
 \begin{proof}\leavevmode
-\begin{enumerate}
-\item This follows as we can write $f(x) = \Re(f) + i\Im(f)$ and apply linearity
-of real-valued integrals.
-\item Since we have $-|g(z)| \leq g(z) \leq |g(z)|$, for all $z \in [a,b]$, we
-have
-\begin{equation*}
--\int_a^b |g(z)| \dif z \leq \int_a^b g(z) \dif z \leq \int_a^b |g(z)| \dif z
-\end{equation*}
-and the result follows.
-\item Notice,
-\begin{align*}
-\left| \int_\gamma f(z) \dif z\right|
-&= \left| \int_a^b f(\gamma(t))\gamma'(t)\dif t\right|\\
-&\leq \int_a^b |f(\gamma(t))\gamma'(t)| \dif t \tag{from (2)}\\
-&\leq \int_a^b \sup_{z\in\gamma} |f(z)| |\gamma'(t)| \dif t \tag{$|f(z)|\leq
-\sup_{z\in\gamma}|f(z)|$}\\
-&= \sup_{z\in\gamma} |f(z)| \int_a^b |\gamma'(t)| \dif t 
-\end{align*}
-as desired.
-\item This follows trivially from the \nameref{ftoc}. We can
-define $\gamma^-:[b,a] \to \C$ and
-\begin{equation*}
-\int_{\gamma^-} f(z) \dif z
-= \int_b^a f(z) \dif z
-= F(a) - F(a)
-= -(F(a) - F(b))
-= \int_a^b f(z) \dif z
-\int_{\gamma} f(z) \dif z
-\end{equation*}
-where $F(z) = \int f(z) \dif z$.
+	\begin{enumerate}
+		\item This follows as we can write $f(x) = \Re(f) + i\Im(f)$ and apply linearity
+			of real-valued integrals.
+		\item Since we have $-|g(z)| \leq g(z) \leq |g(z)|$, for all $z \in [a,b]$, we
+			have
+			\begin{equation*}
+				-\int_a^b |g(z)| \dif z \leq \int_a^b g(z) \dif z \leq \int_a^b |g(z)| \dif z
+			\end{equation*}
+			and the result follows.
+		\item Notice,
+			\begin{align*}
+				\left| \int_\gamma f(z) \dif z\right|
+				&= \left| \int_a^b f(\gamma(t))\gamma'(t)\dif t\right|\\
+				&\leq \int_a^b |f(\gamma(t))\gamma'(t)| \dif t \tag{from (2)}\\
+				&\leq \int_a^b \sup_{z\in\gamma} |f(z)| |\gamma'(t)| \dif t \tag{$|f(z)|\leq
+			\sup_{z\in\gamma}|f(z)|$}\\
+			&= \sup_{z\in\gamma} |f(z)| \int_a^b |\gamma'(t)| \dif t
+		\end{align*}
+		as desired.
+	\item This follows trivially from the \nameref{ftoc}. We can
+		define $\gamma^-:[b,a] \to \C$ and
+		\begin{equation*}
+			\int_{\gamma^-} f(z) \dif z
+			= \int_b^a f(z) \dif z
+			= F(a) - F(a)
+			= -(F(a) - F(b))
+			= \int_a^b f(z) \dif z
+			\int_{\gamma} f(z) \dif z
+		\end{equation*}
+		where $F(z) \coloneqq \int f(z) \dif z$ is called the \underline{indefinite
+		integral}.
 \end{enumerate}
 \end{proof}
-At this point, we generalize the \nameref{ftoc} for $\C$
+At this point, we generalize the \nameref{ftoc} for $\C$.
 
 \subsection{Fundamental Theorem of Calculus}
 \begin{remark}
-We denote the set of all holomorphic functions $f: \Omega \subseteq \C \to \C$
-by $H(\Omega)$ where $\Omega$ is an open set. In other words, $f$ is holomorphic
-in $\Omega$ if and only if $f \in H(\Omega)$.
+	We denote the set of all holomorphic functions $f: \Omega \subseteq \C \to \C$
+	by $H(\Omega)$ where $\Omega$ is an open set. In other words, $f$ is holomorphic
+	in $\Omega$ if and only if $f \in H(\Omega)$.
 \end{remark}
 \begin{theorem}[Fundamental Theorem of Calculus]
-Let $\gamma:[a,b] \to \mathbb{C}$ be a path inside an open set $\Omega \subseteq
-\mathbb{C}$. Suppose $f(z)$ is continuous on $\gamma$, and has an antiderivative
-$F \in \Omega$. Then,
-\begin{equation}
-\int_{\gamma} f(z) dz = F\big(\gamma(b)\big) - F\big(\gamma(a)\big)
-\end{equation}
-\label{ftoc}
+	Let $\gamma:[a,b] \to \mathbb{C}$ be a path inside an open set $\Omega \subseteq
+	\mathbb{C}$. Suppose $f(z)$ is continuous on $\gamma$, and has an antiderivative
+	$F \in \Omega$. Then,
+	\begin{equation}
+		\int_{\gamma} f(z) dz = F\big(\gamma(b)\big) - F\big(\gamma(a)\big)
+	\end{equation}
+	\label{ftoc}
 \end{theorem}
 \begin{proof}
-Let $G = F \circ \gamma$ and suppose $\gamma$ is a smooth function. Since
-$\gamma$ is smooth, $\gamma'$ exists and is continuous on $[a, b]$ and
-$\gamma'(t) \neq 0$ for all $t \in [a, b]$, and since $f$ is continuous on $[a,
-b]$, $G(t) = F'(\gamma(t))\gamma'(t)$ is continuous as well. Now
-\begin{align*}
-\int_{\gamma} f(z) \dif z
-&= \int_{a}^{b} f\big(\gamma(t)\big)\gamma'(t) \dif t \\
-&= \int_{a}^{b} F'\big(\gamma(t)\big)\gamma'(t) \dif t \\
-&= \int_{a}^{b} G'(t) \dif t \\
-\end{align*}
-Now, we can write $G'(t) = \Re(G) + i\Im(G)$ and apply the Fundamental Theorem
-of Calculus in $\R$ to arrive at
-\begin{align*}
-&= \int_{a}^{b} G'(t) \dif t \\
-&= \int_{a}^{b} \Re(G) \dif t + i\int_a^b \Im(G)\dif t \\
-&= \Re(G(b)) + i\Im(G(b)) - \Re(G(a)) - i\Im(G(b))\\
-&= G(b) - G(a) \\
-&= F(\gamma(b)) - F(\gamma(a))
-\end{align*}
-If $\gamma$ is piecewise smooth, then we can simply apply the above to each of
-the smooth paths separately and sum up all of the integrals.
+	Let $G = F \circ \gamma$ and suppose $\gamma$ is a smooth function. Since
+	$\gamma$ is smooth, $\gamma'$ exists and is continuous on $[a, b]$ and
+	$\gamma'(t) \neq 0$ for all $t \in [a, b]$, and since $f$ is continuous on $[a,
+	b]$, $G(t) = F'(\gamma(t))\gamma'(t)$ is continuous as well. Now
+	\begin{align*}
+		\int_{\gamma} f(z) \dif z
+		&= \int_{a}^{b} f\big(\gamma(t)\big)\gamma'(t) \dif t \\
+		&= \int_{a}^{b} F'\big(\gamma(t)\big)\gamma'(t) \dif t \\
+		&= \int_{a}^{b} G'(t) \dif t \\
+	\end{align*}
+	Now, we can write $G'(t) = \Re(G) + i\Im(G)$ and apply the Fundamental Theorem
+	of Calculus in $\R$ to arrive at
+	\begin{align*}
+		&= \int_{a}^{b} G'(t) \dif t \\
+		&= \int_{a}^{b} \Re(G) \dif t + i\int_a^b \Im(G)\dif t \\
+		&= \Re(G(b)) + i\Im(G(b)) - \Re(G(a)) - i\Im(G(b))\\
+		&= G(b) - G(a) \\
+		&= F(\gamma(b)) - F(\gamma(a))
+	\end{align*}
+	If $\gamma$ is piecewise smooth, then we can simply apply the above to each of
+	the smooth paths separately and sum up all of the integrals.
 \end{proof}
 \begin{definition}
-A path $\gamma: [a, b] \to \C$ is said to be \underline{closed} if
-$\gamma(a) = \gamma(b)$.
+	A path $\gamma: [a, b] \to \C$ is said to be \underline{closed} if
+	$\gamma(a) = \gamma(b)$.
 \end{definition}
+\begin{corollary}
+	If $f \in H(\Omega)$, $\Omega \in \C$ open, then
+	\begin{equation*}
+		\int_\gamma F'(z) \dif z = 0
+	\end{equation*}
+	on any closed path $\gamma: [a,b] \to \C$.
+	\label{corollary5}
+\end{corollary}
+\begin{proof}
+	By the \nameref{ftoc}, we have
+	\begin{equation*}
+		\int_\gamma F'(z) \dif z = F(\gamma(a)) - F(\gamma(b)) = 0
+	\end{equation*}
+	as desired.
+\end{proof}
+\begin{example}
+	Take $f(z) = z^n$ where $n \in \Z \setminus \{-1\}$. Then $f$ is continuous on
+	$\C \setminus \{0\}$. Then $f=F'$ for $F = \frac{z^{n+1}}{n+1}$ and $F =
+	H(\C \setminus \{0\})$. Therefore, $\int_\gamma z^n\dif z = 0$ for any closed
+	path $\gamma$ not passing through 0 by \cref{corollary5}.\\
+	\indent
+	If $n = -1$, we know from \cref{example1} that $F'$ is not continuous and thus
+	we cannot invoke \cref{corollary5}. In this particular case, we have
+	$\int_\gamma \frac{1}{z} \dif z = 2\pi i$.
+\end{example}
+\begin{definition}
+	The \underline{interior} of a set $\Omega$ is defined as
+	\begin{equation*}
+		\Omega^\circ \coloneqq \{ z \in \Omega : \exists \epsilon\in\R, B_\epsilon(z)
+		\subseteq \Omega\}.
+	\end{equation*}
+\end{definition}
+\begin{theorem}[Cauchy-Goursat Theorem]
+	Let $\Omega\subseteq\C$ be a open set and $f:\Omega\to\C$ such that $f \in
+	H(\Omega)$. Then
+	\begin{equation*}
+		\int_\Delta f(z) \dif z = 0
+	\end{equation*}
+	for any triangular path $\Delta\in\Omega$.
+	\label{theorem6}
+\end{theorem}
+\begin{remark}
+	Given any two points in $\C$, if we can connect these two points by two paths,
+	then the integrals of any given holomorphic function over these paths are the
+	same.
+\end{remark}
 
+\begin{proof}
+	We begin with the assumption that
+	\begin{equation*}
+		\left|\int_{\Delta} f(z)\dif z \right| = c \geq 0.
+	\end{equation*}
+	We construct $\Delta^{(1)}_1, \Delta^{(2)}_1, \Delta^{(3)}_1,
+	\Delta^{(4)}_1$ be the smaller triangles by bisecting each side of $\Delta$.
+	Then, it is true that
+	\begin{equation*}
+		\int_{\Delta} f(z) \dif z = \sum^4_{i=1} \int_{\Delta^{(1)}_i}
+		f(z) \dif z
+	\end{equation*}
+	which gives the inequality
+	\begin{equation*}
+		c = \left|\int_{\Delta} f(z) \dif z \right| \leq \sum^4_{i=1} \left|
+		\int_{\Delta^{(1)}_i} f(z) \dif z \right|.
+	\end{equation*}
+	Now, we can choose some $i \in \{1,2,3,4\}$ such that
+	\begin{equation*}
+		\left| \int_{\Delta^{(1)}_i} f(z) \dif z \right| \geq \frac{1}{4}c 	
+	\end{equation*}
+	and fix $\Delta^{(1)} \coloneqq \Delta^{(1)}_i$. Here, we have that
+	$L(\Delta^{(1)}) = \frac{1}{2}L(\Delta)$ where $L(\gamma)$ is the length of
+	the curve. We can repeat this process of subdividing the triangular paths so
+	that we get a sequence of triangles
+	\begin{equation*}
+		\Delta \supseteq \Delta^{(1)} \supseteq \Delta^{(2)} \supseteq \dots
+		\supseteq \Delta^{(n)} \supseteq \dots
+	\end{equation*}
+	satisfying both
+	\begin{equation*}
+		\left|\int_{\Delta^{(n)}} f(z) \dif z \right| \geq
+		\left(\frac{1}{4}\right)^n c \quad \text{and} \quad L(\Delta^{(n)}) =
+		\left(\frac{1}{2}\right)^n L(\Delta)
+	\end{equation*}
+	for all $n \in \N \setminus \{0\}$.
+	\begin{claim}[Nested Triangles Theorem]
+		The nested sequence $\Delta \supseteq \Delta^{(1)} \supseteq
+		\Delta^{(2)} \supseteq \dots \supseteq \Delta^{(n)} \supseteq \dots$ has
+		a limit point. In other words, there exists some $z_0 \in
+		\bigcap^\infty_{n=1} \Delta^{(n)}$.
+	\end{claim}	
+	
+	Suppose that there was no fixed point. Then $(\Delta^{(1)})^\mathsf{c},
+	(\Delta^{(2)})^\mathsf{c}, \dots$ form an open cover for $\Delta$. By
+	Heine-Borel, $\Delta$ is compact, so this open cover admits some finite
+	subcover, say $\splitatcommas{(\Delta^{(n_1)})^\mathsf{c},
+	(\Delta^{(n_2)})^\mathsf{c}, \dots, (\Delta^{(n_k)})^\mathsf{c}}$, where
+	$n_1 < n_2 < \dots < n_k$. But, $\bigcup^k_{r=1}(\Delta^{(n_r)})^\mathsf{c}
+	= (\Delta^{(n_k)})^\mathsf{c}$, which means $\Delta \subseteq
+	(\Delta^{(n_k)})^\mathsf{c}$, but since $(\Delta^{(n_k)})^\mathsf{c} \neq
+	\emptyset$, this implies that $(\Delta^{(n_k)})^\mathsf{c} \supset
+	\Delta^{(n_k)}$, which is a contradiction.\\
+
+	Now, since $f$ is holomorphic, at $z_0$, for a given $\epsilon > 0$, there
+	exists some $\delta > 0$ such that
+	\begin{equation*}
+		0 < |z - z_0| < \delta \implies \left|\frac{f(z) - f(z_0)}{z-z_0} -
+		f'(z_0)\right| < \epsilon
+	\end{equation*}
+	or,
+	\begin{equation*}
+		0 < |z - z_0| < \delta \implies \left|f(z) - f(z_0) - f'(z_0)(z-z_0)|
+		< \epsilon|z-z_0|
+	\end{equation*}
+	for all $z \in \Delta$. Now, there exists some $m \in \N \setminus \{0\}$
+	such that $\Delta^{(m)} \subseteq D(z_0, \delta)$. Also, by
+	\cref{corollary5}, we have that
+	\begin{equation*}
+		\int_{\Delta^{(m)}} f(z_0) \dif z = \int_{\Delta^{(m)}} f'(z_0)(z-z_0)
+		\dif z = 0.
+	\end{equation*}
+	Then,
+	\begin{equation*}
+		\int_{\Delta^{(m)}} f(z) \dif z = \int_{\Delta^{(m)}} \Big(f(z) - f(z_0)
+		- f'(z_0)(z - z_0)\Big) \dif z
+	\end{equation*}
+	It follows by \cref{theorem10}, we have
+	\begin{align*}
+		&\>\left|\int_{\Delta^{(m)}} \Big(f(z) - f(z_0) - f'(z_0)(z - z_0)\Big)
+		\dif z\right|\\
+		\leq&\>\int_{\Delta^{(m)}}\left|\Big(f(z) - f(z_0) - f'(z_0)(z -
+		z_0)\Big) \right| \dif z\\
+		\leq&\>\int_{\Delta^{(m)}} \epsilon|z-z_0| \dif z\\
+		\leq&\>\epsilon L(\Delta^{(m)})\int_{\Delta^{(m)}} \dif z \tag{$z \in
+		\Delta\implies|z-z_0|\leq L(\Delta^{(m)})$}\\
+		\leq&\>\epsilon L^2(\Delta^{(m)})
+	\end{align*}
+	Notice that
+	\begin{equation*}
+		\left(\frac{1}{4}\right)^m c \leq \left|\int_{\Delta^{(m)}}f(z)\dif z
+		\right|\leq \epsilon L^2(\Delta^{(m)}) =
+		\left(\frac{1}{4}\right)^m\epsilon L^2(\Delta^{(m)})
+	\end{equation*}
+	which yields
+	\begin{equation*}
+		c \leq \epsilon L^2(\Delta^{(m)}).
+	\end{equation*}
+	Since $\epsilon >0$ can be chosen arbitrarily small, c = 0.
+\end{proof}
+
+\section{Practice Problems}
+\begin{remark}
+	Consider the power series $\sum_{n=0}^\infty a_n(z-z_0)^n$ and $\frac{1}{R}
+	\coloneqq \limsup_{n\to\infty} \sqrt[n]{|a_n|} \in [0,\infty)$.
+	\begin{itemize}
+		\item If $|z-z_0| < R$, the series converges absolutely
+		\item If $|z-z_0| > R$, the series diverges
+		\item If $0 < r < R$, the series converges the series converges
+			uniformly on $\{z:|z-z_0|<r\}$
+	\end{itemize}
+	\begin{exercise}
+		Parameterize the semi-circle $|z-4-5i|=3$ clockwise, starting from
+	$z = 4 + 8i$ to $z = 4 + 2i$.
+	\end{exercise}
+	Let $\gamma: [-\frac{\pi}{2},\frac{\pi}{2}] \to \C$ such that
+	$\gamma(t) = 3e^{-it} + 4 + 5i$. Notice,
+	\begin{align*}
+		&\gamma\left(-\frac{\pi}{2}\right) = 4 + 8i\\
+		&\gamma(0) = 7+5i\\
+		&\gamma\left(\frac{\pi}{2}\right)= 4 + 2i
+	\end{align*}
+	which parameterizes the given semicircle.
+	\begin{exercise}
+		If the power series $f(z) = \sum^\infty_{n=0}c_n(z-z_0)^n$
+		centered at $z_0$ has a non-zero radius of convergence, then
+		show that
+		\begin{equation*}
+			c_m = \frac{f^{(m)}(z_0)}{m\fact}
+		\end{equation*}
+		for any $m\in\Z,\> m\geq 0$, where $f^{(m)}(z_0)$ denotes the
+		$m^{\text{th}}$ derivative of $f$ at $z_0$.
+	\end{exercise}
+	Since $f(z)$ is a power series and the radius of convergence $R \neq
+	0$ by \cref{theorem4}, $f(z)$ is $\C$-differentiable and each
+	derivative has the same radius of convergence. By induction, it can
+	be shown that
+	\begin{equation*}
+		f^{(m)}(z) = \sum^\infty_{n=m}\frac{n\fact}{(n-m)\fact}
+		c_n(z-z_0)^{n-m}.
+	\end{equation*}
+	Evaluating $f^{(m)}$ at $z_0$, we have
+	\begin{align*}
+		f^{(m)}(z_0) &= \sum^\infty_{n=m}\frac{n\fact}{(n-m)\fact}
+		c_n(z_0-z_0)^{n-m}\\
+		&= m\fact c_m
+	\end{align*}
+	as all terms $n > m$ are 0. Then, we obtain
+	\begin{equation*}
+		c_m = \frac{f^{(m)}(z_0)}{m\fact}
+	\end{equation*}
+	as desired.
+	\begin{exercise}
+		Let $\gamma$ be the arc of the unit circle centered at the origin in the
+		first quadrant oriented clockwise (from $i$ to 1). Evaluate the integral
+		\begin{equation*}
+			\int_\gamma\bar{z}^2\dif z
+		\end{equation*}
+		by parameterizing the curve.
+	\end{exercise}
+	Conisder the parameterization $\gamma:[-\frac{\pi}{0}]\to\C$ given by
+	$\gamma)^t=e^{-it}$. Not that $\bar{e^{-it}} = e^{it}$. Then,
+	\begin{align*}
+		\int_\gamma\bar{z}^2\dif z
+		&= \int^0_{-\frac{\pi}{2}}e^{2it}\cdot(-ie^{-it}) \dif z\\
+		&= -i \int^0_{-\frac{\pi}{2}}e^{it} \dif z\\
+		&= \left.-e^{it}\right|^0_{-\frac{\pi}{2}}\\
+		&= -1-i.
+	\end{align*}
+\end{remark}
 \end{document}

@@ -21,9 +21,11 @@
 \usepackage[object=vectorian]{pgfornament}
 \usepackage{enumitem}
 \usepackage{bookmark}
+\usepackage{thmtools}
 \usetikzlibrary{calc,fadings,decorations.pathreplacing}
 \geometry{letterpaper, portrait, margin=1in}
 \allowdisplaybreaks
+\everymath{\displaystyle}
 
 %% Helper macros for tikz image
 
@@ -82,6 +84,18 @@
   \end{center}
 }
 
+\newcommand{\splitatcommas}[1]{%
+  \begingroup
+  \ifnum\mathcode`,="8000
+  \else
+    \begingroup\lccode`~=`, \lowercase{\endgroup
+      \edef~{\mathchar\the\mathcode`, \penalty0 \noexpand\hspace{0pt plus 1em}}%
+    }\mathcode`,="8000
+  \fi
+  #1%
+  \endgroup
+}
+
 \makeatletter
 \patchcmd{\upbracefill}{\m@th}{\scriptstyle\m@th}{}{}
 \patchcmd{\upbracefill}{$\braceld$}{$\scriptstyle\braceld$}{}{}
@@ -89,22 +103,33 @@
 \patchcmd{\upbracefill}{\hfill\braceru}{\hfill\mkern-1mu\braceru}{}{}
 \makeatother
 
+\declaretheoremstyle[
+spaceabove=6pt, spacebelow=6pt,
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont\itshape,
+postheadspace=1em,
+]{exstyle}
+
 \newtheorem{theorem}{Theorem}
-\newtheorem*{theorem*}{Theorem}
 \newtheorem{prop}[theorem]{Proposition}
-\newtheorem*{claim}{Claim}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{theorem*}{Theorem}
 \newtheorem*{lemma*}{Lemma}
+\newtheorem*{claim}{Claim}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[subsection]
 \newtheorem{example}[definition]{Example}
+\declaretheorem[name=Exercise,
+style=exstyle]{exercise}
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 
-\foreach \theoremenv in {theorem,theorem*,lemma,claim,prop,corollary,proof} {
+\foreach \theoremenv in
+{theorem,theorem*,lemma,claim,prop,corollary,proof,exercise} {
     \AtBeginEnvironment{\theoremenv}{%
         \setlist[enumerate]{label*={(\arabic*)}}
         \setlist[enumerate,2]{label={(\arabic{enumi}.\arabic*)}}
@@ -134,6 +159,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\implies
 
 
 \DeclareRobustCommand\iff{\;\Longleftrightarrow\;}

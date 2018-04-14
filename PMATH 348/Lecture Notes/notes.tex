@@ -866,6 +866,7 @@ following corollary.
 \begin{corollary}
 f $F$ is a finite field, then $F$ is a simple extension of $\Z_p$. In other
 words, $F = \Z_p(u)$ for some $u \in F$.
+\label{corollary23}
 \end{corollary}
 \begin{prop} \label{prop24}
 Let $p$ be prime and $n \in \N$. Then $F$ is a finite field with $|F| = p^n$ if
@@ -1668,4 +1669,67 @@ Let $\quotient{E}{F}$ be a splitting field of $f(x)\in F[x]$. If $f(x)$ is
 separable, then $\quotient{E}{F}$ is separable.
 \label{theorem46}
 \end{theorem}
+\begin{proof}
+Let $\alpha\in E$ and $p(x)\in F[x]$ the minimal polynomial of $\alpha$. Let
+$\{\alpha,\alpha_1,\dots,\alpha_n\}$ be distinct roots of $p(x)$ in $E$.
+
+\begin{claim}
+$\tilde p(x)\coloneqq(x-\alpha_1)\dots(x-\alpha_n)\in F[x]$
+\end{claim}
+Let $G=\Aut_F(E)$ and $\psi\in G$. Since $\psi$ is an automorphism,
+$\psi(\alpha_i)\neq\psi(\alpha_j)$ if $i\neq j$. Thus by \cref{lemma40}, $\psi$
+permutes $\alpha_1,\dots,\alpha_n$. Thus we have
+\begin{align*}
+\psi(\tilde p(x)) &=(x-\psi(\alpha_1))\dots(x-\psi(\alpha_n))\\
+&=(x-\alpha_1)\dots(x-\alpha_n)\\
+&=\tilde p(x)
+\end{align*}
+It follows that $\tilde p(x)\in E^\psi[x]$. Since $\psi\in G$ is arbitrary,
+$\tilde p(x)\in E^G[x]$. Since $\quotient{E}{F}$ is the splitting field of the
+separable polynomial $f(x)$, by \cref{theorem45}, $\tilde p(x)\in F[x]$. Thus
+the claim holds.\\
+
+Thus, we have $\tilde p(x)\in F[x]$ with $\tilde p(\alpha)=0$. Since $p(x)$ is
+the minimal polynomial of $\alpha$ over $F$, we have $p(x)|\tilde p(x)$. Also,
+since $\alpha_1,\dots,\alpha_n$ are all distinct roots of $p(x)$, we have
+$\tilde p(x) \mid p(x)$. Since both $p(x)$ and $\tilde p(x)$ are monic, we have
+$\tilde p(x)=p(x)$. It follows that $p(x)$ is separable.
+\end{proof}
+\begin{corollary}
+Let $\quotient{E}{F}$ be a finite extension and $E=F(\alpha_1,\dots,\alpha_n)$.
+If each $\alpha_i$ is separable over $F$ for each $(1\leq i\leq n)$, then
+$\quotient{E}{F}$ is separable.
+\label{corollary47}
+\end{corollary}
+\begin{proof}
+Let $p_i(x)\in F[x]$ be the minimal polynomial of $\alpha_i$ for each $1\leq
+i\leq n$. Let $f(x)=p_1(x)\dots p_n(x)$. Since each $p_i(x)$ is separable, so is
+$f(x)$. Let $L$ be the splitting field of $f(x)$ over $F$. By \cref{theorem46},
+$\quotient{E}{F}$ is separable. Since $E=F(\alpha_1,\dots,\alpha_n)$ is a
+subfield of $L$, $E$ is also separable.
+\end{proof}
+\begin{definition}
+If $E=F(\alpha)$ is a simple extension, we say $\alpha$ is a
+\underline{primitive element} of $\quotient{E}{F}$.
+\end{definition}
+\begin{theorem}[Primitive Element Theorem] \label{pet}
+If $\quotient{E}{F}$ is a finite separable field extension, then
+$\quotient{E}{F}$ is a simple extension.  In particular, if $\ch(F)=0$, then any
+finite extension $\quotient{E}{F}$ is a simple extension.
+\end{theorem}
+\begin{proof}
+We have seen in \cref{corollary23} that a finite extension of a finite field is
+always simple. Thus, without loss of generality we assume that $F$ is an
+infinite field.  Since $E=F(\alpha_1,\dots,\alpha_n)$ for some
+$\alpha_1,\dots,\alpha_n\in E$, it suffices to consider the case
+$E=F(\alpha,\beta)$ and the general case can be done by induction. Let
+$E=F(\alpha,\beta)$ with $\alpha,\beta\notin F$.
+\begin{claim}
+There exists $\lambda\in F$ such that $\gamma=\alpha+\lambda\beta$ and
+$\beta\in F(\gamma)$.
+\end{claim}
+If the claim holds then $\alpha=\gamma-\lambda\beta\in F(\gamma)$ and we have
+$F(\alpha,\beta)\in F(\gamma)$. Also since $\gamma=\alpha+\lambda\beta$,
+$F(\gamma)\subseteq F(\alpha,\beta)$. Thus $E=F(\alpha,\beta)=F(\gamma)$
+\end{proof}
 \end{document}
