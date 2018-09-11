@@ -1,0 +1,241 @@
+\documentclass[11pt]{article}
+\usepackage{notes}
+\usepackage{faktor}
+
+\newcommand{\thiscoursecode}{PMATH 733}
+\newcommand{\thiscoursename}{Set and Model Theory}
+\newcommand{\thisprof}{Rahim Moosa}
+\newcommand{\me}{Kevin Cheng}
+\newcommand{\thisterm}{Fall 2018}
+
+\hypersetup
+{pdfauthor={\me},
+pdftitle={\thiscoursecode \thisterm Lecutre Notes},
+pdfsubject={\thiscoursename}
+pdflang={English}}
+
+\begin{document}
+\begin{titlepage}
+    \begin{centering}
+        {\scshape\LARGE University of Waterloo \par}
+        \globe
+        {\huge\bf \thiscoursecode}\\
+        {\scshape\Large \thiscoursename}\\
+        \vspace{.3cm}
+        {\scshape Prof. \thisprof~\textbullet~\thisterm\par}
+    \end{centering}
+\sectionline
+\tableofcontents
+\sectionline
+\thispagestyle{empty}
+
+\pagebreak
+\section{Introduction}
+\subsection{Contact Information}
+\begin{itemize}
+    \item {\bf Instructor:} Rahim Moosa
+    \item Email: rmoosa@uwaterloo.ca
+    \item Phone: 519-888-4567, ext. 32453
+\\
+    \item {\bf Teaching Assistant:} Micheal Deveau
+    \item Email: m2deveau@uwaterloo.ca
+    \item Phone: 519-888-4567, ext. 32568
+    \item Office: MC 5019
+\end{itemize}
+
+\subsection{Office Hours}
+Every Wednesday, 11:00-12:00 in MC 5018
+
+\subsection{Course Description}
+This course is approximately $\faktor{1}{3}$ set theory and $\faktor{2}{3}$
+model theory. The set theory will be somewhat naive (i.e., not formal) and the
+model theory with be semantic (i.e., no proof theory). There will be some
+overlap with PMATH 432/632 (First Order Logic and Computability), but this
+latter course is neither a pre-requisite nor an anti-requisite. The
+pre-requisite for this course is a familiarity with algebra: groups, fields,
+vector spaces, polynomial rings.
+
+Official lecture notes can be purchased for \$13.62 from Media.doc in MC 2018.
+The following reference books are on reserve in the Davis Center Library:
+\begin{itemize}
+	\item \underline{Set theory: an introduction to independence proofs} by
+		K. Kunen, and
+	\item \underline{Model Theory: an introduction} by D. Marker.
+\end{itemize}
+Here are the topics I hope to cover:
+\begin{itemize}
+	\item {\it Set Theory} (four+$\epsilon$ weeks): Zermelo-Fraenkel axioms,
+		classes, trans-finite induction/recursion, well-orderings and ordinals,
+		the axiom of choice and equivalents, cardinal arithmetic.
+	\item {\it Model theory} (eight-$\epsilon$ weeks): First-order logic
+		(structures, languages, theories), definable sets, the compactness
+		theorem (via ultraproducts) and its consequences, quantifier
+		elimination, algebraic examples (vector spaces, algebraically closed
+		fields, real closed fields), model companions.
+\end{itemize}
+There will be five or six homework assignments worth a total of 30\% and a final
+exam worth 70\%. There will be no midterm exam.
+
+\pagebreak
+\section{Zermelo–Fraenkel Set Theory}
+\subsection{Ordinals}
+We use the natural numbers $0,1,2,\dots$ to count finite sets. Here, count has
+two related meanings:
+
+\begin{itemize}
+	\item enumerate, order
+	\item measuring size
+\end{itemize}
+
+We wish to develop an infinitary generalization of the natural numbers so that
+we can $\underbrace{\text{enumberate}}_{\text{ordinals}}$ and
+$\underbrace{\text{measure}}_{\text{cardinals}}$ arbitrary sets. But first, we
+want a concrete construction of the natural numbers. We need to start somewhere:
+
+\begin{itemize}
+	\item set
+	\item equality
+	\item membership (denotes $\in$)
+\end{itemize}
+
+We can construct natural numbers as follows:
+
+\begin{itemize}
+	\item $\emptyset = 0 \coloneqq$ the empty set, denoted $\emptyset$ (the set
+		with no members)
+	\item $\{\emptyset\} = 1 \coloneqq$ the set whose only number is 0, denoted
+		by $\{0\}$
+	\item $\{\emptyset, \{\emptyset\}\} = 2 \coloneqq$ the set whose only
+		members are 0 and 1, so $\{0, 1\}$
+	\item and so on...
+\end{itemize}
+
+In general, given a natural number $n$ already constructed we deine the next
+natural number, the \underline{successor of $n$} to be
+
+\begin{equation*}
+	S(n) = n \cup {n}
+\end{equation*}
+
+Before continuing, we should ask do these sets exist? Use axioms - unproved
+statements.
+
+\begin{prop}[Empty Set Axiom]
+	There exists a set with no members, denoted $\emptyset$.
+\end{prop}
+
+To get 1 from 0, we invoke the following:
+
+\begin{prop}[Pairset Axiom]
+	Given sets $x,y$, there exists a set, denoted by $\{x,y\}$, whose only
+	members are $x$ & $y$. That is, \box{$t\in\{x,y\} \iff t = x$ or $t = y$}.
+\end{prop}
+
+If $x=y$, then $\{x,y\}$ has only $x$ as a member. We recognize that $1 =
+\{0,0\}$ (denoted by $\{0\}$). This requires an axiom.
+
+\begin{prop}[Axiom of Extension]
+	Given sets $x,y$, $x=y$ \underline{if and only if} $x$ \& $y$ have the same
+	members.
+\end{prop}
+
+So far, 0 ($\emptyset$), 1 ($\{\emptyset\}$) and 2 ($\{\emptyset,
+\{\emptyset\}\}$) exist. What about $3 \coloneqq \{0,1,2\} =
+\underbrace{\{0,1\}}}_{=2}\cup \{2\}$? In general from $n$, to get $S(n) = n
+\cup \{n\}$, we need \underline{unions}, given by the following axiom.
+
+\begin{prop}[Unionset Axiom] Given a set $x$, there exists a set, denoted by
+	$Ux$, whose members are precisely the members of the members of $x$. That
+	is,
+	\begin{equation*}
+		t \in Ux \iff t \in y
+	\end{equation*}
+	for some $y \in x$.
+\end{prop}
+
+So given $n$, $S(n) \coloneqq U\{n,\{n\}\}$. Be definition, $t \in S(n) \iff t
+\in n$ or $t = n$. With these axioms, we have constructed rigorously each
+natural number. But, what about the set of \underline{all} natural numbers? 
+
+The set of natural numbers should be the smallest set that contains 0 and is
+preserved by the successor function. We wish to express this set with definite
+conditions.
+
+\begin{prop}[Infinity Axiom]
+	There exists a set $I$ that contains 0 and is preserved by the successor
+	function.
+\end{prop}
+We can express this axiom in the following definite logical statement.
+\begin{equation*}
+	\exists I \big((0 \in I) \wedge \forall x (x \in I \impies (\exists y
+	(\underbrace{\forall t (t \in y \iff (t \in x) \wedge (t = x))}_{y = S(x)}
+	\wedge y \in I))) \big)
+\end{equation*}
+
+However, we wish to construct the minimal successor set and we can try to take
+the intersection of all successor sets.
+\begin{definition}
+	If $x$ and $y$ are sets, a \underline{subset} denoted by $x \subseteq y$
+	means that every element of $x$ is an element of $y$.
+\end{definition}
+We can express $x \subeteq y$ as
+\begin{equation*}
+	\forall z (z \in x \implies z \in y)
+\end{equation*}
+\begin{prop}[Powerset Axiom]
+	Given a set $x$, there exists a set $\mathcal{P}(x)$ with the property that
+	\begin{equation*}
+		\forall t(t \in \mathcal{P}(x) \iff t \subseteq x)
+	\end{equation*}
+\end{prop}
+\begin{prop}[(Bounded) Separation Axiom]
+	Given a set $x$ and a definite condition $P$, there exists a set of elements
+	are precisely the members of $x$ that satisfy $P$.
+\end{prop}
+\begin{equation*}
+	\exists \{z\in x : P(z)\}
+\end{equation*}
+\begin{remark}
+	It is necessary for us to have (bounded by) $x$ and $P$ is definite.
+\end{remark}
+\begin{equation*}
+	\forall x \exists y \forall t (t \in y \iff (t \in x \wedge P(t)))
+\end{equation*}
+\begin{exercise}
+	Given a non-empty set $x$, there exists a set $\cap x$ satisfying:
+	\begin{equation*}
+		\forall t (t \in \cap x \iff \forall y (y \in x \implies t \in y))
+	\end{equation*}
+\end{exercise}
+\begin{definition}
+	Fix a successor set $I$. The \underline{set of natural numbers} is
+	\begin{align*}
+		\omega &\coloneqq \cap\{ J \subseteq I : \underbrace{0 \in J \wedge
+		\forall x(x \in J \implies S(c) \in J)}_{J \text{ is a successor set
+		}}\}\\
+		&= \cap\{ J \in \mathcal{P}(I) : J \text{ is a successor set}\}
+	\end{align*}
+\end{definition}
+\begin{exercise}
+	This does not depend on $I$.
+\end{exercise}
+Another very useful axiom that will be used later:
+\begin{prop}[Replacement Axiom]
+	Suppose $P$ is a binary definite condition such that for every set $x$ there
+	is a unique $y$ satisfying $P(x,y)$. Given a set $A$ there is a set $B$ such
+	that $t \in B$ \underline{if and only if} there is an $a \in A$ with
+	$P(a, t)$.
+\end{prop}
+
+\subsection{Classes}
+We sometimes want to consider collection of sets that do not form a set
+themselves. For example, there is no set containing all sets.
+\begin{proof}
+	Suppose a set $U$ contains all sets. Consider
+	\begin{equation*}
+		R = \{x \in U : x \notin x\}.
+	\end{equation*}
+	If $R \in R$, since $R \in U$, so $R \notin R$, so a contradiction. But if
+	$R \not in R$, by definition $R \in R$, so no such $U$ exists.
+\end{proof}
+\end{document}

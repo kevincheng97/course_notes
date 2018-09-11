@@ -1,0 +1,272 @@
+\documentclass[11pt]{article}
+\usepackage{notes}
+\usepackage{caption}
+
+\newcommand{\thiscoursecode}{MATH 249}
+\newcommand{\thiscoursename}{Introduction toi Combinatorics (Advanced)}
+\newcommand{\thisprof}{David Wagner}
+\newcommand{\me}{Kevin Cheng}
+\newcommand{\thisterm}{Fall 2018}
+
+\hypersetup
+{pdfauthor={\me},
+pdftitle={\thiscoursecode \thisterm Lecutre Notes},
+pdfsubject={\thiscoursename}
+pdflang={English}}
+
+\begin{document}
+\begin{titlepage}
+    \begin{centering}
+        {\scshape\LARGE University of Waterloo \par}
+        \globe
+        {\huge\bf \thiscoursecode}\\
+        {\scshape\Large \thiscoursename}\\
+        \vspace{.3cm}
+        {\scshape Prof. \thisprof~\textbullet~\thisterm\par}
+    \end{centering}
+\sectionline
+\tableofcontents
+\sectionline
+\thispagestyle{empty}
+
+\pagebreak
+\section{Introduction}
+\subsection{Course Outline}
+MATH 249 has two parts: first part will be {\bf Enumeration} and second part
+will be {\bf Graph Theory}. We will cover everything in MATH 239, and plenty of
+extra
+topics.
+
+{\bf Topics in Enumeration:} Rational power series, recurrence relations,
+partial fractions. Binomial Theorem, Vandermonde convolution, multisets,
+Binomial Series.Generating functions, Sum and Product lemmas, computing
+averages. Compositions and rational binary languages. Rational languages
+andblock patterns. The transfer matrix method, domino tilings, etc. Lattice
+paths, Catalan numbers.
+
+{\bf Topics in Graph Theory:} Basic terminology, isomorphism, examples. Paths
+and cycles, connectedness, spanning trees. Planar graphs, Kuratowski’s Theorem,
+graphs on other surfaces. Graph colouring, the Five-Colour Theorem.
+Bipartite matching, hints at the non-bipartite case. The Matrix-Tree Theorem
+
+\subsection{Contact Information}
+David Wagner, MC 5028, dgwagner@uwaterloo.ca
+
+\subsection{Office Hours}
+To be determined
+
+\subsection{Grading Scheme}
+\begin{itemize}
+	\item Homework - 15\% (Due every {\it second} Friday, starting September
+		$21^{\text{th}}$, at the start of class)
+	\item Midterm Exam - 30\%
+	\item Final Exam - 55\%
+\end{itemize}
+
+\pagebreak
+\section{Enumeration}
+\subsection{Generating Functions}
+Let's start with the definition of the well know Fibonacci Sequence. With $f_0 =
+f_1 = 1$, we define $f_n \coloneqq f_{n-1} + f_{n-2}$ for $n \geq 2$. We
+arrive at the following sequence:
+\begin{center}
+\captionof{table}{First 9 values of the Fibonacci Sequence}
+\begin{tabular}{|l|*{50}{|l}}
+	\hline
+	$n$   & 0 & 1 & 2 & 3 & 4 & 5 & 6  & 7  & 8  & 9  & $\dots$\\
+	$f_n$ & 1 & 1 & 2 & 3 & 5 & 8 & 13 & 21 & 34 & 55 & $\dots$\\
+	\hline
+\end{tabular}
+\end{center}
+
+What is $f_n$ as a function of $n$?
+
+\begin{definition}
+	A \underline{generating function} $f(x)$ is a formal power series
+	\begin{equation*}
+		f(x) = \sum^\infty_{n=0} a_nx^n 
+	\end{equation*}
+	whose coefficients give the sequence $\{a_0, a_1, \dots\}$.
+\end{definition}
+
+\begin{example}
+    Consider the \underline{Geometric Series}, defined by
+    \begin{equation*}
+        G = 1 + z + z^2 + z^3 + \dots
+    \end{equation*}
+    and,
+    \begin{equation*}
+        zG = z + z^2 + z^3 + \dots
+    \end{equation*}
+    so, $G-zG = 1$, thus the generating function for $G$ is
+    \begin{equation*}
+        G = \frac{1}{1-z}.
+    \end{equation*}
+\end{example}
+
+Now, if we consider the generating function for the Fibonacci Sequence, we have,
+\begin{align*}
+    F(x) &= f_0 + f_1x + \sum^\infty_{n=2} f_nx^n\\
+         &= 1 + x + \sum^\infty_{n=2} (f_{n-1} + f_{n-2}) x^n\\
+         &= 1 + x + x\sum^\infty_{j=1} f_jx^j + x^2\sum^\infty_{n=0} f_kx^k\\
+         &= 1 + x + x\big(F(x) - 1\big) + x^2F(x)
+\end{align*}
+So,
+\begin{equation*}
+    F(x) - xF(x) - x^2F(x) = 1
+\end{equation*}
+or,
+\begin{equation*}
+    F(x) = \frac{1}{1-x-x^2}
+\end{equation*}
+We continue by applying partial fractions to $F(x)$. First, we look for the
+roots of the denominator. Notice, we can factor our denominator as
+\begin{equation*}
+	1 - x - x^2 = (1 - \alpha x) (1 - \beta x)
+\end{equation*}
+to arrive at the auxiliary function
+\begin{equation*}
+	t^2 -  t - 1 = (t - \alpha) (t - \beta).
+\end{equation*}
+The quadratic formula gives the solution for $\alpha, \beta$:
+\begin{equation*}
+	\alpha, \beta = \frac{1 \pm \sqrt{1 - 4 \cdot 1 \cdot -1}}{2 \cdot 1}
+	= \frac{1 \pm \sqrt{5}}{2}
+\end{equation*}
+Now, there exist $A,B \in \C$ such that
+\begin{equation*}
+	F(x) = \frac{1}{1-x-x^2} = \frac{1}{(1-\alpha x)(1-\beta x)} =
+	\frac{A}{1-\alpha x} + \frac{B}{1-\beta x}.
+\end{equation*}
+We have,
+\begin{equation*}
+	1 = A(1-\beta x) + B(1-\alpha x) = (A+B) + (-A\beta - B\alpha) x
+\end{equation*}
+and the system,
+\begin{equation*}
+\begin{cases}
+	A + B = 1,\\
+	(-A\beta - B\alpha) = 0
+\end{cases}
+\Rightarrow
+\begin{cases}
+	A\alpha + B\alpha = \alpha,\\
+	A(\beta - \alpha) = 0
+\end{cases}
+\Rightarrow
+\begin{cases}
+	A\beta + B\beta = \beta,\\
+	B(\alpha - \beta) = \beta
+\end{cases}
+\end{equation*}
+so we have 
+\begin{equation*}
+	A = \frac{\alpha}{\alpha-\beta} = \frac{1}{\sqrt 5} \cdot
+	\frac{1+\sqrt{5}}{2} = \frac{5+\sqrt 5}{10}
+\end{equation*}
+and 
+\begin{equation*}
+	B = \frac{\beta}{\beta - \alpha} = \frac{1}{-\sqrt 5} \cdot \frac{1-\sqrt
+	5}{2} = \frac{5 - \sqrt 5}{10}.
+\end{equation*}
+Finally, we arrive at the original generating function,
+\begin{align*}
+	F(x) &= \sum^\infty_{n=0} f_nx^n = \frac{1}{1-x-x^2} = \frac{A}{1-\alpha x}
+	+ \frac{B}{1-\beta x}\\
+	&= A \sum^\infty_{n=0} (\alpha x)^n + B\sum^\infty_{n=0} (\beta x)^n
+	\tag{by geometric series}\\
+	&= \sum^\infty_{n=0} (A\alpha^n + B\beta^n)x^n.
+\end{align*}
+so, $f_n = A\alpha^n + B\beta^n$ for all $n\in\N$.
+
+\subsection{Partial Lists}
+\begin{theorem} \label{theorem2.1.2}
+	The number of possibilities to arrange $n$ (distinguishable) objects in a
+	row (called \underline{permutations}) is
+	\begin{equation*}
+		n! = n \cdot (n-1) \cdot \dots \cdot 2 \cdot 1.
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	There are obviously $n$ choices for the first position, then $n-1$ remaining
+	choices for the second position, $n-2$ for the third position, etc.
+	Continuing on, one obtains the stated formula.
+\end{proof}
+\begin{definition}
+	Let $S$ be a set of size $|S| = n$. A \underline{partial set of $S$} of
+	length $k$ is a sequence $s_1, s_2, \dots, s_k$ with each $s_i, s_j \in S$
+	and $i \neq j$ having $s_i \neq s_j$.
+\end{definition}
+\begin{theorem} \label{theorem2.1.3}
+	The number of partial lists of length $k$ from a set of size $n$ is
+	\begin{equation*}
+		\frac{n!}{(n-k)!} = n(n-1)(n-2)\dots (n-k+1).
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	The proof is essentially the same as for \cref{theorem2.1.2}: for the first
+	element, there are $n$ possible choices, then $n-1$ for the second
+	element, etc. For the last element, there are $n-k+1$ choices left.
+\end{proof}
+\begin{definition}
+	A \underline{$k$-subset of a set $S$} where $|S| = n$ is a
+	collection of elements $\{s_1, \dots, s_k\}$ and no two are equal, for each
+	$s_1 \in S$.
+\end{definition}
+\begin{theorem} \label{theorem2.1.4}
+The number of $k$-subsets of a set $S$ where $|S| = n$ is
+\begin{equation*}
+	\binom{n}{k} = \frac{n!}{k!(n-k!)}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+	Let $C(n,k)$ be the number of possibilities that we are looking for. Once
+	the $k$ elements have been chosen (for which there are $C(n,k)$ possible
+	ways), we has $k!$ possibilities (by \cref{theorem2.1.2}) to arrange them in
+	a sequence. Therefore, $C(n,k) \cdot k!$ is exactly the number of possible
+	sequences of $k$ distinct elements, for which we have the formula
+	\begin{equation*}
+		C(n,k) \cdot k! = \frac{n!}{(n-k)!} \tag{by \cref{theorem2.1.3}}
+	\end{equation*}
+	and the result follows immediately.
+\end{proof}
+\begin{definition}
+	The \underline{multiplicity of an element $s$ in set $S$} is the number of
+	times $s$ is in the set $S$, denoted by $\mu(s)$.
+\end{definition}
+\begin{definition}
+	A \underline{multiset of set $S$} is a pair $(S, \mu)$ where
+	$\mu:S\to\N_{>0}$ is a mapping of the multiplicity of each element in $S$.
+\end{definition}
+\begin{theorem} \label{theorem2.1.5}
+	The number of multisets of size $n$ with $t$ elements is 
+	\begin{equation*}
+		\binom{n+t-1}{t-1} = \binom{n+t-1}{n}.
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	This popular proof takes advantage of an illustration with stars and bars.
+	Suppose we represent the multiplicity of each element (up to ordering) with
+	stars, separating each element with stars. Note that since multiplicity is
+	non-negative, we can place bars consecutively. For example, when $n = 7$ and
+	$k = 5$, the tuple $(4,0,1,2,0)$ representing multiplicity can be illustrated
+	by the following diagram:
+	\begin{equation*}
+		\star \star \star \star | | \star | \star \star \> |
+	\end{equation*}
+	This establishes a one-to-one correspondence between tuples of the desired
+	form and selections with replacement of $k-1$ gaps from the $n + 1$
+	available gaps, or equivalently, $(k - 1)$-element multisets drawn from a
+	set of size $n+1$. Observe that the desired arrangements consist of $n+k-1$
+	($n$ stars and $k-1$ bars). Choosing the positions of stars leaves exactly
+	$k-1$ spots for $k-1$ bars. In other words, choosing the position of stars
+	determines the entire arrangement, so by \cref{theorem2.1.4}, the
+	arrangement is determined with $\binom{n+k-1}{n}$ selections. But,
+	\begin{equation*}
+		\binom{n+k-1}{n} = \frac{(n+k-1)!}{n!(n-n+k-1)!}
+		=\frac{(n+k-1)!}{(n+k-1-(k-1))!(k-1)!} = \binom{n+k-1}{k-1}
+	\end{equation*}
+	reflecting on the fact that choosing the positions for $k-1$ bars also
+	determines the arrangements.
+\end{proof}
+\end{document}
