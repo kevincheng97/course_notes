@@ -1,13 +1,15 @@
 \documentclass[11pt]{article}
 \usepackage{notes}
 
+\newcommand{\conv}[1]{\text{conv}(#1)}
+
 \newcommand{\thiscoursecode}{CO 255}
 \newcommand{\thiscoursename}{Introduction to Optimization (Advanced)}
-\newcommand{\thisprof}{Prof. Yu-Ru Liu}
+\newcommand{\thisprof}{Jim Geelen}
 \newcommand{\me}{Kevin Cheng}
-\newcommand{\thisterm}{Winter 2018}
+\newcommand{\thisterm}{Fall 2018}
 
-\newcommand{\vectorproj}[2][]{\textit{proj}_{#1}#2}
+\newcommand{\proj}[2][]{\textit{proj}_{#1}#2}
 
 \hypersetup
 {pdfauthor={\me},
@@ -32,15 +34,16 @@ pdflang={English}}
 \thispagestyle{empty}
 \end{titlepage}
 
+\pagebreak
 \section{Introduction}
 \subsection{Types of Optimization Problems}
 Given a set $S$ and an objective function $f: S \to \R$, an optimization problem
 looks like,
 \begin{equation*}
-\max_{\text{subject to (s.t.)}} f(x)_{x \in S}
+    \max_{\text{subject to (s.t.)}} f(x)_{x \in S}
 \end{equation*}
 which means to find some $x* \in S$ such that $f(x) \leq f(x*)$ for all $x \in
-S$. Here, $S$ is called the ``Feasible Region'', and a point $\bar x \in S$ is
+S$. Here, $S$ is called the ``feasible region'', and a point $\bar x \in S$ is
 called a ``feasible solution'' and $f(\bar x)$ is called the ``objective
 value''.
 \begin{definition}
@@ -49,38 +52,39 @@ $x \in S$ that $f(x) \leq f(x*)$.
 \end{definition}
 We can use different notation like
 \begin{equation*}
-\max \{f(x) : x\in S \}
+    \max \{f(x) : x\in S \}
 \end{equation*}
 or
 \begin{equation*}
-\max_{x \in S} f(x).
+    \max_{x \in S} f(x).
 \end{equation*}
 Also, there is a correspondence with \underline{minimization problems} as,
 \begin{equation*}
-\max_{x \in S} f(x) = -\bigg( \min_{x \in S} -f(x) \bigg) 
+    \max_{x \in S} f(x) = -\bigg( \min_{x \in S} -f(x) \bigg) 
 \end{equation*}
 A number of problems can arise,
 \begin{itemize}
-\item $S = \emptyset$ (This problem is always \underline{infeasible})
-\item If for all $a \in \R$, there always exists some $\bar x \in S: f(\bar x)
-> a$ (This problem is \underline{unbounded})
-\item $\max_{x < 1} x$ (Here, an optimal solution does not exist)
+    \item $S = \emptyset$ (This problem is always \underline{infeasible})
+	\item If for all $a \in \R$, there always exists some $\bar x \in S: f(\bar
+		x) > a$ (This problem is \underline{unbounded})
+    \item $\max_{x < 1} x$ (Here, an optimal solution does not exist)
 \end{itemize}
 \begin{definition}
-A \underline{supremum} is defined as \begin{equation*}
-\sup{f(x):x \in S} =
-\begin{cases}
-- \infty,& \text{, if infeasible}\\
-+ \infty,& \text{, if unbouded}\\
-\min_{f(x) \leq \lambda,\>\text{for all } x \in S}\lambda, &\text{, otherwise}\\
-\end{cases}
+    A \underline{supremum} is defined as \begin{equation*}
+\sup\{f(x):x \in S\} =
+    \begin{cases}
+        - \infty,& \text{, if infeasible}\\
+        + \infty,& \text{, if unbouded}\\
+		\min_{f(x) \leq \lambda,\>\forall x \in S}\lambda &\text{,
+		otherwise}\\
+	\end{cases}
 \end{equation*}
 \end{definition}
 \begin{definition}
-The \underline{infimum} can be defined as
-\begin{equation*}
-\inf_{x \in S} f(x) = - \sup_{x \in S} -f(x)
-\end{equation*}
+    The \underline{infimum} can be defined as
+    \begin{equation*}
+        \inf_{x \in S} f(x) = - \sup_{x \in S} -f(x)
+    \end{equation*}
 \end{definition}
 So now by replacing maximization problems with the supremum (and minimization
 problems with infimum), we would never fall into the case where ``an optimal
@@ -88,123 +92,60 @@ solution doesn't exist'' as long as we consider the supremum (or infimum). In
 other words, if the problem is feasible and unbounded, we can always find an
 optimal solution.
 
-\subsection{Linear Programming (LP)}
-Given an $m \times n$ matrix A, and some $\vec b \in \R^m $, we can consider the
-feasible region defined by
-\begin{equation*}
-S =\{\vec x \in \R^n: A\vec x \leq \vec b\}.
-\end{equation*}
-We can also consider some $f(\vec x) = \vec{c}^T \vec x$ for some $\vec c \in \R^n$.
 \begin{definition}
-For some vectors $\vec u,\vec v \in \R^n$, we compare them by component-wise comparison.
-We say \underline{$\vec u \leq \vec v$} if and only if $u_i \leq v_i$ for all
-$i = 1, \dots, n$. 
+	A set $S\subseteq\R^n$ is \underline{convex} if $t\in[0,1]$ and for any $x,y \in
+	S$, $tx + (1-t)y \in S$.
 \end{definition}
-\begin{remark}
-$\vec u \not\leq \vec v$ does not imply $\vec u > \vec v$. For example,
-\begin{equation*}
-\begin{pmatrix}
-1 \\ 2
-\end{pmatrix}
-,
-\begin{pmatrix}
-2 \\ 1
-\end{pmatrix}
-\end{equation*}
-\end{remark}
-\begin{remark}
-Strict inequalities are \underline{not} allowed.
-\end{remark}
 \begin{definition}
-A \underline{polyhedron} is
-\begin{equation*}
-\{\vec x \in \R^n: A\vec x \leq \vec b\}.
-\end{equation*}
-In other words, a polyhedron is the intersection of finitely many linear
-inequalities.
+	For some set $S$, $f:S \to \R$ is \underline{convex} if $t\in[0,1]$ and for
+	any $x,y \in S$, $f(tx + (1-t)y) \leq tf(x) + (1-t)f(y)$.
 \end{definition}
-\begin{example}
-Suppose $n$ products and $m$ resources.
-\begin{itemize}
-\item $b_i$ units of resources $i$, for all $i = 1, \dots, m$
-\item $c_j$ per unit profit of producing product $j$, for all $j = 1, \dots, n$
-\item Producing $d$ units of $j$ consumes $a_{ij}$ units of resource $i$, for
-all $i = 1,\dots,m$
-\end{itemize}
-We define decision variables $x_j$ for all $j = 1,\dots,n$ to represent amount
-of product $j$ produced. We can consider the linear program,
-\begin{align*}
-\max &\sum^n_{j=1} c_jx_j\\
-\text{s.t.} & \sum^n_{j=1} a_{ij}x_j \leq b_i,\> \forall i = 1,\dots,m\\
-& \vec x \geq \vec 0
-\end{align*}
-\end{example}
 
-\subsection{Determining Infeasibility}
-The problem is quite easy if $n=1$. We simply determine if the polyhedron is
-empty. So the idea is to reduce the problem from $n$ variables to $n-1$
-variables, and eventually to the 1-dimensional case.
-\begin{definition}
-Suppose we have some feasible region $S$ defined as,
-\begin{equation*}
-S \coloneqq \{(\vec x, \vec y) \in \R^n \times \R^p: A\vec x + G\vec y \leq b\}
-\end{equation*}
-then the \underline{orthogonal projection of $S$ onto $\vec x$} is defined as
-\begin{equation*}
-\vectorproj[\vec x]{S} := \{\vec x \in S: \exists \vec y\> \text{such that }
-(\vec x, \vec y) \in S\}.
-\end{equation*}
-\end{definition}
-The idea now is to determine if $S$ is feasible by determining if
-$\vectorproj[x_1,\dots,x_{n-1}]{S}$ is feasible. In order to do so, we have 3
-more definitions to break down our LP\@. To do so, we need a few definitions.\\
+We can begin to define a few types of optimization problems:
 
-Consider the following set,
-\begin{equation*}
-M \coloneqq \{1 ,\dots, m\} 
-\end{equation*}
-then, we have the following 3 definitions:
-\begin{equation*}
-M^+ \coloneqq \{i \in M : a_{in} > 0\}
-\end{equation*}
-\begin{equation*}
-M^- \coloneqq \{i \in M : a_{in} < 0\}
-\end{equation*}
-\begin{align*}
-M^\circ &\coloneqq M \setminus (M^+ \cup M^-)\\
-&= \{i \in M: a_{in} = 0\}
-\end{align*}
-Now, we can break down our LP into 3 parts. All three of these parts break down
-perfectly into the following theorem:
-\begin{theorem}
-There exists $\bar{x}_n$ such that $\vec x = (\bar{x}_1, \dots, \bar{x}_n)$
-satisfies
-\begin{equation}
-\sum^{n-1}_{j=1} \frac{a_{ij}}{a_{in}} + x_n \leq \frac{b_i}{a_{in}}, \forall i
-\in M^+
-\end{equation}
-\begin{equation}
-\sum^{n-1}_{j=1} -\frac{a_{ij}}{a_{in}} - x_n \leq -\frac{b_i}{a_{in}}, \forall i
-\in M^-
-\end{equation}
-and
-\begin{equation}
-\sum^{n-1}_{j=1}a_{ij}x_j \leq  b_i, \forall i \in M^\circ
-\end{equation}
-if and only if $(\bar{x}_1, \dots, \bar{x}_{n-1})$ satisfies (3), which is
-\begin{equation*}
-\sum^{n-1}_{j=1} -\frac{a_{ij}}{a_{in}} - x_n \leq -\frac{b_i}{a_{in}}, \forall i
-\in M^\circ
-\end{equation*}
-\begin{equation}
-\sum^{n-1}_{j=1}\Big(\frac{a_{ij}}{a_{in}} - \frac{a_{kj}}{a_{kn}} \Big)x_j
-\leq \frac{b_i}{a_{in}} - \frac{b_i}{a_{kn}} , \forall i \in M^+, \forall k \in
-M^-
-\end{equation}
+\begin{enumerate}
+    \item {\bf Linear Programming}
+        \begin{equation*}
+			f(x) = c^Tx \text{ and } S = \{x\in\R^n:Ax\leq B\}
+            \text{ where } A \in\R^{m\times n}, b\in\R^m\text{ and } c \in \R^n
+        \end{equation*}
+	\item {\bf Integer Linear Programming}
+		\begin{equation*}
+			f(x) = c^T \text{ and } S = \{ x \in \Z^n:Ax\leq B\}
+            \text{ where } A \in\R^{m\times n}, b\in\R^m\text{ and } c \in \R^n
+		\end{equation*}
+	\item {\bf Convex Optimization}
+		\begin{equation*}
+			S \subseteq \R^n \text{ is convex and } f:S \to \R \text{ is convex
+		}
+		\end{equation*}
+\end{enumerate}
+\begin{definition}
+	The \underline{convex hull} of $S \subseteq \R^n$, denoted by $\conv{S}$ is
+	the minimal convex set that contains $S$.
+\end{definition}
 \begin{remark}
-This gives a condition that allows us to reduce LPs from $n$ dimensions down to
-$n-1$ and the new LP is given by (4).
+	The convex hull of $S$ is unique.
 \end{remark}
-\end{theorem}
+
+Consider the optimization problem $\min(f(x):x\in S)$ where $S\subseteq R^n$ and
+$f:\R^n\to\R$. We can ``reduce'' this problem to  a convex optimization problem
+with a linear objective function.
+
+{\bf \underline{Step 1}:} Linearize the objective function. Let
+\begin{equation*}
+	\hat{S} = \{(x,y) : x \in S, y = f(x)\} \subseteq \R^{n+1}
+\end{equation*}
+Then,
+\begin{equation*}
+	\min(f(x):x\in S) = \min(y:(x,y) \in \hat{S})
+\end{equation*}
+
+{\bf \underline{Step 2}:} Convexify $S$.
+If $f:\R^n\to\R$ is linear, $\min(f(x):x\in S) = \min(f(x):x\in \conv{S})$.
+
+\begin{remark}
+	This is true from a theoretical point of view, but it is not very practical
+	in application. Taking the convex hull doesn't produce any better solutions.
+\end{remark}
 \end{document}
-
