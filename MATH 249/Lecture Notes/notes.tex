@@ -2,6 +2,8 @@
 \usepackage{notes}
 \usepackage{caption}
 
+\newcommand{\equicard}{\rightleftharpoons}
+
 \newcommand{\thiscoursecode}{MATH 249}
 \newcommand{\thiscoursename}{Introduction toi Combinatorics (Advanced)}
 \newcommand{\thisprof}{David Wagner}
@@ -74,6 +76,7 @@ arrive at the following sequence:
 \begin{tabular}{|l|*{50}{|l}}
 	\hline
 	$n$   & 0 & 1 & 2 & 3 & 4 & 5 & 6  & 7  & 8  & 9  & $\dots$\\
+	\hline
 	$f_n$ & 1 & 1 & 2 & 3 & 5 & 8 & 13 & 21 & 34 & 55 & $\dots$\\
 	\hline
 \end{tabular}
@@ -269,4 +272,123 @@ The number of $k$-subsets of a set $S$ where $|S| = n$ is
 	reflecting on the fact that choosing the positions for $k-1$ bars also
 	determines the arrangements.
 \end{proof}
+
+\subsection{Bijections}
+\begin{definition}
+    Let $S, T$ be sets and $f :S \to T$ be a function. The function $f$ is
+	\underline{surjective} if for all $t \in T$, there exists some $S$ such that
+	$f(s) = t$
+\end{definition}
+\begin{definition}
+    Let $S, T$ be sets and $f :S \to T$ be a function. The function $f$ is
+	\underline{injective} if for all $s, s' \in S$ and $f(s) = f(s')$, $s = s'$.
+\end{definition}
+\begin{definition}
+	A function is \underline{bijective} if $f$ is both injective and surjective.
+	We say $f$ is a bijection.
+\end{definition}
+\begin{prop}
+	A function $f$ is bijective \underline{if and only if} for all $t \in T$,
+	there exists exacely one $s \in S$ such that $f(s) = t$.
+\end{prop}
+\begin{definition}
+	A bijection has an \underline{inverse function} $f^{-1} : T \to S$ defined
+	by $f^{-1}(t) = s$ \underline{if and only if} $f(s) = t$.
+\end{definition}
+\begin{remark}
+	The inverse function is unique and $(f^{-1})^{-1}$.
+\end{remark}
+\begin{definition}
+	Two sets, $S, T$ are \underline{equicardinal}, denoted by $S \equicard T$ if
+	there is a bijection $f:S \to T$. This is an equivalence relationship.
+\end{definition}
+\begin{prop}
+	$S \equicard T$ \underline{if and only if} $S$ and $T$ have the same size.
+\end{prop}
+
+\subsection{Subsets \& Indicator Vectors}
+Let $\mathcal{P}_n$ be the set of all subsets $S \subseteq \{1,2,\dots, n\}$.
+Let $\{0,1\}^n = \underbrace{\{0,1\} \times \{0,1\} \times \cdots \times
+\{0,1\}}_{n \text{ times}}$. A typical element $\alpha = (a_1, \dots, a_n)$,
+where each $a_i \in \{0,1\}$. We wish to show that $\mathcal{P}_n \equicard
+\{0,1\}^n$. In other words, we wish to establish mutually inverse bijections.
+Consider:
+\begin{equation*}
+	S \mapsto \alpha \text{ with }
+	\begin{cases}
+		0 &\quad \text{ if } i \notin S\\
+		1 &\quad \text{ if } i \in S
+	\end{cases}
+	\text{  for } 1 \leq i \leq n
+\end{equation*}
+Similarly,
+\begin{equation*}
+	\alpha \mapsto S = \big\{ i \in \{1, \dots, n\}: a_i = 1\big\}
+\end{equation*}
+We call this bijection an \underline{indicator function} and $\{0,1\}^n$ an
+\underline{indicator vector}.
+
+\subsection{Binomial Theorem}
+Consider the set of all subsets $S \subseteq \{1, 2, \dots, n\}$ and summing
+some variable, $x$ and raising the cardinality of all these subsets to some
+power. We have 
+\begin{equation*}
+	\sum_{S \subseteq \{ 1,2,\dots,n \}} x^{|S|} = \sum^n_{k=0}\binom{n}{k}x^k
+\end{equation*}
+since by \cref{theorem2.1.3} $\{1,2,\dots,n\}$ has $\binom{n}{k}$ subsets of
+size $k$. Also, since $S \equicard \{0,1\}^n$,
+\begin{align*}
+	\sum_{S \subseteq \{ 1,2,\dots,n \}} x^{|S|} &= \sum_{\alpha \in \{0,1\}^n}
+	x^{a_1 + \dots + a_n} \tag{by Cartisian Product}\\
+	&= \sum_{a_1=0}^1 \sum_{a_2=0}^1 \cdots \sum_{a_n=0}^1 x^{a_1 + \dots
+	a_n}\\
+	&= \sum_{a_1=0}^1 x^{a_1} \cdot \sum_{a_2=0}^1 x^{a_2} \cdot \dots \cdot
+	\sum_{a_n=0}^1 x^{a_n}\\
+	&= \bigg( \sum^1_{c = 0} x^c \bigg)^n\\
+	&= (1+x^n).
+\end{align*}
+We have,
+\begin{prop}[Binomial Theorem]
+	For any real number $n$,
+	\begin{equation*}
+		(1+x)^n = \sum_{k=0}^n \binom{n}{k}x^k.
+	\end{equation*}
+\end{prop}
+
+\subsection{Binomial Series}
+Fix a positive integer $t$. Let $\mathcal{M}(t)$ be the set of all multisets
+with elements of $t$ types, of any size. Let $\mu = (m_1, m_2, \dots, m_t)$ with
+each $m_i \in \N$. That is,
+\begin{equation*}
+	\mathcal{M}(t) = \N^t = \underbrace{\N \times \N \times \cdots \N}_{t
+	\text{ factors}}
+\end{equation*}
+and
+\begin{equation*}
+	|\mu| = m_1 + \dots + m_t
+\end{equation*}
+The number of multisets of size $n$ is $\mathcal{M}(t)$ is $\binom{n+t-1}{t-1}$.
+Now,
+\begin{equation*}
+	\sum_{\mu \in \mathcal{M}(t)} x^{|\mu|} =
+	\sum^\infty_{n=0}\binom{n+t-1}{t-1}x^n \tag{by \cref{theorem2.1.5}}
+\end{equation*}
+Also, 
+\begin{align*}
+	\sum_{\mu \in \mathcal{M}(t)} x^{|\mu|}
+	&= \sum^\infty_{m_1=0} \sum^\infty_{m_2=0} \cdots \sum^\infty_{m_t=0}
+	x^{m_1+m_2\dots+m_t}\\
+	&= \sum^\infty_{m_1=0}  x^{m_1} \cdot \sum^\infty_{m_2=0}  x^{m_2} \cdots
+	\sum^\infty_{m_t=0}  x^{m_t}\\
+	&=\bigg(\sum^\infty_{c=0}x^c\bigg)^t\\
+	&=\frac{1}{(1-x)^t}
+\end{align*}
+Thus, we arrive at the following identity.
+\begin{prop}[Binomial Series Expansion]
+	For some positive integer $t$, 
+	\begin{equation*}
+		\frac{1}{(1+x)^t} = \sum^\infty_{n=0}\binom{n+t-1}{t-1}x^n.
+	\end{equation*}
+\end{prop}
+This identity is needed for the general case of Partial Fractions.
 \end{document}
