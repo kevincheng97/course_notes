@@ -2,6 +2,9 @@
 \usepackage{notes}
 \usepackage{faktor}
 
+\theoremstyle{theorem}
+\newtheorem{axiom}[theorem]{Axiom}
+
 \newcommand{\thiscoursecode}{PMATH 733}
 \newcommand{\thiscoursename}{Set and Model Theory}
 \newcommand{\thisprof}{Rahim Moosa}
@@ -120,38 +123,38 @@ natural number, the \underline{successor of $n$} to be
 Before continuing, we should ask do these sets exist? Use axioms - unproved
 statements.
 
-\begin{prop}[Empty Set Axiom]
+\begin{axiom}[Empty Set Axiom]
 	There exists a set with no members, denoted $\emptyset$.
-\end{prop}
+\end{axiom}
 
 To get 1 from 0, we invoke the following:
 
-\begin{prop}[Pairset Axiom]
+\begin{axiom}[Pairset Axiom]
 	Given sets $x,y$, there exists a set, denoted by $\{x,y\}$, whose only
 	members are $x$ & $y$. That is, \box{$t\in\{x,y\} \iff t = x$ or $t = y$}.
-\end{prop}
+\end{axiom}
 
 If $x=y$, then $\{x,y\}$ has only $x$ as a member. We recognize that $1 =
 \{0,0\}$ (denoted by $\{0\}$). This requires an axiom.
 
-\begin{prop}[Axiom of Extension]
+\begin{axiom}[Axiom of Extension]
 	Given sets $x,y$, $x=y$ \underline{if and only if} $x$ \& $y$ have the same
 	members.
-\end{prop}
+\end{axiom}
 
 So far, 0 ($\emptyset$), 1 ($\{\emptyset\}$) and 2 ($\{\emptyset,
 \{\emptyset\}\}$) exist. What about $3 \coloneqq \{0,1,2\} =
 \underbrace{\{0,1\}}}_{=2}\cup \{2\}$? In general from $n$, to get $S(n) = n
 \cup \{n\}$, we need \underline{unions}, given by the following axiom.
 
-\begin{prop}[Unionset Axiom] Given a set $x$, there exists a set, denoted by
+\begin{axiom}[Unionset Axiom] Given a set $x$, there exists a set, denoted by
 	$Ux$, whose members are precisely the members of the members of $x$. That
 	is,
 	\begin{equation*}
 		t \in Ux \iff t \in y
 	\end{equation*}
 	for some $y \in x$.
-\end{prop}
+\end{axiom}
 
 So given $n$, $S(n) \coloneqq U\{n,\{n\}\}$. Be definition, $t \in S(n) \iff t
 \in n$ or $t = n$. With these axioms, we have constructed rigorously each
@@ -161,10 +164,10 @@ The set of natural numbers should be the smallest set that contains 0 and is
 preserved by the successor function. We wish to express this set with definite
 conditions.
 
-\begin{prop}[Infinity Axiom]
+\begin{axiom}[Infinity Axiom]
 	There exists a set $I$ that contains 0 and is preserved by the successor
 	function.
-\end{prop}
+\end{axiom}
 We can express this axiom in the following definite logical statement.
 \begin{equation*}
 	\exists I \big((0 \in I) \wedge \forall x (x \in I \impies (\exists y
@@ -182,16 +185,16 @@ We can express $x \subeteq y$ as
 \begin{equation*}
 	\forall z (z \in x \implies z \in y)
 \end{equation*}
-\begin{prop}[Powerset Axiom]
-	Given a set $x$, there exists a set $\mathcal{P}(x)$ with the property that
+\begin{axiom}[Powerset Axiom]
+	Given a set $x$, there exists a set $\mathcal{P}(x)$ with the axiomerty that
 	\begin{equation*}
 		\forall t(t \in \mathcal{P}(x) \iff t \subseteq x)
 	\end{equation*}
-\end{prop}
-\begin{prop}[(Bounded) Separation Axiom]
+\end{axiom}
+\begin{axiom}[(Bounded) Separation Axiom]
 	Given a set $x$ and a definite condition $P$, there exists a set of elements
 	are precisely the members of $x$ that satisfy $P$.
-\end{prop}
+\end{axiom}
 \begin{equation*}
 	\exists \{z\in x : P(z)\}
 \end{equation*}
@@ -220,12 +223,12 @@ We can express $x \subeteq y$ as
 	This does not depend on $I$.
 \end{exercise}
 Another very useful axiom that will be used later:
-\begin{prop}[Replacement Axiom]
+\begin{axiom}[Replacement Axiom]
 	Suppose $P$ is a binary definite condition such that for every set $x$ there
 	is a unique $y$ satisfying $P(x,y)$. Given a set $A$ there is a set $B$ such
 	that $t \in B$ \underline{if and only if} there is an $a \in A$ with
 	$P(a, t)$.
-\end{prop}
+\end{axiom}
 
 \subsection{Classes}
 We sometimes want to consider collection of sets that do not form a set
@@ -238,4 +241,77 @@ themselves. For example, there is no set containing all sets.
 	If $R \in R$, since $R \in U$, $R \notin R$, so a contradiction. But if
 	$R \notin R$, by definition $R \in R$, so no such $U$ exists.
 \end{proof}
+
+\subsection{Cartiasian Products \& Functions}
+\begin{definition}
+    Given sets $x,y$, the \underline{ordered pair of $x$ and $y$} is
+    \begin{equation*}
+        (x,y) = \{\{x\},\{x,y\}\}.
+    \end{equation*}
+\end{definition}
+\begin{definition}
+	Given two classes $X,Y$, the \underline{cartisian product of $X$ and $Y$},
+	denoted by $X\times Y$ is
+	\begin{equation*}
+		X\times Y \coloneqq [[z:z=(x,y), x \in X, y\in Y]].
+	\end{equation*}
+\end{definition}
+To see that $X\times Y$ exists, we define the cartisian product with a definite
+statement.
+\begin{equation*}
+	\exists x,y \bigg((x\in X) \wedge (\y\in Y) \wedge \exists a,b
+		\underbrace{\forall t (t \in a \iff t = x)}_{a = \{x\}} \wedge
+		\underbrace{\forall t(t \in b \iff t = x \vee t=y)}_{b=\{x,y\}}\wedge
+	\underbrace{\forall(t\in z\ iff t\ =z \vee t=b)}_{z = \{a,b\}}\bigg)
+\end{equation*}
+\begin{remark}
+	If $A$ is a set, $B$ is a class and $B\subseteq A$, then $B$ is a set.
+\end{remark}
+\begin{proof}
+	Notice,
+	\begin{equation*}
+		B = \{a\in A : a \in B\}
+	\end{equation*}
+	So by (bounded) separation $B$ is a set.
+\end{proof}
+\begin{remark}
+	If $X,Y$ are sets the $\mathcal{P}(\mathcal{P}(X\cup Y))$ is a set and
+	\begin{equation*}
+		X\times Y \subseteq \mathcal{P}(\mathcal{P}(X\cup Y))
+	\end{equation*}
+	so $X\times Y$ is a set.
+\end{remark}
+\begin{definition}
+	Given classes $X,Y$, a \underline{definite operation} $f:X\to Y$ is a class
+	$\Gamma(f)$ such that $\Gamma(f)\subseteq X\times Y$ and for every $x \in X$
+	there is a unique $y \in Y$ such that $(x,y) \in \Gamma(f)$. We write $f(x)
+	= y$ to mean that $(x,y) \in \Gamma{f}$
+\end{definition}
+\begin{remark}
+	If $X,Y$ are sets and $f:X\to Y$ is a definite operation, then $\Gamma(f)
+	\subseteq \underbrace{X \times Y}_{\text{set}}$, so $\Gamma(f)$ is a set.
+	In this case, we call $f$ a \underline{function}.
+\end{remark}
+\begin{definition}
+	A \underline{function} is a definite operations $f:X\to Y$ where $X,Y$ are
+	both sets.
+\end{definition}
+\begin{prop}[Induction Principle]
+	Suppose $J \subseteq \omega$, $0 \in J$ and whenever $n \in J$ then $S(n)
+	\in J$. Then $J = \omega$.
+\end{prop}
+\begin{proof}
+	$J$ is a successor set, so by definition, $\omega \subseteq J$, so $J =
+	\omega$.
+\end{proof}
+\begin{lemma}
+	Suppose $n \in \omega$.
+	\begin{enumerate}[label=(\alph*)]
+		\item Every element of $n$ is a subset of $\omega$.
+		\item Every element of $n$ is a subset of $n$.
+		\item $n \notin n$.
+		\item Either $n = 0$ or $0 \in n$.
+		\item If $y \in n$ then either $S(y) \in n$ or $S(y) = n$.
+	\end{enumerate}
+\end{lemma}
 \end{document}

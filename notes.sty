@@ -11,7 +11,6 @@
 \usepackage{tikz}
 \usepackage{geometry}
 \usepackage{hyperref}
-\usepackage[noabbrev,capitalize,nameinlink]{cleveref}
 \usepackage{nameref}
 \usepackage{tocloft}
 \usepackage{mathtools}
@@ -22,9 +21,9 @@
 \usepackage{enumitem}
 \usepackage{bookmark}
 \usepackage{thmtools}
+\usepackage[noabbrev,capitalize,nameinlink]{cleveref}
 \usetikzlibrary{calc,fadings,decorations.pathreplacing}
 \geometry{letterpaper, portrait, margin=1in}
-\allowdisplaybreaks
 \everymath{\displaystyle}
 
 %% Helper macros for tikz image
@@ -107,9 +106,7 @@
 spaceabove=6pt, spacebelow=6pt,
 headfont=\normalfont\bfseries,
 notefont=\mdseries, notebraces={(}{)},
-bodyfont=\normalfont\itshape,
-postheadspace=1em,
-]{exstyle}
+bodyfont=\normalfont\itshape]{exstyle}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{prop}[theorem]{Proposition}
@@ -151,7 +148,7 @@ style=exstyle]{exercise}
 \renewcommand{\bar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 \renewcommand{\tilde}[1]{\widetilde{#1}}
 
-\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\im}{Im}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\fact}{!}
 \newcommand{\R}{\mathbb{R}}
@@ -159,7 +156,5 @@ style=exstyle]{exercise}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
-\newcommand{\implies
-
 
 \DeclareRobustCommand\iff{\;\Longleftrightarrow\;}
